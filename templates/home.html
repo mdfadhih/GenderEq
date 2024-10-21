@@ -1,0 +1,1182 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HomePage - Nari</title>
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="/static/images/fav1.png"
+    />
+    <!-- fontawesome 6.4.2 -->
+    <link rel="stylesheet" href="/static/css/plugins/fontawesome-6.css" />
+    <!-- swiper Css 10.2.0 -->
+    <link rel="stylesheet" href="/static/css/plugins/swiper.min.css" />
+    <!-- magnific popup css -->
+    <link rel="stylesheet" href="/static/css/vendor/magnific-popup.css" />
+    <!-- Bootstrap 5.0.2 -->
+    <link rel="stylesheet" href="/static/css/vendor/bootstrap.min.css" />
+    <!-- jquery ui css -->
+    <link rel="stylesheet" href="/static/css/vendor/jquery-ui.css" />
+    <!-- metismenu scss -->
+    <link rel="stylesheet" href="/static/css/vendor/metismenu.css" />
+
+    <!-- custom style css -->
+    <link rel="stylesheet" href="/static/css/style.css" />
+
+    <link rel="stylesheet" href="/static/css/quiz.css" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <style>
+      /* lottie */
+      .content {
+        display: none;
+      }
+
+      .loader {
+        height: 100vh;
+        width: 100vw;
+        overflow: hidden;
+        background-color: #fff;
+        position: absolute;
+      }
+
+      #myImg {
+        border-radius: 5px;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+
+      #myImg:hover {
+        opacity: 0.7;
+      }
+
+      #myImg1 {
+        border-radius: 5px;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+
+      #myImg1:hover {
+        opacity: 0.7;
+      }
+
+      .modal {
+        display: none;
+        position: fixed;
+        padding-top: 100px;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgb(0, 0, 0);
+        background-color: rgba(0, 0, 0, 0.9);
+      }
+
+      .modal-content {
+        margin: auto;
+        display: block;
+        width: 80%;
+        max-width: 75%;
+      }
+
+      #caption {
+        margin: auto;
+        display: block;
+        width: 80%;
+        max-width: 700px;
+        text-align: center;
+        color: #ccc;
+        padding: 10px 0;
+        height: 150px;
+      }
+
+      .modal-content,
+      #caption {
+        animation-name: zoom;
+        animation-duration: 0.6s;
+      }
+
+      @keyframes zoom {
+        from {
+          transform: scale(0);
+        }
+        to {
+          transform: scale(1);
+        }
+      }
+
+      .close {
+        position: absolute;
+        top: 15px;
+        right: 35px;
+        color: #f1f1f1;
+        font-size: 40px;
+        font-weight: bold;
+        transition: 0.3s;
+      }
+
+      .close:hover,
+      .close:focus {
+        color: #bbb;
+        text-decoration: none;
+        cursor: pointer;
+      }
+
+      @media only screen and (max-width: 700px) {
+        .modal-content {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <script>
+      $(window).on("load", function () {
+        $(".loader").fadeOut(4000);
+        $(".content").fadeIn(4000);
+      });
+    </script>
+    <div class="loader">
+      <img
+        src="/static/images/nar.gif"
+        style="
+          width: 500px;
+          height: 500px;
+          margin: auto;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          position: absolute;
+        "
+      />
+    </div>
+    <div class="content">
+      <header class="header-one header--sticky">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="header-one-wrapper">
+                <div class="left-side-header">
+                  <a href="/" class="logo-area">
+                    <img src="/static/images/logo/nar.png" alt="logo" />
+                  </a>
+                </div>
+
+                <div class="main-nav-one">
+                  <nav>
+                    <ul>
+                      <li class="active" style="position: static">
+                        <a class="nav-link" href="/">Home</a>
+                      </li>
+                      <li class="">
+                        <a class="nav-link" href="/companies"
+                          >Mum-Friendly Workplaces</a
+                        >
+                      </li>
+                      <li class="">
+                        <a class="nav-link" href="/childcare">Care for Kids</a>
+                      </li>
+                    </ul>
+                  </nav>
+                </div>
+
+                <div class="header-right-area-one">
+                  <div class="menu-btn" id="menu-btn">
+                    <svg
+                      width="20"
+                      height="16"
+                      viewBox="0 0 20 16"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <rect y="14" width="20" height="2" fill="#1F1F25"></rect>
+                      <rect y="7" width="20" height="2" fill="#1F1F25"></rect>
+                      <rect width="20" height="2" fill="#1F1F25"></rect>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <section class="banner-area-one rts-shape-move">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-6 order-xl-1 order-lg-1 order-sm-2 order-2">
+              <div class="banner-content-one">
+                <div class="inner">
+                  <h1 class="title-banner">
+                    Maternity meets <br />
+                    Opportunity at <span>Nari</span>
+                    <img
+                      src="/static/images/banner/title-shape-1.svg"
+                      alt="banner"
+                    />
+                  </h1>
+                  <p class="disc">
+                    Discover the Perfect Workplace that Supports Your Journey
+                    from Motherhood to Career Success.
+                  </p>
+                  <div class="banner-btn">
+                    <a
+                      href="/companies"
+                      class="rts-btn btn-primary border-radius"
+                      >Explore Mum-Friendly Workplaces</a
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6 order-change order-lg-2 order-sm-1 order-1">
+              <div class="banner-right-img">
+                <video
+                  src="/static/images/banner/nar.mp4"
+                  autoplay
+                  loop
+                  muted
+                  width="672"
+                  style="border: 10px solid white; border-radius: 50px"
+                ></video>
+              </div>
+            </div>
+          </div>
+        </div>
+        <img
+          class="banner-bg-shape-2"
+          src="/static/images/banner/banner-bg-01_01.png"
+          alt=""
+        />
+        <div class="shape-image">
+          <div class="shape one" data-speed="0.04" data-revert="true">
+            <img
+              src="/static/images/banner/shape/01_01.svg"
+              alt="shape_image"
+            />
+          </div>
+          <div class="shape six" data-speed="0.04">
+            <img
+              src="/static/images/banner/shape/06_01.svg"
+              alt="shape_image"
+            />
+          </div>
+        </div>
+        <div class="banner-bg-grid-shape"></div>
+      </section>
+
+      <section class="rts-class-area">
+        <div class="container">
+          <div class="section-title-area text-center">
+            <h2 class="section-title">Eye-Opening Stats You Can't Miss!</h2>
+          </div>
+          <div class="section-inner">
+            <div class="row g-5">
+              <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="class-wrapper">
+                  <div class="wrapper-inner">
+                    <div class="icon">
+                      <img src="/static/images/icon/02.png" alt="" />
+                    </div>
+
+                    <h3
+                      class="title"
+                      style="text-align: center; font-size: 60px"
+                    >
+                      63
+                    </h3>
+
+                    <p class="desc" style="font-size: 20px">
+                      Employers in Australia offer employer-funded parental
+                      leave
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="class-wrapper two">
+                  <div class="wrapper-inner">
+                    <div class="icon">
+                      <img src="/static/images/icon/01.png" alt="" />
+                    </div>
+                    <h3
+                      class="title"
+                      style="text-align: center; font-size: 60px"
+                    >
+                      22
+                    </h3>
+                    <p class="desc" style="font-size: 20px">
+                      Average week length of employer-funded parental leave
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="class-wrapper three">
+                  <div class="wrapper-inner">
+                    <div class="icon">
+                      <img src="/static/images/icon/03.png" alt="" />
+                    </div>
+                    <h3
+                      class="title"
+                      style="text-align: center; font-size: 60px"
+                    >
+                      183
+                    </h3>
+                    <p class="desc" style="font-size: 20px">
+                      National minimum-wage daily rate for parental leave
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="class-wrapper four">
+                  <div class="wrapper-inner">
+                    <div class="icon">
+                      <img src="/static/images/icon/04.png" alt="" />
+                    </div>
+                    <h3
+                      class="title"
+                      style="text-align: center; font-size: 60px"
+                    >
+                      3
+                    </h3>
+                    <p class="desc" style="font-size: 20px">
+                      Months to claim government parental leave before
+                      childbirth
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="rts-about-area rts-shape-move rts-section-gap">
+        <div class="container">
+          <div class="section-inner">
+            <div class="row align-items-center">
+              <div class="col-lg-6">
+                <div class="about-image">
+                  <img
+                    src="/static/images/home/companies.png"
+                    alt="Mum-Friendly Workplaces"
+                    id="myImg1"
+                    style="margin-top: 120px"
+                  />
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="about-content">
+                  <div class="section-title-area">
+                    <h2 class="section-title">
+                      Discover a Job That Suits Your Maternal Needs. <br />
+                    </h2>
+                    <p class="desc">
+                      Our <strong>Mum-Friendly Workplaces</strong> page provides
+                      a feature that assists in locating employment
+                      opportunities by screening organizations according to
+                      particular maternity-related requirements.
+                      <br />
+                    </p>
+                  </div>
+                  <ul class="about-wrapper">
+                    <li class="wrapper-list">
+                      <div class="list-inner">
+                        <div class="icon">
+                          <img src="/static/images/icon/01.svg" alt="" />
+                        </div>
+                        <div class="content">
+                          <h4 class="title">Our Mission</h4>
+                          <p class="desc">
+                            To empower mothers in their career journeys by
+                            providing transparent insights into workplaces that
+                            truly support their unique needs.
+                          </p>
+                        </div>
+                      </div>
+                    </li>
+                    <li class="wrapper-list">
+                      <div class="list-inner">
+                        <div class="icon">
+                          <img src="/static/images/icon/02.svg" alt="" />
+                        </div>
+                        <div class="content">
+                          <h4 class="title">Our Commitment</h4>
+                          <p class="desc">
+                            We are committed to helping mothers find workplaces
+                            that prioritize family-friendly policies, including
+                            flexible working arrangements, paid parental leave,
+                            on-site childcare, and supportive environments for
+                            career growth.
+                          </p>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                  <div class="about-btn-area">
+                    <a
+                      href="/companies"
+                      class="rts-btn btn-primary border-radius"
+                      >Discover Companies</a
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="shape-image">
+          <div class="shape one" data-speed="0.04" data-revert="true">
+            <img
+              src="/static/images/banner/shape/07_01.svg"
+              alt="shape_image"
+            />
+          </div>
+          <div class="shape two" data-speed="0.04" data-revert="true">
+            <img
+              src="/static/images/banner/shape/02_01.svg"
+              alt="shape_image"
+            />
+          </div>
+        </div>
+      </section>
+
+      <div id="image-popup" class="image-popup">
+        <img id="popup-image" src="" alt="" />
+        <span id="close-popup" class="close-popup">&times;</span>
+      </div>
+
+      <section class="rts-about-area1 rts-shape-move rts-section-gap">
+        <div class="container">
+          <div class="section-inner">
+            <div class="row align-items-center">
+              <div class="col-lg-6">
+                <div class="about-content">
+                  <div class="section-title-area">
+                    <h2 class="section-title">
+                      Find DayCare Center For Children. <br />
+                    </h2>
+                    <p class="desc">
+                      Our <strong>Care for Kids</strong> page assists mums in
+                      locating care centers (Early-learning Centers, Childcare
+                      Centers, Preschools, etc.) by NQS rating (Working Towards,
+                      Meeting, Exceeding, etc.) on the route to their workplace.
+                      <br />
+                    </p>
+                  </div>
+                  <ul class="about-wrapper1">
+                    <li class="wrapper-list1">
+                      <div class="list-inner1">
+                        <div class="icon">
+                          <img src="/static/images/icon/01.svg" alt="" />
+                        </div>
+                        <div class="content">
+                          <h4 class="title">Our Mission</h4>
+                          <p class="desc">
+                            To facilitate the search of quality childcare by
+                            providing mums with reliable information regarding
+                            centers situated along their work route.
+                          </p>
+                        </div>
+                      </div>
+                    </li>
+                    <li class="wrapper-list1">
+                      <div class="list-inner1">
+                        <div class="icon">
+                          <img src="/static/images/icon/02.svg" alt="" />
+                        </div>
+                        <div class="content">
+                          <h4 class="title">Our Commitment</h4>
+                          <p class="desc">
+                            By helping mothers identify centers with National
+                            Quality Standard (NQS) ratings along their route to
+                            work, we make the process of finding quality care
+                            more convenient and less stressful.
+                          </p>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                  <div class="about-btn-area">
+                    <a
+                      href="/childcare"
+                      class="rts-btn btn-primary border-radius"
+                      >Locate Centers</a
+                    >
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="about-image">
+                  <img
+                    src="/static/images/home/care.png"
+                    width="630"
+                    alt="Care for Kids"
+                    style="margin-top: 120px"
+                    id="myImg"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="shape-image">
+          <div class="shape one" data-speed="0.04" data-revert="true">
+            <img src="/static/images/banner/shape/01.png" alt="shape_image" />
+          </div>
+          <div class="shape two" data-speed="0.04" data-revert="true">
+            <img src="/static/images/banner/shape/02.png" alt="shape_image" />
+          </div>
+        </div>
+      </section>
+
+      <section class="rts-event-area rts-section-gapTop">
+        <div class="container">
+          <div class="section-title-area text-center" style="margin-top: -85px">
+            <h2 class="section-title">Mum-Friendly Workplaces</h2>
+          </div>
+          <div class="brand-area">
+            <div class="slider-inner">
+              <div
+                class="swiper mySwiper-category-1 swiper-data"
+                data-swiper='{
+                                "spaceBetween":30,
+                                "slidesPerView":3,
+                                "loop": true,
+                                "speed": 1500,
+                                "autoplay":{
+                                    "delay":"4000"
+                                },
+                                "breakpoints":{
+                                "0":{
+                                    "slidesPerView":2,
+                                    "spaceBetween":30},
+                                "320":{
+                                    "slidesPerView":2,
+                                    "spaceBetween":30},
+                                "480":{
+                                    "slidesPerView":3,
+                                    "spaceBetween":30},
+                                "640":{
+                                    "slidesPerView":5,
+                                    "spaceBetween":30},
+                                "840":{
+                                    "slidesPerView":7,
+                                    "spaceBetween":30},
+                                "1140":{
+                                    "slidesPerView":7,
+                                    "spaceBetween":30}
+                                }
+                            }'
+              >
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide">
+                    <div class="image">
+                      <a href="#"
+                        ><img src="/static/images/brand/01.png" alt=""
+                      /></a>
+                    </div>
+                  </div>
+                  <div class="swiper-slide">
+                    <div class="image">
+                      <a href="#"
+                        ><img src="/static/images/brand/02.png" alt=""
+                      /></a>
+                    </div>
+                  </div>
+                  <div class="swiper-slide">
+                    <div class="image">
+                      <a href="#"
+                        ><img src="/static/images/brand/03.png" alt=""
+                      /></a>
+                    </div>
+                  </div>
+                  <div class="swiper-slide">
+                    <div class="image">
+                      <a href="#"
+                        ><img src="/static/images/brand/04.png" alt=""
+                      /></a>
+                    </div>
+                  </div>
+                  <div class="swiper-slide">
+                    <div class="image">
+                      <a href="#"
+                        ><img src="/static/images/brand/05.png" alt=""
+                      /></a>
+                    </div>
+                  </div>
+                  <div class="swiper-slide">
+                    <div class="image">
+                      <a href="#"
+                        ><img src="/static/images/brand/06.png" alt=""
+                      /></a>
+                    </div>
+                  </div>
+                  <div class="swiper-slide">
+                    <div class="image">
+                      <a href="#"
+                        ><img src="/static/images/brand/07.png" alt=""
+                      /></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="rts-course-area rts-shape-move section-bg">
+        <div class="container">
+          <div class="section-title-area text-center">
+            <h2 class="section-title">
+              Maternal Benefits Offered By Companies
+            </h2>
+          </div>
+          <div class="slider-inner">
+            <div
+              class="swiper mySwiper-category-1 swiper-data"
+              data-swiper='{
+                            "spaceBetween":30,
+                            "slidesPerView":3,
+                            "loop": true,
+                            "speed": 1500,
+                            "pagination":{
+                                "el": ".swiper-paginations",
+                                "clickable": "true"
+                            },
+                            "autoplay":{
+                                "delay":"4000"
+                            },
+                            "breakpoints":{
+                            "0":{
+                                "slidesPerView":1,
+                                "spaceBetween":30},
+                            "320":{
+                                "slidesPerView":1,
+                                "spaceBetween":30},
+                            "480":{
+                                "slidesPerView":1,
+                                "spaceBetween":30},
+                            "768":{
+                                "slidesPerView":2,
+                                "spaceBetween":30},
+                            "840":{
+                                "slidesPerView":2,
+                                "spaceBetween":30},
+                            "1140":{
+                                "slidesPerView":3,
+                                "spaceBetween":30}
+                            }
+                        }'
+            >
+              <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                  <div class="course-wrapper">
+                    <div class="wrapper-inner">
+                      <div class="image">
+                        <img
+                          src="/static/images/Filters/1.png"
+                          alt="Parental Leave"
+                        />
+                      </div>
+                      <div class="content">
+                        <a href="#">
+                          <h4 class="title">Paid Parental Leave</h4>
+                        </a>
+                        <p class="desc">
+                          Companies that provide employee or government-funded
+                          paid parental leave for primary and secondary carers,
+                          with or without a qualifying time period, support
+                          work-life balance and gender equality by allowing
+                          parents to take time off to care for their newborns
+                          without facing financial hardship.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="swiper-slide">
+                  <div class="course-wrapper two">
+                    <div class="wrapper-inner">
+                      <div class="image">
+                        <img
+                          src="/static/images/Filters/2.png"
+                          alt="ChildCare"
+                        />
+                      </div>
+                      <div class="content">
+                        <a href="#">
+                          <h4 class="title">On-Site ChildCare</h4>
+                        </a>
+                        <p class="desc">
+                          Companies that provide on-site childcare offer working
+                          parents the convenience of having childcare services
+                          close to their workplace, which can improve employee
+                          retention, reduce absenteeism, and increase
+                          productivity by alleviating the stress and time
+                          associated with arranging external childcare.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="swiper-slide">
+                  <div class="course-wrapper three">
+                    <div class="wrapper-inner">
+                      <div class="image">
+                        <img
+                          src="/static/images/Filters/3.png"
+                          alt="Parenting"
+                        />
+                      </div>
+                      <div class="content">
+                        <a href="course-details.html">
+                          <h4 class="title">Parenting Workshops</h4>
+                        </a>
+                        <p class="desc">
+                          Companies that provide parenting workshops targeting
+                          both mothers and fathers foster a supportive and
+                          inclusive work culture, promoting shared parental
+                          responsibilities and helping employees develop
+                          essential parenting skills.These workshops can improve
+                          employee well-being and better work-life balance.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="swiper-paginations"></div>
+          </div>
+          <img
+            class="banner-bg-shape-3"
+            src="/static/images/banner/banner-bg-2.png"
+            alt=""
+          />
+        </div>
+        <img
+          class="banner-bg-shape-3"
+          src="/static/images/banner/banner-bg-2.png"
+          alt=""
+        />
+      </section>
+
+      <section class="rts-course-area style-2">
+        <div class="container">
+          <div class="section-title-area text-center">
+            <h2 class="section-title">Centers Offering Child Care Services</h2>
+          </div>
+          <div class="slider-inner">
+            <div
+              class="swiper mySwiper-category-1 swiper-data"
+              data-swiper='{
+                            "spaceBetween":30,
+                            "slidesPerView":4,
+                            "loop": true,
+                            "speed": 1500,
+                            "navigation":{
+                                "nextEl":".swiper-button-next2",
+                                "prevEl":".swiper-button-prev2"
+                            },
+                            "autoplay":{
+                                "delay":"4500"
+                            },
+                            "breakpoints":{
+                            "0":{
+                                "slidesPerView":1,
+                                "spaceBetween":30},
+                            "320":{
+                                "slidesPerView":1,
+                                "spaceBetween":30},
+                            "480":{
+                                "slidesPerView":1,
+                                "spaceBetween":30},
+                            "640":{
+                                "slidesPerView":2,
+                                "spaceBetween":30},
+                            "768":{
+                                "slidesPerView":2,
+                                "spaceBetween":30},
+                            "991":{
+                                "slidesPerView":3,
+                                "spaceBetween":30},
+                            "1200":{
+                                "slidesPerView":4,
+                                "spaceBetween":30}
+                            }
+                        }'
+            >
+              <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                  <div class="course-wrapper-style-2">
+                    <div class="wrapper-inner bg-one">
+                      <div class="image">
+                        <img src="/static/images/childcare/03.png" alt="" />
+                      </div>
+                      <div class="content">
+                        <ul class="meta-wrapper">
+                          <li class="wrapper-list">
+                            <div class="icon">
+                              <img src="/static/images/icon/13.svg" alt="" />
+                            </div>
+                            <p class="desc">08:30am - 12:00pm</p>
+                          </li>
+                        </ul>
+                        <a href="#">
+                          <h5 class="title">Acacia Avenue Preschool</h5>
+                        </a>
+                        <div class="review-area">
+                          <p class="desc">
+                            <i class="fa fa-phone"></i> +395838133
+                          </p>
+                        </div>
+                        <div class="bottom-wrapper">
+                          <div class="author-area">
+                            <div class="autor-image">
+                              <img
+                                src="/static/images/NQS/meeting.png"
+                                width="40"
+                                alt=""
+                              />
+                            </div>
+                            <p class="author-name">Meeting NQS</p>
+                          </div>
+                          <h5 class="price"></h5>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="swiper-slide">
+                  <div class="course-wrapper-style-2">
+                    <div class="wrapper-inner bg-four">
+                      <div class="image">
+                        <img src="/static/images/childcare/04.png" alt="" />
+                      </div>
+                      <div class="content">
+                        <ul class="meta-wrapper">
+                          <li class="wrapper-list">
+                            <div class="icon">
+                              <img src="/static/images/icon/13.svg" alt="" />
+                            </div>
+                            <p class="desc">08:30am - 01:30pm</p>
+                          </li>
+                        </ul>
+                        <a href="#">
+                          <h5 class="title">Altona Kindergarten</h5>
+                        </a>
+                        <div class="review-area">
+                          <p class="desc">
+                            <i class="fa fa-phone"></i> +357722155
+                          </p>
+                        </div>
+                        <div class="bottom-wrapper">
+                          <div class="author-area">
+                            <div class="autor-image">
+                              <img
+                                src="/static/images/NQS/Exceed.png"
+                                width="40"
+                                alt=""
+                              />
+                            </div>
+                            <p class="author-name">Exceeding NQS</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="swiper-slide">
+                  <div class="course-wrapper-style-2">
+                    <div class="wrapper-inner bg-two">
+                      <div class="image">
+                        <img src="/static/images/childcare/06.png" alt="" />
+                      </div>
+                      <div class="content">
+                        <ul class="meta-wrapper">
+                          <li class="wrapper-list">
+                            <div class="icon">
+                              <img src="/static/images/icon/13.svg" alt="" />
+                            </div>
+                            <p class="desc">06:30am - 06:30pm</p>
+                          </li>
+                        </ul>
+                        <a href="course-details.html">
+                          <h5 class="title">Kool kidz Dandenong South</h5>
+                        </a>
+                        <div class="review-area">
+                          <p class="desc">
+                            <i class="fa fa-phone"></i> +387526401
+                          </p>
+                        </div>
+                        <div class="bottom-wrapper">
+                          <div class="author-area">
+                            <div class="autor-image">
+                              <img
+                                src="/static/images/NQS/Excellent.png"
+                                width="40"
+                                alt=""
+                              />
+                            </div>
+                            <p class="author-name">Excellent NQS</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="swiper-slide">
+                  <div class="course-wrapper-style-2">
+                    <div class="wrapper-inner bg-four">
+                      <div class="image">
+                        <img src="/static/images/childcare/05.png" alt="" />
+                      </div>
+                      <div class="content">
+                        <ul class="meta-wrapper">
+                          <li class="wrapper-list">
+                            <div class="icon">
+                              <img src="/static/images/icon/13.svg" alt="" />
+                            </div>
+                            <p class="desc">07:00am-18:00pm</p>
+                          </li>
+                        </ul>
+                        <a href="#">
+                          <h5 class="title">Carrum Children's Centre</h5>
+                        </a>
+                        <div class="review-area">
+                          <p class="desc">
+                            <i class="fa fa-phone"></i> +395813000
+                          </p>
+                        </div>
+                        <div class="bottom-wrapper">
+                          <div class="author-area">
+                            <div class="autor-image">
+                              <img
+                                src="/static/images/NQS/Exceed.png"
+                                width="40"
+                                alt=""
+                              />
+                            </div>
+                            <p class="author-name">Exceeding NQS</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="swiper-btn swiper-button-next2">
+              <div class="inner">
+                <svg
+                  width="11"
+                  height="20"
+                  viewBox="0 0 11 20"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    class="ml-4"
+                    d="M1.6918 20C1.80148 20.0006 1.91019 19.9796 2.01173 19.9381C2.11326 19.8967 2.2056 19.8356 2.28347 19.7583L9.0918 12.95C9.47983 12.5629 9.78769 12.1032 9.99774 11.5969C10.2078 11.0907 10.3159 10.5481 10.3159 10C10.3159 9.45194 10.2078 8.90926 9.99774 8.40305C9.78769 7.89685 9.47983 7.43705 9.0918 7.05L2.28347 0.241678C2.20577 0.163979 2.11353 0.102345 2.01201 0.0602948C1.91049 0.0182446 1.80169 -0.00339842 1.6918 -0.00339842C1.58192 -0.00339842 1.47311 0.0182446 1.3716 0.0602948C1.27008 0.102345 1.17784 0.163979 1.10014 0.241678C1.02244 0.319376 0.960803 0.411618 0.918753 0.513136C0.876703 0.614655 0.85506 0.723461 0.85506 0.833344C0.85506 0.943226 0.876703 1.05203 0.918753 1.15355C0.960803 1.25507 1.02244 1.34731 1.10014 1.42501L7.90847 8.23333C8.37664 8.70209 8.6396 9.3375 8.6396 10C8.6396 10.6625 8.37664 11.2979 7.90847 11.7667L1.10014 18.575C1.02203 18.6525 0.960034 18.7446 0.917726 18.8462C0.875419 18.9477 0.853638 19.0566 0.853638 19.1667C0.853638 19.2767 0.875419 19.3856 0.917726 19.4871C0.960034 19.5887 1.02203 19.6809 1.10014 19.7583C1.178 19.8356 1.27035 19.8967 1.37188 19.9381C1.47341 19.9796 1.58213 20.0006 1.6918 20Z"
+                    fill="#262626"
+                  />
+                </svg>
+              </div>
+            </div>
+            <div class="swiper-btn swiper-button-prev2">
+              <div class="inner">
+                <svg
+                  width="11"
+                  height="20"
+                  viewBox="0 0 11 20"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M9.30869 20C9.19901 20.0006 9.09029 19.9796 8.98876 19.9381C8.88723 19.8966 8.79488 19.8355 8.71702 19.7583L1.90869 12.95C1.52066 12.5629 1.2128 12.1031 1.00275 11.5969C0.792694 11.0907 0.68457 10.548 0.68457 9.99998C0.68457 9.45192 0.792694 8.90924 1.00275 8.40303C1.2128 7.89683 1.52066 7.43703 1.90869 7.04998L8.71702 0.241658C8.79472 0.163959 8.88696 0.102325 8.98848 0.0602752C9.09 0.018225 9.1988 -0.00341797 9.30869 -0.00341797C9.41857 -0.00341797 9.52737 0.018225 9.62889 0.0602752C9.73041 0.102325 9.82265 0.163959 9.90035 0.241658C9.97805 0.319357 10.0397 0.411599 10.0817 0.513117C10.1238 0.614635 10.1454 0.723442 10.1454 0.833324C10.1454 0.943207 10.1238 1.05201 10.0817 1.15353C10.0397 1.25505 9.97805 1.34729 9.90035 1.42499L3.09202 8.23332C2.62385 8.70207 2.36088 9.33748 2.36088 9.99998C2.36088 10.6625 2.62385 11.2979 3.09202 11.7666L9.90035 18.575C9.97846 18.6524 10.0405 18.7446 10.0828 18.8462C10.1251 18.9477 10.1469 19.0566 10.1469 19.1666C10.1469 19.2766 10.1251 19.3856 10.0828 19.4871C10.0405 19.5887 9.97846 19.6808 9.90035 19.7583C9.82248 19.8355 9.73014 19.8966 9.62861 19.9381C9.52708 19.9796 9.41836 20.0006 9.30869 20Z"
+                    fill="white"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="rts-footer-area section-bg">
+        <div class="container">
+          <div class="footer-top">
+            <h3
+              class="form-title"
+              style="color: white; text-align: center; display: flex"
+            >
+              "Nari" translates to "Woman" in Hindi. Nari aims to offer
+              assistance and better employment options to empower
+              working mothers.
+            </h3>
+          </div>
+        </div>
+        <div class="copyright-area-one-border" style="background-color: white">
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="copyright-area-one"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="side-bar" class="side-bar header-two">
+        <button class="close-icon-menu"><i class="far fa-times"></i></button>
+        <div class="mobile-menu-main">
+          <nav class="nav-main mainmenu-nav mt--30">
+            <ul class="mainmenu metismenu" id="mobile-menu-active">
+              <li class="">
+                <a href="/" class="main">Home</a>
+              </li>
+              <li class="">
+                <a href="/companies" class="main">Mum-Friendly Workplaces</a>
+              </li>
+              <li class="">
+                <a href="/childcare" class="main">Care for Kids</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+
+      <div class="progress-wrap">
+        <svg
+          class="progress-circle svg-content"
+          width="100%"
+          height="100%"
+          viewBox="-1 -1 102 102"
+        >
+          <path
+            d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"
+            style="
+              transition: stroke-dashoffset 10ms linear 0s;
+              stroke-dasharray: 307.919, 307.919;
+              stroke-dashoffset: 307.919;
+            "
+          ></path>
+        </svg>
+      </div>
+
+      <!-- offcanvase search -->
+      <div id="anywhere-home" class=""></div>
+
+      <!-- all scripts -->
+      <!-- jquery min js -->
+
+      <script src="/static/js/vendor/jquery.min.js"></script>
+      <!-- jquery ui js -->
+      <script src="/static/js/vendor/jquery-ui.js"></script>
+      <!-- metismenu js -->
+      <script src="/static/js/vendor/metismenu.js"></script>
+      <!-- magnific popup js-->
+      <script src="/static/js/vendor/magnifying-popup.js"></script>
+      <!-- swiper JS 10.2.0 -->
+      <script src="/static/js/plugins/swiper.js"></script>
+      <!-- counterup js -->
+      <script src="/static/js/plugins/counterup.js"></script>
+      <!-- waypoint js -->
+      <script src="/static/js/vendor/waypoint.js"></script>
+      <!-- wow js -->
+      <script src="/static/js/vendor/waw.js"></script>
+      <!-- isotop mesonary -->
+      <script src="/static/js/plugins/isotop.js"></script>
+      <!-- jquery imageloaded -->
+      <script src="/static/js/plugins/imagesloaded.pkgd.min.js"></script>
+      <!-- resize sensor js -->
+      <script src="/static/js/plugins/resizer-sensor.js"></script>
+      <!-- sticky sidebar -->
+      <script src="/static/js/plugins/sticky-sidebar.js"></script>
+      <!-- gsap twinmax js -->
+      <script src="/static/js/plugins/twinmax.js"></script>
+      <!-- chroma js -->
+      <script src="/static/js/vendor/chroma.min.js"></script>
+      <!-- bootstrap 5.0.2 -->
+      <script src="/static/js/plugins/bootstrap.min.js"></script>
+      <!-- dymanic Contact Form -->
+      <script src="/static/js/plugins/contact.form.js"></script>
+      <!-- calender js -->
+      <script src="/static/js/plugins/calender.js"></script>
+
+      <!-- main Js -->
+      <script src="/static/js/main.js"></script>
+
+      <!-- The Modal -->
+      <div id="myModal" class="modal">
+        <!-- The Close Button -->
+        <span class="close">&times;</span>
+
+        <!-- Modal Content (The Image) -->
+        <img class="modal-content" id="img01" />
+
+        <!-- Modal Caption (Image Text) -->
+        <div id="caption"></div>
+      </div>
+    </div>
+
+    <!-- <div class="app">
+      <button class="close-btn">
+        <i class="fa fa-window-close" aria-hidden="true"></i>
+      </button>
+      <h1>Mum's Quiz</h1>
+      <div class="quiz">
+        <h2 id="question"></h2>
+        <div id="answer-buttons">
+          <button class="btn"></button>
+          <button class="btn"></button>
+          <button class="btn"></button>
+          <button class="btn"></button>
+        </div>
+        <button id="next-btn">Next</button>
+      </div>
+    </div> -->
+
+    <script>
+      var modal = document.getElementById("myModal");
+
+      var img = document.getElementById("myImg");
+      var img1 = document.getElementById("myImg1");
+      var modalImg = document.getElementById("img01");
+      var captionText = document.getElementById("caption");
+      img.onclick = function () {
+        modal.style.display = "block";
+        modalImg.src = this.src;
+        captionText.innerHTML = this.alt;
+      };
+
+      img1.onclick = function () {
+        modal.style.display = "block";
+        modalImg.src = this.src;
+        captionText.innerHTML = this.alt;
+      };
+
+      var span = document.getElementsByClassName("close")[0];
+
+      span.onclick = function () {
+        modal.style.display = "none";
+      };
+    </script>
+
+    <script src="/static/js/quiz.js"></script>
+  </body>
+</html>

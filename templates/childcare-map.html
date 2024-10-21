@@ -1,0 +1,1289 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Care for Kids - Nari</title>
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="/static/images/fav1.png"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <!-- fontawesome 6.4.2 -->
+    <link rel="stylesheet" href="/static/css/plugins/fontawesome-6.css" />
+    <!-- swiper Css 10.2.0 -->
+    <link rel="stylesheet" href="/static/css/plugins/swiper.min.css" />
+    <!-- magnific popup css -->
+    <link rel="stylesheet" href="/static/css/vendor/magnific-popup.css" />
+
+    <!-- Bootstrap 5.0.2 -->
+    <link rel="stylesheet" href="/static/css/vendor/bootstrap.min.css" />
+    <!-- jquery ui css -->
+    <link rel="stylesheet" href="/static/css/vendor/jquery-ui.css" />
+    <!-- metismenu scss -->
+    <link rel="stylesheet" href="/static/css/vendor/metismenu.css" />
+
+    <link rel="stylesheet" href="/static/css/childcare.css" />
+
+    <link rel="stylesheet" href="/static/css/style.css" />
+
+    <script src="https://api.mapbox.com/mapbox-gl-js/v3.3.0/mapbox-gl.js"></script>
+    <link
+      href="https://api.mapbox.com/mapbox-gl-js/v3.3.0/mapbox-gl.css"
+      rel="stylesheet"
+    />
+    <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.0/mapbox-gl-directions.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.0/mapbox-gl-directions.css"
+      type="text/css"
+    />
+    <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.2/mapbox-gl-geocoder.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.2/mapbox-gl-geocoder.css"
+      type="text/css"
+    />
+    <!-- 添加以下链接到头部 -->
+    <!-- <link
+      href="https://cdn.jsdelivr.net/npm/@trimble-oss/modus-bootstrap@2.0.4/dist/css/modus-bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@trimble-oss/modus-icons@1/dist/modus-outlined/fonts/modus-icons.css"
+    /> -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  </head>
+  <body>
+    <header class="header-one header--sticky header-default header-two">
+      <div class="header-main">
+        <div class="container">
+          <div class="header-one-wrapper">
+            <div class="left-side-header">
+              <a href="/" class="logo-area">
+                <img src="static/images/logo/nar.png" alt="logo" />
+              </a>
+            </div>
+
+            <div class="main-nav-one">
+              <nav>
+                <ul>
+                  <li class="" style="position: static">
+                    <a class="nav-link" href="/">Home</a>
+                  </li>
+                  <li class="">
+                    <a class="nav-link" href="/companies"
+                      >Mum-Friendly Workplaces</a
+                    >
+                  </li>
+                  <li class="active">
+                    <a class="nav-link" href="/childcare">Care for Kids</a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+            <div class="header-right-area-one">
+              <div class="buttons-area">
+                <a
+                  href="#"
+                  class="rts-btn btn-primary border-radius"
+                  data-bs-toggle="modal"
+                  data-bs-target="#statisticsModal"
+                >
+                  Statistics
+                </a>
+              </div>
+              <div class="menu-btn" id="menu-btn">
+                <svg
+                  width="20"
+                  height="16"
+                  viewBox="0 0 20 16"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect y="14" width="20" height="2" fill="#1F1F25"></rect>
+                  <rect y="7" width="20" height="2" fill="#1F1F25"></rect>
+                  <rect width="20" height="2" fill="#1F1F25"></rect>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <script>
+      let mapboxAccessTokenCare = "";
+      fetch("/get_mapbox_access_token")
+        .then((response) => response.json())
+        .then((data) => {
+          mapboxAccessTokenCare = data.mapbox_access_token_Care;
+          mapboxgl.accessToken = mapboxAccessTokenCare;
+          const map = new mapboxgl.Map({
+            container: "map",
+            style: "mapbox://styles/rastemainhoon/cm11waww2034q01pq467pcb1a",
+            center: [144.9631, -37.8136],
+            zoom: 14,
+          });
+
+          // Initialize variables
+          let startCoordinates = null;
+          let endCoordinates = null;
+          let currentProfile = "driving"; // Default transport mode
+
+          // Geocoder for start location
+          const geocoderStart = new MapboxGeocoder({
+            accessToken: mapboxAccessTokenCare,
+            placeholder: "Enter Start Address",
+            mapboxgl: mapboxgl,
+            countries: "au",
+            bbox: [
+              113.338953078,
+              -43.6345972634,
+              153.569469029,
+              -10.6681857235, //Australia border
+            ],
+          });
+
+          // Geocoder for destination location
+          const geocoderEnd = new MapboxGeocoder({
+            accessToken: mapboxAccessTokenCare,
+            placeholder: "Enter Destination Address",
+            mapboxgl: mapboxgl,
+            countries: "au",
+            bbox: [
+              113.338953078, -43.6345972634, 153.569469029, -10.6681857235,
+            ],
+          });
+
+          // Append geocoder elements to the page
+          document
+            .getElementById("geocoder-start")
+            .appendChild(geocoderStart.onAdd(map));
+          document
+            .getElementById("geocoder-end")
+            .appendChild(geocoderEnd.onAdd(map));
+
+          // Event listener when user selects a start point
+          geocoderStart.on("result", (e) => {
+            startCoordinates = e.result.center;
+            if (endCoordinates) {
+              setActiveMode("driving");
+              getRoute();
+            }
+          });
+
+          // Event listener when user selects a destination point
+          geocoderEnd.on("result", (e) => {
+            endCoordinates = e.result.center;
+            if (startCoordinates) {
+              setActiveMode("driving");
+              getRoute();
+            }
+          });
+
+          // When the user clears the starting point input
+          geocoderStart.on("clear", () => {
+            startCoordinates = null;
+            clearRoute();
+          });
+
+          // When the user clears the destination input
+          geocoderEnd.on("clear", () => {
+            endCoordinates = null;
+            clearRoute();
+          });
+
+          let route_stored = null;
+          // Function to get and display the route
+          function getRoute() {
+            const url = `https://api.mapbox.com/directions/v5/mapbox/${currentProfile}/${startCoordinates[0]},${startCoordinates[1]};${endCoordinates[0]},${endCoordinates[1]}?steps=true&geometries=geojson&access_token=${mapboxAccessTokenCare}`;
+
+            fetch(url)
+              .then((response) => response.json())
+              .then((data) => {
+                const route = data.routes[0];
+                route_stored = route;
+                const geojson = {
+                  type: "Feature",
+                  geometry: route.geometry,
+                };
+
+                // If there is a route already, remove it first
+                if (map.getSource("route")) {
+                  map.getSource("route").setData(geojson);
+                } else {
+                  map.addLayer({
+                    id: "route",
+                    type: "line",
+                    source: {
+                      type: "geojson",
+                      data: geojson,
+                    },
+                    layout: {
+                      "line-join": "round",
+                      "line-cap": "round",
+                    },
+                    paint: {
+                      "line-color": "#936ed4",
+                      "line-width": 6,
+                      "line-opacity": 0.8,
+                    },
+                  });
+                }
+
+                // Display route details
+                displayRouteDetails(route);
+                getPOIsAlongRoute(route);
+
+                // Display route details display area
+                document.getElementById("directions-details").style.display =
+                  "block";
+
+                // Zoom the map to fit the route
+                const bounds = new mapboxgl.LngLatBounds();
+                route.geometry.coordinates.forEach((coord) => {
+                  bounds.extend(coord);
+                });
+                map.fitBounds(bounds, {
+                  padding: 50,
+                });
+              });
+          }
+
+          function fetchCategories() {
+            const url = `https://api.mapbox.com/search/searchbox/v1/list/category?access_token=${mapboxAccessTokenCare}`;
+
+            fetch(url)
+              .then((response) => {
+                if (!response.ok) {
+                  throw new Error(
+                    "Network response was not ok " + response.statusText
+                  );
+                }
+                return response.json();
+              })
+              .then((data) => {})
+              .catch((error) => {
+                console.error("Error fetching categories:", error);
+              });
+          }
+
+          // Call the function
+          fetchCategories();
+
+          function getPOIsAlongRoute(route) {
+            // Define the categories to search for
+            const categories = [
+              "elementary_school",
+              "kindergarten",
+              "childcare",
+              "kindergartens",
+              "care_services",
+            ];
+            // Get the first coordinate from the route's geometry
+            const firstCoordinate = route.geometry.coordinates[0]; // [longitude, latitude]
+
+            const placesUrl = `https://api.mapbox.com/geocoding/v5/mapbox.places/${categories.join(
+              ","
+            )}.json?proximity=${firstCoordinate[0]},${
+              firstCoordinate[1]
+            }&limit=50&access_token=${mapboxAccessTokenCare}`;
+
+            fetch(placesUrl)
+              .then((response) => {
+                if (!response.ok) {
+                  throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.json();
+              })
+              .then((poiData) => {
+                const pois = poiData.features;
+
+                // Add POI markers to the map
+                pois.forEach((poi) => {
+                  // Create a custom marker element
+                  const markerElement = document.createElement("div");
+                  markerElement.className = "custom-marker"; // Add a class for styling
+                  markerElement.style.width = "40px"; // Set the width of the marker
+                  markerElement.style.height = "40px"; // Set the height of the marker
+                  markerElement.style.backgroundImage =
+                    'url("static/images/marker.png")'; // Replace with your custom icon URL
+                  markerElement.style.backgroundSize = "contain"; // Make sure the image covers the marker
+                  markerElement.style.backgroundRepeat = "no-repeat"; // Prevent repeating the image
+                  markerElement.style.borderRadius = "50%"; // Make it circular (optional)
+                  markerElement.style.boxShadow = "0 0 10px rgba(0, 0, 0, 0.5)"; // Add shadow for better visibility
+
+                  // Create the marker using the custom element
+                  const marker = new mapboxgl.Marker()
+                    .setLngLat(poi.geometry.coordinates)
+                    .setPopup(
+                      new mapboxgl.Popup().setHTML(
+                        `<h3>${poi.text}</h3><p>${poi.place_name}</p>`
+                      )
+                    ) // Add popup for POI details
+                    .addTo(map);
+                });
+              })
+              .catch((error) => {
+                console.error("Error fetching POIs:", error);
+              });
+          }
+
+          // Function to display route details
+          function displayRouteDetails(route) {
+            const detailsElement =
+              document.getElementById("directions-details");
+
+            let directionsHTML = `<strong>Distance: ${(
+              route.distance / 1000
+            ).toFixed(2)} km</strong><br>`;
+            directionsHTML += `<strong>Duration: ${Math.round(
+              route.duration / 60
+            )} min</strong><br><br>`;
+
+            directionsHTML += `<ol class="pr-0 pb-0 pt-0 pl-0 -mt-10">`;
+            route.legs[0].steps.forEach(function (step) {
+              directionsHTML += `<li class="text-xl font-medium">${
+                step.maneuver.instruction
+              } (${(step.distance / 1000).toFixed(2)} km)</li>`;
+            });
+            directionsHTML += "</ol>";
+
+            detailsElement.innerHTML = directionsHTML;
+          }
+
+          // Function to clear the route and route details
+          function clearRoute() {
+            // Remove the route from the map
+            if (map.getLayer("route")) {
+              map.removeLayer("route");
+            }
+            if (map.getSource("route")) {
+              map.removeSource("route");
+            }
+
+            // Clear route details
+            document.getElementById("directions-details").innerHTML = "";
+
+            // Hide route details display area
+            document.getElementById("directions-details").style.display =
+              "none";
+
+            const details = document.getElementById("directions-details");
+            const defaultCard = document.getElementById("default-card");
+
+            details.style.display = "none";
+            defaultCard.style.marginTop = "20px";
+          }
+
+          // Handle route mode selection
+          document.addEventListener("DOMContentLoaded", () => {
+            document.getElementById("driving").addEventListener("click", () => {
+              currentProfile = "driving";
+              setActiveMode("driving");
+              getRoute();
+            });
+
+            document.getElementById("walking").addEventListener("click", () => {
+              currentProfile = "walking";
+              setActiveMode("walking");
+              getRoute();
+            });
+
+            document.getElementById("cycling").addEventListener("click", () => {
+              currentProfile = "cycling";
+              setActiveMode("cycling");
+              getRoute();
+            });
+
+            document.getElementById("traffic").addEventListener("click", () => {
+              currentProfile = "driving-traffic";
+              setActiveMode("traffic");
+              getRoute();
+            });
+          });
+
+          // // Set the currently selected route mode
+          function setActiveMode(mode) {
+            const buttons = document.querySelectorAll(".route-options button");
+            buttons.forEach((button) => {
+              button.classList.remove("active");
+            });
+            const activeButton = document.getElementById(mode);
+            activeButton.classList.add("active");
+          }
+
+          // Add geolocate control to the map.
+          map.addControl(
+            new mapboxgl.GeolocateControl({
+              positionOptions: {
+                enableHighAccuracy: true,
+              },
+              // When active the map will receive updates to the device's location as it changes.
+              trackUserLocation: true,
+              // Draw an arrow next to the location dot to indicate which direction the device is heading.
+              showUserHeading: true,
+            })
+          );
+
+          map.on("load", () => {
+            // resetPlaceCard();
+            map.addSource("academy", {
+              type: "vector",
+              url: "mapbox://rastemainhoon.8tsrsbvf",
+            });
+
+            map.addLayer({
+              id: "academy",
+              type: "symbol",
+              source: "academy",
+              "source-layer": "academy-cprkwf",
+              layout: {
+                "icon-image": ["get", "Icon"],
+                "icon-allow-overlap": true,
+                visibility: "none",
+              },
+            });
+
+            map.addSource("childcarecenters", {
+              type: "vector",
+              url: "mapbox://rastemainhoon.d9oasr2o",
+            });
+
+            map.addLayer({
+              id: "childcarecenters",
+              type: "symbol",
+              source: "childcarecenters",
+              "source-layer": "childcarecenters-0zytlx",
+              layout: {
+                "icon-image": ["get", "Icon"],
+                "icon-allow-overlap": true,
+                visibility: "none",
+              },
+            });
+
+            map.addSource("earlylearningcenters", {
+              type: "vector",
+              url: "mapbox://rastemainhoon.5y885zec",
+            });
+
+            map.addLayer({
+              id: "earlylearningcenters",
+              type: "symbol",
+              source: "earlylearningcenters",
+              "source-layer": "earlylearningnew-byvlwp",
+              layout: {
+                "icon-image": ["get", "Icon"],
+                "icon-allow-overlap": true,
+                visibility: "none",
+              },
+            });
+
+            map.addSource("kindergartens", {
+              type: "vector",
+              url: "mapbox://rastemainhoon.ayjib8xx",
+            });
+
+            map.addLayer({
+              id: "kindergartens",
+              type: "symbol",
+              source: "kindergartens",
+              "source-layer": "kindergartens-08rpi4",
+              layout: {
+                "icon-image": ["get", "Icon"],
+                "icon-allow-overlap": true,
+                visibility: "none",
+              },
+            });
+
+            map.addSource("OSHC", {
+              type: "vector",
+              url: "mapbox://rastemainhoon.0bko182i",
+            });
+
+            map.addLayer({
+              id: "OSHC",
+              type: "symbol",
+              source: "OSHC",
+              "source-layer": "OSHC-a9x9op",
+              layout: {
+                "icon-image": ["get", "Icon"],
+                "icon-allow-overlap": true,
+                visibility: "none",
+              },
+            });
+
+            map.addSource("preschools", {
+              type: "vector",
+              url: "mapbox://rastemainhoon.d6oldwog",
+            });
+
+            map.addLayer({
+              id: "preschools",
+              type: "symbol",
+              source: "preschools",
+              "source-layer": "preschools-a1j2v2",
+              layout: {
+                "icon-image": ["get", "Icon"],
+                "icon-allow-overlap": true,
+                visibility: "none",
+              },
+            });
+
+            // Add filters to each layer and initialize them as hidden
+            [
+              "academy",
+              "childcarecenters",
+              "earlylearningcenters",
+              "kindergartens",
+              "OSHC",
+              "preschools",
+            ].forEach((layer) => {
+              map.setFilter(layer, ["==", ["get", "OverallNQSRating"], ""]);
+              map.setLayoutProperty(layer, "visibility", "none");
+            });
+
+            // Add event listeners
+            document
+              .getElementById("childcareTypeSelect")
+              .addEventListener("change", updateLayers);
+            document
+              .getElementById("nqsRatingSelect")
+              .addEventListener("change", updateLayers);
+
+            // Add the following code at the end of the map.on('load') event handler
+            document.getElementById("nqsRatingSelect").disabled = true;
+          });
+
+          function updateLayers() {
+            // resetPlaceCard();
+            const selectedType = document.getElementById(
+              "childcareTypeSelect"
+            ).value;
+            const selectedRating =
+              document.getElementById("nqsRatingSelect").value;
+            const nqsRatingSelect = document.getElementById("nqsRatingSelect");
+
+            // Enable or disable NQS Rating select box
+            nqsRatingSelect.disabled = !selectedType;
+
+            // If the Childcare Type is switched, reset the NQS Rating
+            if (nqsRatingSelect.disabled) {
+              nqsRatingSelect.value = "";
+            }
+
+            [
+              "academy",
+              "childcarecenters",
+              "earlylearningcenters",
+              "kindergartens",
+              "OSHC",
+              "preschools",
+            ].forEach((layer) => {
+              if (selectedType) {
+                if (layer === selectedType) {
+                  map.setLayoutProperty(layer, "visibility", "visible");
+                  if (selectedRating) {
+                    map.setFilter(layer, [
+                      "==",
+                      ["get", "OverallNQSRating"],
+                      selectedRating,
+                    ]);
+                  } else {
+                    map.setFilter(layer, null);
+                  }
+                } else {
+                  map.setLayoutProperty(layer, "visibility", "none");
+                }
+              } else {
+                map.setLayoutProperty(layer, "visibility", "none");
+              }
+            });
+          }
+
+          function initializeDefaultCard() {
+            const defaultCard = document.getElementById("default-card");
+            defaultCard.style.display = "block";
+          }
+
+          document.addEventListener("DOMContentLoaded", initializeDefaultCard);
+
+          const layers = [
+            "academy",
+            "childcarecenters",
+            "earlylearningcenters",
+            "kindergartens",
+            "OSHC",
+            "preschools",
+          ];
+
+          layers.forEach((layer) => {
+            map.on("click", layer, (e) => {
+              const features = map.queryRenderedFeatures(e.point, {
+                layers: [layer],
+              });
+              if (!features.length) {
+                console.log("No features found");
+                return;
+              }
+              const feature = features[0];
+
+              fetch(
+                `/api/place-details?lat=${feature.geometry.coordinates[1]}&lng=${feature.geometry.coordinates[0]}&layer=${layer}`
+              )
+                .then((response) => {
+                  if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                  }
+                  return response.json();
+                })
+                .then((placeDetails) => {
+                  createPopup(placeDetails, feature.properties, e.lngLat);
+                })
+                .catch((error) => {
+                  console.error("Error fetching place details:", error);
+                });
+            });
+          });
+
+          function createPopup(placeDetails, properties, lngLat) {
+            const serviceNameMap = {
+              longDayCare: "Long Day Care",
+              preschoolStandalone: "Stand Alone",
+              preschoolSchool: "Part of a School",
+              vacationCare: "Vacation Care",
+              beforeSchool: "Before School",
+              afterSchool: "After School",
+            };
+
+            const servicesHtml = Object.entries(placeDetails.services)
+              .map(([key, value]) => {
+                const serviceName = serviceNameMap[key] || key;
+                const chipClass = value ? "chip-solid" : "chip-outline";
+                const iconHtml = value
+                  ? '<span class="chip-icon-left"></span>'
+                  : "";
+                return `
+              <span class="chip ${chipClass}">
+                ${iconHtml}
+                ${serviceName}
+              </span>
+            `;
+              })
+              .join("");
+
+            const openingHoursHtml = (() => {
+              const daysOrder = [
+                "monday",
+                "tuesday",
+                "wednesday",
+                "thursday",
+                "friday",
+              ];
+              return daysOrder
+                .map((day) => {
+                  const hours = placeDetails.opening_hours[day];
+                  const dayName = day.charAt(0).toUpperCase() + day.slice(1);
+                  if (!hours || hours.start === "Unavailable") {
+                    return `<p>${dayName}: Unavailable</p>`;
+                  } else {
+                    return `<p>${dayName}: ${hours.start.slice(
+                      0,
+                      5
+                    )} - ${hours.end.slice(0, 5)}</p>`;
+                  }
+                })
+                .join("");
+            })();
+
+            const popupContent = `
+        <div class="popup-content">
+          <h3>${placeDetails.name}</h3>
+          <p class="address">${placeDetails.address}</p>
+          <div class="mb-3">
+            <details>
+              <summary>Opening Hours</summary>
+              <div class="section-content opening-hours">
+                ${openingHoursHtml}
+              </div>
+            </details>
+          </div>
+          <div class="mb-3">
+            <details>
+              <summary>Childcare Services</summary>
+              <div class="section-content services-container">
+                ${servicesHtml}
+              </div>
+            </details>
+          </div>
+        </div>
+      `;
+
+            const popup = new mapboxgl.Popup()
+              .setLngLat(lngLat)
+              .setHTML(popupContent)
+              .addTo(map);
+
+            popup.on("open", () => {
+              setTimeout(() => {
+                document
+                  .querySelectorAll(".popup-content details")
+                  .forEach((detail) => {
+                    detail.addEventListener("toggle", function () {
+                      const summary = this.querySelector("summary");
+                      if (this.open) {
+                        summary.textContent = summary.textContent.replace(
+                          "▼",
+                          "▲"
+                        );
+                      } else {
+                        summary.textContent = summary.textContent.replace(
+                          "▲",
+                          "▼"
+                        );
+                      }
+                    });
+                  });
+              }, 100);
+            });
+          }
+
+          // Add a function to reset the card to its default state
+          // function resetPlaceCard() {
+          //   const cardContainer = document.querySelector(".cards-container");
+          //   cardContainer.innerHTML = `
+          //     <div class="place-card">
+          //       <p>Choose a center type, Then click on the marker of your chosen location to view detailed information.</p>
+          //     </div>
+          //   `;
+          // }
+
+          function updateDirectionsDetails(route) {
+            const details = document.getElementById("directions-details");
+            const defaultCard = document.getElementById("default-card");
+            details.innerHTML = `
+                      <p><strong>Distance:</strong> ${route.distance.toFixed(
+                        2
+                      )} km</p>
+                      <p><strong>Duration:</strong> ${Math.round(
+                        route.duration / 60
+                      )} min</p>
+                      ${route.steps
+                        .map((step) => `<p>${step.maneuver.instruction}</p>`)
+                        .join("")}
+                    `;
+            details.style.display = "block";
+            defaultCard.style.display = "block";
+            defaultCard.style.marginTop = "10px";
+          }
+
+          function displayRouteDetails(route) {
+            const detailsElement =
+              document.getElementById("directions-details");
+
+            let directionsHTML = `<strong>Distance: ${(
+              route.distance / 1000
+            ).toFixed(2)} km</strong><br>`;
+            directionsHTML += `<strong>Duration: ${Math.round(
+              route.duration / 60
+            )} minutes</strong><br><br>`;
+
+            directionsHTML += `<ol class="pr-0 pb-0 pt-0 pl-0 -mt-10">`;
+            route.legs[0].steps.forEach(function (step) {
+              directionsHTML += `
+                        <li class="text-xl font-medium">
+                          <span class="direction-icon">${getDirectionIcon(
+                            step.maneuver
+                          )}</span>
+                          ${step.maneuver.instruction} (${(
+                step.distance / 1000
+              ).toFixed(2)} km)
+                        </li>`;
+            });
+            directionsHTML += "</ol>";
+
+            detailsElement.innerHTML = directionsHTML;
+          }
+
+          function getDirectionIcon(maneuver) {
+            if (maneuver.type === "arrive") {
+              return "🏁";
+            } else if (maneuver.type === "depart") {
+              return "▶";
+            } else if (
+              maneuver.type === "turn" ||
+              maneuver.type === "end of road" ||
+              maneuver.type === "roundabout"
+            ) {
+              if (maneuver.modifier === "right") {
+                return "→";
+              } else {
+                return "←";
+              }
+            } else if (maneuver.modifier === "slight right") {
+              return "↗";
+            } else if (maneuver.modifier === "slight left") {
+              return "↖";
+            } else if (maneuver.modifier === "sharp left") {
+              return "↙";
+            } else if (maneuver.modifier === "sharp right") {
+              return "↘";
+            } else if (maneuver.modifier === "straight") {
+              return "↑";
+            } else {
+              const iconMap = {
+                "uturn-left": "↶",
+                "uturn-right": "↷",
+                "ramp-left": "⤸",
+                "ramp-right": "⤵",
+                merge: "↯",
+                "fork-left": "⋔",
+                "fork-right": "⋔",
+                "roundabout-left": "↺",
+                "roundabout-right": "↻",
+              };
+
+              return iconMap[maneuver.type] || "•";
+            }
+          }
+        });
+    </script>
+
+    <div class="container1">
+      <!-- Left Section -->
+      <div class="left-section">
+        <h1 class="leading-10">Child Education Center Around You</h1>
+
+        <div class="search-boxes">
+          <!-- Geocoder will be attached here -->
+          <div id="geocoder-start" class="geocoder"></div>
+          <div id="geocoder-end" class="geocoder"></div>
+        </div>
+        <!-- Transport options will appear here -->
+        <div class="route-options text-xl font-medium">
+          <!-- <button id="traffic">Traffic</button> -->
+          <button id="driving">Driving</button>
+          <button id="walking">Walking</button>
+          <button id="cycling">Cycling</button>
+        </div>
+
+        <!-- Route Details Display Panel -->
+        <div
+          id="directions-details"
+          class="directions-details"
+          style="display: none"
+        ></div>
+
+        <div id="default-card" class="default-card">
+          <p>
+            Enter your home and work locations to discover nearby childcare
+            centers along your commute. Select the type of center that fits your
+            child's needs, and click on a marker to view more details!
+          </p>
+        </div>
+
+        <!-- <div class="cards-container">
+          <div class="place-card">
+            <p>
+              Choose a center type, Then click on the marker of your chosen
+              location to view detailed information.
+            </p>
+          </div>
+        </div> -->
+      </div>
+
+      <!-- Modal for Statistics -->
+      <div
+        class="modal fade"
+        id="statisticsModal"
+        tabindex="-1"
+        aria-labelledby="statisticsModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-xl">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5
+                class="modal-title"
+                style="margin-left: 430px"
+                id="statisticsModalLabel"
+              >
+                Care Center Statistics
+              </h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <div class="container">
+                <div class="row row-cols-1 row-cols-md-2 g-3 mt-2">
+                  <div class="col">
+                    <h6 class="text-center">
+                      Performance Distribution of Institutions Based on NQS
+                    </h6>
+                    <div class="card">
+                      <div class="chart">
+                        <canvas id="chart"></canvas>
+                        <select id="chart-dropdown" class="form-select mt-2">
+                          <option value="kindergarten">Kindergarten</option>
+                          <option value="academy">Academy</option>
+                          <option value="childcare">Childcare</option>
+                          <option value="earlyLearningCenters">
+                            Early Learning Centers
+                          </option>
+                          <option value="oshc">Oshc</option>
+                          <option value="preschool">Preschool</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col">
+                    <h6 class="text-center">Yearly Changes in NQS Rating</h6>
+                    <div class="card">
+                      <div class="chart1">
+                        <canvas id="myChart"></canvas>
+                        <select
+                          id="centerTypeDropdown"
+                          class="form-select mt-2"
+                        >
+                          <option value="all">All</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col" style="margin-left: 275px">
+                    <h6 class="text-center">
+                      Distribution of Centers Offering Different Types of
+                      Care for Kids
+                    </h6>
+                    <div class="card mb-4">
+                      <div class="chart2">
+                        <canvas id="myChart1"></canvas>
+                        <div
+                          class="offcanvas offcanvas-end"
+                          tabindex="-1"
+                          id="offcanvasExample"
+                          aria-labelledby="offcanvasExampleLabel"
+                        >
+                          <div class="offcanvas-header">
+                            <h5
+                              class="offcanvas-title"
+                              id="offcanvasExampleLabel"
+                            >
+                              Care Centers Offering
+                              <span id="careTypeTitle"></span>
+                            </h5>
+                            <button
+                              type="button"
+                              class="btn-close"
+                              data-bs-dismiss="offcanvas"
+                              aria-label="Close"
+                            ></button>
+                          </div>
+                          <div class="offcanvas-body">
+                            <p>
+                              Below are the care centers that provide the
+                              selected care type:
+                            </p>
+                            <ul
+                              id="careCenterList"
+                              class="list-group list-group-flush"
+                            ></ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Section -->
+      <div class="right-section">
+        <div class="glossary">
+          <h2>Glossary of Terms</h2>
+          <div class="glossary-buttons text-xl font-medium">
+            <div class="button-row">
+              <button class="tooltip-trigger">
+                NQS
+                <span class="tooltip-text">
+                  The National Quality Standard (NQS) has seven quality areas
+                  that are important for better health and education outcomes
+                  for children. Children's education and care services are
+                  assessed and rated against the NQS by regulatory authorities
+                  in each state/territory.
+                  <a
+                    href="https://startingblocks.gov.au/resources/children-and-services/choosing-a-service/service-quality-ratings"
+                    target="_blank"
+                    class="learn-more-btn"
+                    >Learn More</a
+                  >
+                </span>
+              </button>
+              <button class="tooltip-trigger">
+                Long Day Care
+                <span class="tooltip-text"
+                  >Provides all-day child care services, typically for parents
+                  who work or have other needs. The services usually include
+                  daily care and education for infants, toddlers, and
+                  preschool-aged children.</span
+                >
+              </button>
+              <button class="tooltip-trigger">
+                Stand alone
+                <span class="tooltip-text"
+                  >An independently operated child education or care center that
+                  does not rely on any school or other institution. These
+                  centers are usually independently managed and provide their
+                  own services.</span
+                >
+              </button>
+
+              <button class="tooltip-trigger">
+                Part of a School
+                <span class="tooltip-text"
+                  >A service that is part of a school, offering supplementary
+                  services to preschool or school-aged children. These services
+                  are usually closely integrated with the school's education
+                  system.</span
+                >
+              </button>
+              <button class="tooltip-trigger">
+                Vacation Care
+                <span class="tooltip-text"
+                  >Provides care for school-aged children during school
+                  holidays, helping parents find suitable care during vacation
+                  periods. It often includes activities and educational
+                  programs.</span
+                >
+              </button>
+              <button class="tooltip-trigger">
+                Before School
+                <span class="tooltip-text"
+                  >Child care services provided before school starts, offering a
+                  safe place for early arrivals to spend time before the school
+                  day begins. It typically includes simple activities or rest
+                  time.</span
+                >
+              </button>
+              <button class="tooltip-trigger tooltip-left">
+                After School
+                <span class="tooltip-text"
+                  >Child care services provided after school, helping parents
+                  take care of their children before they finish work. This
+                  often includes homework assistance and extracurricular
+                  activities.</span
+                >
+              </button>
+              <button class="tooltip-trigger">
+                Academy
+                <span class="tooltip-text"
+                  >A specialized institution focused on a particular skill or
+                  educational area, typically offering more specialized courses
+                  and teaching content than regular care centers.</span
+                >
+              </button>
+              <button class="tooltip-trigger">
+                Childcare Centers
+                <span class="tooltip-text"
+                  >Facilities that provide comprehensive child care and early
+                  education, suitable for infants, toddlers, and preschool-aged
+                  children. They typically offer full-day or part-day
+                  services.</span
+                >
+              </button>
+              <button class="tooltip-trigger">
+                Early Learning Centers
+                <span class="tooltip-text"
+                  >Institutions that provide early education and care for young
+                  children, focusing on developing social, language, and
+                  cognitive skills. They usually combine play and
+                  learning.</span
+                >
+              </button>
+              <button class="tooltip-trigger">
+                Kindergartens
+                <span class="tooltip-text"
+                  >A more formal one-year education program, typically designed
+                  for 4-year-olds, aimed at preparing children for school,
+                  similar to a preparatory year before starting primary
+                  school.</span
+                >
+              </button>
+              <button class="tooltip-trigger">
+                OSHC
+                <span class="tooltip-text"
+                  >Out of School Hours Care. Care provided for school-aged
+                  children outside of school hours, helping working parents
+                  manage their child's schedule.</span
+                >
+              </button>
+              <button class="tooltip-trigger tooltip-left">
+                Preschools
+                <span class="tooltip-text"
+                  >Early education centers for children aged 3 to 5, emphasizing
+                  play and interaction to help children develop cognitive,
+                  social, and language skills, preparing them for school.</span
+                >
+              </button>
+            </div>
+          </div>
+
+          <div class="dropdown-container text-xl font-medium">
+            <div class="dropdown">
+              <label for="childcareTypeSelect">Step1:</label>
+              <select id="childcareTypeSelect">
+                <option value="">Choose Center Type</option>
+                <option value="academy">Academy</option>
+                <option value="childcarecenters">Childcare Centers</option>
+                <option value="earlylearningcenters">
+                  Early Learning Centers
+                </option>
+                <option value="kindergartens">Kindergartens</option>
+                <option value="preschools">Preschools</option>
+                <option value="OSHC">OSHC</option>
+              </select>
+            </div>
+            <div class="dropdown">
+              <label for="nqsRatingSelect">Step2:</label>
+              <select id="nqsRatingSelect">
+                <option value="">Choose NQS Rating</option>
+                <option value="Excellent">Excellent</option>
+                <option value="Exceeding NQS">Exceeding NQS</option>
+                <option value="Meeting NQS">Meeting NQS</option>
+                <option value="Working Towards NQS">Working Towards NQS</option>
+                <option value="Significant Improvement Required">
+                  Significant Improvement Required
+                </option>
+                <option value="No NQS">No NQS</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Map Section -->
+        <div id="map" style="position: relative"></div>
+      </div>
+    </div>
+
+    <div class="rts-footer-area section-bg" style="margin-top: 31px">
+      <div class="container">
+        <div class="footer-top">
+          <h3
+            class="form-title"
+            style="color: white; text-align: center; display: flex"
+          >
+            "Nari" translates to "Woman" in Hindi. Nari aims to offer assistance
+            and better employment options to empower working mothers.
+          </h3>
+        </div>
+      </div>
+      <div class="copyright-area-one-border" style="background-color: white">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="copyright-area-one"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="side-bar" class="side-bar header-two">
+      <button class="close-icon-menu"><i class="far fa-times"></i></button>
+      <div class="mobile-menu-main">
+        <nav class="nav-main mainmenu-nav mt--30">
+          <ul class="mainmenu metismenu" id="mobile-menu-active">
+            <li class="">
+              <a href="/" class="main">Home</a>
+            </li>
+            <li class="">
+              <a href="/companies" class="main">Mum-Friendly Workplaces</a>
+            </li>
+            <li class="">
+              <a href="/childcare" class="main">Care for Kids</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+
+    <div class="progress-wrap">
+      <svg
+        class="progress-circle svg-content"
+        width="100%"
+        height="100%"
+        viewBox="-1 -1 102 102"
+      >
+        <path
+          d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"
+          style="
+            transition: stroke-dashoffset 10ms linear 0s;
+            stroke-dasharray: 307.919, 307.919;
+            stroke-dashoffset: 307.919;
+          "
+        ></path>
+      </svg>
+    </div>
+
+    <div id="anywhere-home" class=""></div>
+
+    <!-- all scripts -->
+    <!-- jquery min js -->
+    <script src="/static/js/vendor/jquery.min.js"></script>
+    <!-- jquery ui js -->
+    <script src="/static/js/vendor/jquery-ui.js"></script>
+    <!-- metismenu js -->
+    <script src="/static/js/vendor/metismenu.js"></script>
+    <!-- magnific popup js-->
+    <script src="/static/js/vendor/magnifying-popup.js"></script>
+    <!-- swiper JS 10.2.0 -->
+    <script src="/static/js/plugins/swiper.js"></script>
+    <!-- counterup Mjs -->
+    <script src="/static/js/plugins/counterup.js"></script>
+    <!-- waypoint js -->
+    <script src="/static/js/vendor/waypoint.js"></script>
+    <!-- wow js -->
+    <script src="/static/js/vendor/waw.js"></script>
+    <!-- isotop mesonary -->
+    <script src="/static/js/plugins/isotop.js"></script>
+    <!-- jquery imageloaded -->
+    <script src="/static/js/plugins/imagesloaded.pkgd.min.js"></script>
+    <!-- resize sensor js -->
+    <script src="/static/js/plugins/resizer-sensor.js"></script>
+    <!-- sticky sidebar -->
+    <script src="/static/js/plugins/sticky-sidebar.js"></script>
+    <!-- gsap twinmax js -->
+    <script src="/static/js/plugins/twinmax.js"></script>
+    <!-- chroma js -->
+    <script src="/static/js/vendor/chroma.min.js"></script>
+    <!-- bootstrap 5.0.2 -->
+    <script src="/static/js/plugins/bootstrap.min.js"></script>
+    <!-- dymanic Contact Form -->
+    <script src="/static/js/plugins/contact.form.js"></script>
+    <!-- calender js -->
+    <script src="/static/js/plugins/calender.js"></script>
+    <!-- main Js -->
+    <script src="/static/js/main.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script src="/static/js/typeofNQS.js"></script>
+    <script src="/static/js/careCenter.js"></script>
+    <script src="/static/js/center-type-care.js"></script>
+  </body>
+</html>

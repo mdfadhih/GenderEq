@@ -1,0 +1,1375 @@
+<html>
+  <head>
+    <title>Company Card</title>
+    <script src="https://api.mapbox.com/mapbox-gl-js/v3.6.0/mapbox-gl.js"></script>
+    <link
+      href="https://api.mapbox.com/mapbox-gl-js/v3.6.0/mapbox-gl.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/mapbox-gl-animated-popup@v0.4.0/dist/mapbox-gl-animated-popup.min.js"></script>
+  </head>
+  <style>
+    .custom-marker {
+      border: 2px solid white;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: contain;
+      box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+    }
+
+    .mapboxgl-popup-content {
+      background-color: #936ed4;
+    }
+    .mapboxgl-popup-content h6 {
+      color: white;
+    }
+    .mapboxgl-popup-close-button {
+      color: white;
+    }
+  </style>
+  <body>
+    {% for company_name, com in companies.items() %}
+    <div id="companyList">
+      <div
+        class="card"
+        style="max-width: 400px"
+        onclick="myfunc(
+                  '{{ company_name }}',
+                  '{{ com.company_num_employees }}',
+                  '{{ com.company_logo }}',
+                  '{{ com.company_website }}',
+                  '{{ com.company_rating }}',
+                  '{{ com.company_industry }}',
+                  '{{ com.sub_industry }}',
+                  '{{com.company_desc}}',
+                  '{{ com.Flexible_hours_of_work}}',
+                  '{{ com.Internal_support_networks_for_parents }}',
+                  '{{ com.Part_time_work }}',
+                  '{{ com.Parenting_workshops_targeting_mothers }}',
+                  '{{ com.Do_you_pay_superannuation_contribution_to_your_secondary_carers_while_they_are_on_parental_leave }}',
+                  '{{ com.Telecommuting__e_g__working_from_home_ }}',
+                  '{{ com.Part_time_work__non_managers_ }}',
+                  '{{ com.Workplace_safety_planning }}',
+                  '{{ com.Compressed_working_weeks }}',
+                  '{{ com.Job_sharing__non_managers_ }}',
+                  '{{ com.Purchased_leave__non_managers_ }}',
+                  '{{ com.Access_to_medical_services__e_g__doctor_or_nurse_ }}',
+                  '{{ com.On_site_childcare }}',
+                  '{{ com.Information_packs_for_new_parents }}',
+                  '{{ com.Coaching_for_employees_on_returning_to_work }}',
+                  '{{ com.Compressed_working_weeks__non_managers_ }}',
+                  '{{ com.Support_in_securing_school_holiday_care }}',
+                  '{{ com.Purchased_leave }}',
+                  '{{ com.Carer_leave }}',
+                  '{{ com.Emergency_accommodation_assistance }}',
+                  '{{ com.Offer_change_of_office_location }}',
+                  '{{ com.Carer_leave__non_managers_ }}',
+                  '{{ com.Time_in_lieu__non_managers_ }}',
+                  '{{ com.Parenting_workshops_targeting_fathers }}',
+                  '{{ com.Flexible_hours_of_work__non_managers }}',
+                  '{{ com.Remuneration }}',
+                  '{{ com.Flexible_working_arrangements }}',
+                  '{{ com.Support_gender_equality }}',
+                  '{{ com.Support_employees_with_family }}',
+                  '{{ com.Primary_carers_within_certain_time_after_birth }}',
+                  '{{ com.Primary_carers_after_completing_qualifying_work_period }}',
+                  '{{ com.regardless_of_carer_status }}',
+                  '{{ com.Secondary_carers }}',
+                  '{{ com.Secondary_carers_within_certain_time_after_birth }}',
+                  '{{ com.Carers_after_completing_qualifying_work_period }}',
+                  '{{ com.Carers_within_certain_time_after_birth }}',
+                  '{{ com.Secondary_carers_after_completing_qualifying_work_period }}',
+                  '{{ com.Employee_training }}',
+                  '{{ com.Breastfeeding_facilities }}',
+                  '{{ com.Do_you_pay_superannuation_contribution_to_your_carers_while_they_are_on_parental_leave }}',
+                  '{{ com.Job_sharing }}',
+                  '{{ com.Time_in_lieu }}',
+                  '{{ com.Employee_assistance_program__including_access_to_psychologist__chaplain_or_counsellor_ }}'
+                )"
+        {%
+        if
+        loop.first
+        %}
+        id="firstCard"
+        {%
+        endif
+        %}
+      >
+        <img
+          src="{{ com.company_logo }}"
+          onerror="this.onerror=null; this.src='static/images/no_error.jpg'"
+          class="card-img-top"
+          alt="..."
+        />
+        <div class="card-body">
+          <div class="text-section">
+            <h6 class="card-title">{{ company_name }}</h6>
+            <p class="card-text">{{ com.company_industry }}</p>
+          </div>
+          <div class="cta-section">
+            <span class="badge bg-custom"
+              >{{ com.company_rating }} <i class="fa fa-star rating_star"></i
+            ></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {% endfor %}
+
+    <script>
+      let mapboxAccessToken = "";
+      fetch("/get_mapbox_access_token")
+        .then((response) => response.json())
+        .then((data) => {
+          mapboxAccessToken = data.mapbox_access_token;
+        });
+    </script>
+
+    <script src="/static/js/selectedCard.js"></script>
+    <script src="/static/js/scrollindicator.js"></script>
+    <script src="/static/js/filtercom.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+      let selectedCard = null;
+      let score = null;
+      let benefits = null;
+      let yesBenefits = null;
+
+      let companyData = null;
+      fetch("/static/json/com-location.json")
+        .then((response) => response.json())
+        .then((data) => {
+          companyData = data;
+        });
+
+      function myfunc(
+        name,
+        employees,
+        logo,
+        website,
+        rating,
+        companyIndustry,
+        subIndustry,
+        company_desc,
+        flexibleHoursOfWork,
+        internalSupportNetworksForParents,
+        partTimeWork,
+        parentingWorkshopsTargetingMothers,
+        paySuperannuationContributionToSecondaryCarers,
+        telecommuting,
+        partTimeWorkNonManagers,
+        workplaceSafetyPlanning,
+        compressedWorkingWeeks,
+        jobSharingNonManagers,
+        purchasedLeaveNonManagers,
+        accessToMedicalServices,
+        onSiteChildcare,
+        informationPacksForNewParents,
+        coachingForEmployeesOnReturningToWork,
+        compressedWorkingWeeksNonManagers,
+        supportInSecuringSchoolHolidayCare,
+        purchasedLeave,
+        carerLeave,
+        emergencyAccommodationAssistance,
+        offerChangeOfOfficeLocation,
+        carerLeaveNonManagers,
+        timeInLieuNonManagers,
+        parentingWorkshopsTargetingFathers,
+        flexibleHoursOfWorkNonManagers,
+        remuneration,
+        flexibleWorkingArrangements,
+        supportGenderEquality,
+        supportEmployeesWithFamily,
+        primaryCarersWithinCertainTimeAfterBirth,
+        primaryCarersAfterCompletingQualifyingWorkPeriod,
+        regardlessOfCarerStatus,
+        secondaryCarers,
+        secondaryCarersWithinCertainTimeAfterBirth,
+        carersAfterCompletingQualifyingWorkPeriod,
+        carersWithinCertainTimeAfterBirth,
+        secondaryCarersAfterCompletingQualifyingWorkPeriod,
+        employeeTraining,
+        breastfeedingFacilities,
+        paySuperannuationContributionToCarers,
+        jobSharing,
+        timeInLieu,
+        employeeAssistanceProgram
+      ) {
+        benefits = [
+          flexibleHoursOfWork,
+          internalSupportNetworksForParents,
+          partTimeWork,
+          parentingWorkshopsTargetingMothers,
+          paySuperannuationContributionToSecondaryCarers,
+          telecommuting,
+          partTimeWorkNonManagers,
+          workplaceSafetyPlanning,
+          compressedWorkingWeeks,
+          jobSharingNonManagers,
+          purchasedLeaveNonManagers,
+          accessToMedicalServices,
+          onSiteChildcare,
+          informationPacksForNewParents,
+          coachingForEmployeesOnReturningToWork,
+          compressedWorkingWeeksNonManagers,
+          supportInSecuringSchoolHolidayCare,
+          purchasedLeave,
+          carerLeave,
+          emergencyAccommodationAssistance,
+          offerChangeOfOfficeLocation,
+          carerLeaveNonManagers,
+          timeInLieuNonManagers,
+          parentingWorkshopsTargetingFathers,
+          flexibleHoursOfWorkNonManagers,
+          remuneration,
+          flexibleWorkingArrangements,
+          supportGenderEquality,
+          supportEmployeesWithFamily,
+          primaryCarersWithinCertainTimeAfterBirth,
+          primaryCarersAfterCompletingQualifyingWorkPeriod,
+          regardlessOfCarerStatus,
+          secondaryCarers,
+          secondaryCarersWithinCertainTimeAfterBirth,
+          carersAfterCompletingQualifyingWorkPeriod,
+          carersWithinCertainTimeAfterBirth,
+          secondaryCarersAfterCompletingQualifyingWorkPeriod,
+          employeeTraining,
+          breastfeedingFacilities,
+          paySuperannuationContributionToCarers,
+          jobSharing,
+          timeInLieu,
+          employeeAssistanceProgram,
+        ];
+
+        // Calculate the company score
+        const totalBenefits = benefits.length;
+        yesBenefits = benefits
+          .filter((benefit) => typeof benefit === "string")
+          .filter((benefit) => benefit.toLowerCase() === "yes").length;
+        score = (yesBenefits / totalBenefits) * 100;
+
+        const currentCard = event.currentTarget;
+        if (selectedCard) {
+          selectedCard.classList.remove("selected-card");
+        }
+
+        currentCard.classList.add("selected-card");
+        selectedCard = currentCard;
+
+        const getClass = (value) =>
+          value?.toLowerCase() === "yes" ? "bg-success" : "bg-danger";
+
+        const classes = {
+          flexible_hours_of_work: getClass(flexibleHoursOfWork),
+          internal_support_networks_for_parents: getClass(
+            internalSupportNetworksForParents
+          ),
+          part_time_work: getClass(partTimeWork),
+          parenting_workshops_targeting_mothers: getClass(
+            parentingWorkshopsTargetingMothers
+          ),
+          pay_superannuation_contribution_to_secondary_carers: getClass(
+            paySuperannuationContributionToSecondaryCarers
+          ),
+          telecommuting: getClass(telecommuting),
+          part_time_work_non_managers: getClass(partTimeWorkNonManagers),
+          workplace_safety_planning: getClass(workplaceSafetyPlanning),
+          compressed_working_weeks: getClass(compressedWorkingWeeks),
+          job_sharing_non_managers: getClass(jobSharingNonManagers),
+          purchased_leave_non_managers: getClass(purchasedLeaveNonManagers),
+          access_to_medical_services: getClass(accessToMedicalServices),
+          on_site_childcare: getClass(onSiteChildcare),
+          information_packs_for_new_parents: getClass(
+            informationPacksForNewParents
+          ),
+          coaching_for_employees_on_returning_to_work: getClass(
+            coachingForEmployeesOnReturningToWork
+          ),
+          compressed_working_weeks_non_managers: getClass(
+            compressedWorkingWeeksNonManagers
+          ),
+          support_in_securing_school_holiday_care: getClass(
+            supportInSecuringSchoolHolidayCare
+          ),
+          purchased_leave: getClass(purchasedLeave),
+          carer_leave: getClass(carerLeave),
+          emergency_accommodation_assistance: getClass(
+            emergencyAccommodationAssistance
+          ),
+          offer_change_of_office_location: getClass(
+            offerChangeOfOfficeLocation
+          ),
+          carer_leave_non_managers: getClass(carerLeaveNonManagers),
+          time_in_lieu_non_managers: getClass(timeInLieuNonManagers),
+          parenting_workshops_targeting_fathers: getClass(
+            parentingWorkshopsTargetingFathers
+          ),
+          flexible_hours_of_work_non_managers: getClass(
+            flexibleHoursOfWorkNonManagers
+          ),
+          remuneration: getClass(remuneration),
+          flexible_working_arrangements: getClass(flexibleWorkingArrangements),
+          support_gender_equality: getClass(supportGenderEquality),
+          support_employees_with_family: getClass(supportEmployeesWithFamily),
+          primary_carers_within_certain_time_after_birth: getClass(
+            primaryCarersWithinCertainTimeAfterBirth
+          ),
+          primary_carers_after_completing_qualifying_work_period: getClass(
+            primaryCarersAfterCompletingQualifyingWorkPeriod
+          ),
+          regardless_of_carer_status: getClass(regardlessOfCarerStatus),
+          secondary_carers: getClass(secondaryCarers),
+          secondary_carers_within_certain_time_after_birth: getClass(
+            secondaryCarersWithinCertainTimeAfterBirth
+          ),
+          carers_after_completing_qualifying_work_period: getClass(
+            carersAfterCompletingQualifyingWorkPeriod
+          ),
+          carers_within_certain_time_after_birth: getClass(
+            carersWithinCertainTimeAfterBirth
+          ),
+          secondary_carers_after_completing_qualifying_work_period: getClass(
+            secondaryCarersAfterCompletingQualifyingWorkPeriod
+          ),
+          employee_training: getClass(employeeTraining),
+          breastfeeding_facilities: getClass(breastfeedingFacilities),
+          pay_superannuation_contribution_to_carers: getClass(
+            paySuperannuationContributionToCarers
+          ),
+          job_sharing: getClass(jobSharing),
+          time_in_lieu: getClass(timeInLieu),
+          employee_assistance_program: getClass(employeeAssistanceProgram),
+        };
+
+        let card = "";
+        card += `
+                  <div class="card-side ml-4">
+                    <div class="row">
+                      <div class="col-sm-3">
+                        <img
+                          src="${logo}"
+                          onerror="this.onerror=null; this.src='static/images/no_error.jpg'"
+                          class="img-1"
+                          alt="..."
+                        />
+                      </div>
+                      <div class="col-sm-6">
+                        <div class="mt-12">
+                          <p class="card-title text-center capitalize text-3xl font-semibold">
+                            ${name}
+                          </p>
+                          <p
+                            class="card-text text-center capitalize text-2xl font-light underline"
+                          >
+                            <a
+                              onclick="window.open(this.href,'_blank');return false;"
+                              href="${website}"
+                              >go to company page</a
+                            >
+                          </p>
+                          <p></p>
+                        </div>
+                      </div>
+                      <div class="col-sm-3">
+                        <p class="text-end mt-4">
+                          <span class="badge bg-custom mr-20"
+                            >${rating} <i class="fa fa-star rating_star"></i
+                          ></span>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="card-side-below">
+                    <div class="mb-4 border-b border-gray-200 dark:border-gray-700">
+                      <ul
+                        class="item-list flex flex-wrap -mb-px text-sm font-medium text-center"
+                        id="default-styled-tab"
+                        role="tablist"
+                      >
+
+                        <li class="me-2" role="presentation">
+                          <button
+                            class="inline-block text-2xl p-4 border-b-2 rounded-t-lg"
+                            id="settings-styled-tab"
+                            type="button"
+                            aria-controls="Settings"
+                            aria-selected="false"
+                            onclick="showTab('Settings')"
+                          ><i class="fa-solid fa-ranking-star" style="color:#936ed4;"></i>
+                            Company Score
+                          </button>
+                        </li>
+                       
+                        <li class="me-2" role="presentation">
+                          <button
+                            class="inline-block text-2xl p-4 border-b-2 rounded-t-lg"
+                            id="benefits-styled-tab"
+                            type="button"
+                            aria-controls="Benefits"
+                            aria-selected="false"
+                            onclick="showTab('Benefits')"
+                          ><i class="fa-solid fa-hand-holding-medical" style="color:#936ed4;"></i>
+                            Benefits
+                          </button>
+                        </li>
+                  
+
+                         <li class="me-2" role="presentation">
+
+                          <button
+                            class="inline-block text-2xl p-4 border-b-2 rounded-t-lg"
+                            id="details-styled-tab"
+                            type="button"
+                            aria-controls="Details"
+                            aria-selected="false"
+                            onclick="showTab('Details', '${name}')"
+                          >
+                             <i class="fa-solid fa-circle-info" style="color:#936ed4;"></i> Company Information
+                          </button>
+                        </li>
+                      </ul>
+                    </div>
+                    <div id="default-styled-tab-content">
+                      <div
+                        class="hidden p-4 rounded-lg"
+                        id="styled-Details"
+                        role="tabpanel"
+                        aria-labelledby="Details-tab"
+                      >
+                        <div class="row">
+                          <p class="card-text mb-3"><strong>Number of Employees - </strong> ${employees}</p>
+                          <p class="card-text mb-3">
+                            <strong>Industry - </strong> ${companyIndustry}
+                          </p>
+                          <p class="card-text mb-3">
+                            <strong>SubIndustry - </strong> ${subIndustry}
+                          </p>
+                          <p class="card-text mb-3"><strong>Company Description - </strong>${company_desc}</p>
+                        </div>
+                        <div class="row">
+                          <div class="col-sm-12">
+                            <div id="map" style="width: 625px; height: 550px"></div>
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        class="hidden p-4 rounded-lg"
+                        id="styled-Benefits"
+                        role="tabpanel"
+                        aria-labelledby="Benefits-tab"
+                      >
+                        <div class="row">
+                          <strong
+                            ><i class="fa-solid fa-circle" style="color: green"></i> The company
+                            provides this benefit</strong
+                          >
+                          <strong
+                            ><i class="fa-solid fa-circle" style="color: red"></i> The company
+                            does not provide this benefit</strong
+                          >
+                        </div>
+
+                        <div class="container-fluid">
+                          <div class="row mt-4">
+                            <div class="col-sm-8">
+                                <div class="rts-single-wized search">
+                                      <div class="wized-body mt--0">
+                                        <div class="rts-search-wrapper">
+                                          <input
+                                            class="Search"
+                                            type="text"
+                                            id="searchInput1"
+                                            onkeyup="filterBenefits()"
+                                            placeholder="Search Benefits..."
+                                          />
+                                          <button><i class="fal fa-search"></i></button>
+                                        </div>
+                                      </div>
+                                    </div>
+
+                                    <div
+                                        id="noResultBeneImage"
+                                        class="flex justify-center items-center"
+                                      ></div>
+                                      <div
+                                        class="text-3xl font-medium"
+                                        id="noResultBenefitMessage"
+                                        style="display: none; text-align: center; color: #936ed4"
+                                      >
+                                        No Benefits found
+                                      </div>
+                              </div>
+
+
+                            <div class="col-sm-4">
+                            <div class="text-end mt-4">
+                              <button
+                                type="button"
+                                class="lft-btn listview"
+                                onclick="listView()"
+                              >
+                                <i class="fa fa-bars"></i>
+                              </button>
+                              <button
+                                type="button"
+                                class="lft-btn1 gridview"
+                                onclick="gridView()"
+                              >
+                                <i class="fa fa-th-large"></i>
+                              </button>
+                              </div>
+                              </div>
+                          </div>
+                        </div>
+
+                        <div id="benefitList">
+                        <div class="row mt-2">
+                          <div class="column ${classes.flexible_hours_of_work}">
+                            <button type="button" class="tooltip-toggeler">
+                              <h6 class="text-start text-white text-capitalize text-lg">
+                                Flexible hours of work
+                              </h6>
+                              <div class="tooltip onTop">
+                                <span class="text-lg font-medium"
+                                  >Flexible work hours allow you to adjust your schedule to suit your needs. For mothers, this means being able to manage school drop-offs,
+                                  appointments, or simply more quality time with your kids without compromising your work.</span
+                                >
+                              </div>
+
+                            </button>
+                          </div>
+                          <div class="column ${classes.flexible_hours_of_work_non_managers}">
+                            <button type="button" class="tooltip-toggeler">
+                              <h6 class="text-start text-white text-capitalize text-lg">
+                                Flexible Hours of Work (Non-Managers)
+                              </h6>
+                              <div class="tooltip onTop">
+                                <span class="text-lg font-medium"
+                                  >Flexible hours are offered to non-managers, allowing for a customized work schedule.
+                                  For mothers, this means you can arrange your workday to fit around family needs, like school or daycare pickups</span
+                                >
+                              </div>
+                            </button>
+                          </div>
+                        </div>
+
+
+
+                        <div class="row">
+                          <div class="column ${classes.part_time_work}">
+                            <button type="button" class="tooltip-toggeler">
+                              <h6 class="text-start text-white text-capitalize text-lg">
+                                Part time work
+                              </h6>
+                              <div class="tooltip onTop">
+                                <span class="text-lg font-medium"
+                                  >Part-time work allows you to reduce your working hours while remaining in your role.
+                                  This is especially useful for mothers who want to spend more time with their children while staying engaged in their careers</span
+                                >
+                              </div>
+                            </button>
+                          </div>
+                          <div class="column ${classes.part_time_work_non_managers}">
+                            <button type="button" class="tooltip-toggeler">
+                              <h6 class="text-start text-white text-capitalize text-lg">
+                                Part Time Work (Non-Managers)
+                              </h6>
+                              <div class="tooltip onTop">
+                                <span class="text-lg font-medium"
+                                  >Part-time options are available for non-managerial roles, offering reduced hours.
+                                  This flexibility is ideal for mothers who may not be in leadership roles but still want to adjust their work commitments to fit their family life</span
+                                >
+                              </div>
+                            </button>
+                          </div>
+                        </div>
+
+                        <div class="row">
+                          <div class="column ${classes.parenting_workshops_targeting_mothers}">
+                            <button type="button" class="tooltip-toggeler">
+                              <h6 class="text-start text-white text-capitalize text-lg">
+                                Parenting Workshops Targeting Mothers
+                              </h6>
+                              <div class="tooltip onTop">
+                                <span class="text-lg font-medium"
+                                  >Parenting workshops offer advice and support for working parents. For mothers,
+                                  these sessions provide targeted guidance on balancing your career with family responsibilities, helping you feel more equipped to handle both</span
+                                >
+                              </div>
+                            </button>
+                          </div>
+                          <div class="column ${classes.parenting_workshops_targeting_fathers}">
+                            <button type="button" class="tooltip-toggeler">
+                              <h6 class="text-start text-white text-capitalize text-lg">
+                                Parenting Workshops Targeting Fathers
+                              </h6>
+                              <div class="tooltip onTop">
+                                <span class="text-lg font-medium"
+                                  >Parenting workshops designed for fathers provide support and advice on balancing work and family life.
+                                  For mothers, these workshops help fathers become more engaged and supportive in shared parenting duties</span
+                                >
+                              </div>
+                            </button>
+                          </div>
+                        </div>
+
+                        <div class="row">
+                          <div class="column ${classes.compressed_working_weeks}">
+                            <button type="button" class="tooltip-toggeler">
+                              <h6 class="text-start text-white text-capitalize text-lg">
+                                Compressed Working Weeks
+                              </h6>
+                              <div class="tooltip onTop">
+                                <span class="text-lg font-medium"
+                                  >A compressed working week allows you to work the same number of hours in fewer days.
+                                  For mothers, this can mean extra days off each week to spend with your children without sacrificing income</span
+                                >
+                              </div>
+                            </button>
+                          </div>
+                          <div class="column ${classes.compressed_working_weeks_non_managers}">
+                            <button type="button" class="tooltip-toggeler">
+                              <h6 class="text-start text-white text-capitalize text-lg">
+                                Compressed Working Weeks (Non-Managers)
+                              </h6>
+                              <div class="tooltip onTop">
+                                <span class="text-lg font-medium"
+                                  >Compressed working weeks are available for non-managerial staff, offering longer hours over fewer days.
+                                  For mothers, this provides extra flexibility and more time for family activities during the week</span
+                                >
+                              </div>
+                            </button>
+                          </div>
+                        </div>
+
+                        <div class="row">
+                          <div class="column ${classes.job_sharing}">
+                            <button type="button" class="tooltip-toggeler">
+                              <h6 class="text-start text-white text-capitalize text-lg">
+                                Job Sharing
+                              </h6>
+                              <div class="tooltip onTop">
+                                <span class="text-lg font-medium"
+                                  >Job sharing allows two employees to split a full-time role.
+                                  For mothers, this provides a way to balance career and family responsibilities, offering flexibility without stepping back from the workforce</span
+                                >
+                              </div>
+                            </button>
+                          </div>
+                          <div class="column ${classes.job_sharing_non_managers}">
+                            <button type="button" class="tooltip-toggeler">
+                              <h6 class="text-start text-white text-capitalize text-lg">
+                                Job Sharing (Non-Managers)
+                              </h6>
+                              <div class="tooltip onTop">
+                                <span class="text-lg font-medium"
+                                  >Job sharing lets two employees split the responsibilities of one full-time role.
+                                  For mothers, this provides a way to stay in the workforce while having more time for family</span
+                                >
+                              </div>
+                            </button>
+                          </div>
+                        </div>
+
+                        <div class="row">
+                          <div class="column ${classes.purchased_leave}">
+                            <button type="button" class="tooltip-toggeler">
+                              <h6 class="text-start text-white text-capitalize text-lg">
+                                Purchased leave
+                              </h6>
+                              <div class="tooltip onTop">
+                                <span class="text-lg font-medium"
+                                  >Purchased leave allows you to buy extra vacation days.
+                                  For mothers, this gives you the freedom to take more time off to spend with your family when you need it</span
+                                >
+                              </div>
+                            </button>
+                          </div>
+                          <div class="column ${classes.purchased_leave_non_managers}">
+                            <button type="button" class="tooltip-toggeler">
+                              <h6 class="text-start text-white text-capitalize text-lg">
+                                Purchased Leave (Non-Managers)
+                              </h6>
+                              <div class="tooltip onTop">
+                                <span class="text-lg font-medium"
+                                  >Purchased leave gives you the option to buy additional time off.
+                                  For mothers, this means more flexibility to take time off when your family needs you most, without financial worry</span
+                                >
+                              </div>
+                            </button>
+                          </div>
+                        </div>
+
+                        <div class="row">
+                          <div class="column ${classes.carer_leave}">
+                            <button type="button" class="tooltip-toggeler">
+                              <h6 class="text-start text-white text-capitalize text-lg">
+                                Carer's Leave
+                              </h6>
+                              <div class="tooltip onTop">
+                                <span class="text-lg font-medium"
+                                  >Carer leave allows you to take time off to care for a family member.
+                                  For mothers, this ensures you can support your loved ones without having to sacrifice work responsibilities</span
+                                >
+                              </div>
+                            </button>
+                          </div>
+                          <div class="column ${classes.carer_leave_non_managers}">
+                            <button type="button" class="tooltip-toggeler">
+                              <h6 class="text-start text-white text-capitalize text-lg">
+                                Carer Leave (Non-Managers)
+                              </h6>
+                              <div class="tooltip onTop">
+                                <span class="text-lg font-medium"
+                                  >Carer leave is available to non-managers, allowing time off to care for family members.
+                                  For mothers, this flexibility means you can fulfill caregiving duties without losing work opportunities</span
+                                >
+                              </div>
+                            </button>
+                          </div>
+                        </div>
+
+                        <div class="row">
+                          <div class="column ${classes.time_in_lieu}">
+                            <button type="button" class="tooltip-toggeler">
+                              <h6 class="text-start text-white text-capitalize text-lg">
+                                Time in Lieu
+                              </h6>
+                              <div class="tooltip onTop">
+                                <span class="text-lg font-medium"
+                                  >Time in lieu allows you to take time off in exchange for overtime worked.
+                                  For mothers, this flexibility helps you better manage your time between work and family commitments</span
+                                >
+                              </div>
+                            </button>
+                          </div>
+                          <div class="column ${classes.time_in_lieu_non_managers}">
+                            <button type="button" class="tooltip-toggeler">
+                              <h6 class="text-start text-white text-capitalize text-lg">
+                                Time in Lieu (Non-Managers)
+                              </h6>
+                              <div class="tooltip onTop">
+                                <span class="text-lg font-medium"
+                                  >Time in lieu allows you to take time off in exchange for overtime hours worked.
+                                  For mothers, this gives you more control over your time, making it easier to manage family commitments</span
+                                >
+                              </div>
+                            </button>
+                          </div>
+                        </div>
+
+                        <div class="row">
+                          <div class="column ${classes.telecommuting}">
+                            <button type="button" class="tooltip-toggeler">
+                              <h6 class="text-start text-white text-capitalize text-lg">
+                                Telecommuting
+                              </h6>
+                              <div class="tooltip onTop">
+                                <span class="text-lg font-medium"
+                                  >Telecommuting allows you to work remotely, providing flexibility to manage both work and home life.
+                                  For mothers, this can mean more time at home with your kids and less stress from commuting</span
+                                >
+                              </div>
+                            </button>
+                          </div>
+                          <div class="column ${classes.workplace_safety_planning}">
+                            <button type="button" class="tooltip-toggeler">
+                              <h6 class="text-start text-white text-capitalize text-lg">
+                                Workplace Safety Planning
+                              </h6>
+                              <div class="tooltip onTop">
+                                <span class="text-lg font-medium"
+                                  >Workplace safety plans ensure a secure and healthy working environment.
+                                  For mothers, this peace of mind is essential in knowing your workplace prioritizes your safety and well-being</span
+                                >
+                              </div>
+                            </button>
+                          </div>
+                        </div>
+
+                        <div class="row">
+                          <div class="column ${classes.emergency_accommodation_assistance}">
+                            <button type="button" class="tooltip-toggeler">
+                              <h6 class="text-start text-white text-capitalize text-lg">
+                                Emergency Accommodation Assistance
+                              </h6>
+                              <div class="tooltip onTop">
+                                <span class="text-lg font-medium"
+                                  >Emergency accommodation assistance provides help in securing temporary housing during crises.
+                                  For mothers, this offers peace of mind knowing your family has a safe place during unexpected situations</span
+                                >
+                              </div>
+                            </button>
+                          </div>
+                          <div class="column ${classes.employee_assistance_program}">
+                            <button type="button" class="tooltip-toggeler">
+                              <h6 class="text-start text-white text-capitalize text-lg">
+                                Employee Assistance Program
+                              </h6>
+                              <div class="tooltip onTop">
+                                <span class="text-lg font-medium"
+                                  >Employee Assistance Programs provide access to professional support services like psychologists or counselors.
+                                  For mothers, this ensures you have the mental and emotional support needed to manage the challenges of work and family life</span
+                                >
+                              </div>
+                            </button>
+                          </div>
+                        </div>
+
+                        <div class="row">
+                          <div class="column ${classes.internal_support_networks_for_parents}">
+                            <button type="button" class="tooltip-toggeler">
+                              <h6 class="text-start text-white text-capitalize text-lg">
+                                Internal Support Network for Parents
+                              </h6>
+                              <div class="tooltip onTop">
+                                <span class="text-lg font-medium"
+                                  >Internal support networks provide a space to connect with other parents in the workplace. For mothers,
+                                  this creates a valuable community where you can share advice and receive support from others who understand your challenges</span
+                                >
+                              </div>
+                            </button>
+                          </div>
+
+                          <div class="column ${classes.on_site_childcare}">
+                            <button type="button" class="tooltip-toggeler">
+                              <h6 class="text-start text-white text-capitalize text-lg">
+                                On Site Childcare
+                              </h6>
+                              <div class="tooltip onTop">
+                                <span class="text-lg font-medium"
+                                  >On-site childcare provides a convenient solution for working parents.
+                                  For mothers, this reduces the stress of coordinating childcare drop-offs and allows you to focus on work knowing your child is nearby</span
+                                >
+                              </div>
+                            </button>
+                          </div>
+                        </div>
+
+                        <div class="row">
+                          <div class="column ${classes.access_to_medical_services}">
+                            <button type="button" class="tooltip-toggeler">
+                              <h6 class="text-start text-white text-capitalize text-lg">
+                                Access to Medical Services
+                              </h6>
+                              <div class="tooltip onTop">
+                                <span class="text-lg font-medium"
+                                  >On-site or easily accessible medical services are available to you.
+                                  For mothers, this ensures you can take care of your health needs without having to leave work or schedule extra appointments</span
+                                >
+                              </div>
+                            </button>
+                          </div>
+                          <div class="column ${classes.breastfeeding_facilities}">
+                            <button type="button" class="tooltip-toggeler">
+                              <h6 class="text-start text-white text-capitalize text-lg">
+                                Breastfeeding Facilities
+                              </h6>
+                              <div class="tooltip onTop">
+                                <span class="text-lg font-medium"
+                                  >Dedicated breastfeeding facilities provide a private, comfortable space for nursing mothers.
+                                  For mothers, this ensures you can care for your baby’s needs without compromising your work responsibilities</span
+                                >
+                              </div>
+                            </button>
+                          </div>
+                        </div>
+
+                        <div class="row">
+                          <div class="column ${classes.support_gender_equality}">
+                            <button type="button" class="tooltip-toggeler">
+                              <h6 class="text-start text-white text-capitalize text-lg">
+                                Support Gender Equality
+                              </h6>
+                              <div class="tooltip onTop">
+                                <span class="text-lg font-medium"
+                                  >Gender equality initiatives promote an inclusive work environment.
+                                  For mothers, this ensures equal opportunities for advancement and a supportive workplace that understands your needs as both an employee and a parent</span
+                                >
+                              </div>
+                            </button>
+                          </div>
+                          <div class="column ${classes.support_employees_with_family}">
+                            <button type="button" class="tooltip-toggeler">
+                              <h6 class="text-start text-white text-capitalize text-lg">
+                                Support Employees with Family
+                              </h6>
+                              <div class="tooltip onTop">
+                                <span class="text-lg font-medium"
+                                  >Support for employees with families includes childcare options, health benefits, and flexible work arrangements.
+                                  For mothers, this makes balancing your career and family life much easier</span
+                                >
+                              </div>
+                            </button>
+                          </div>
+                        </div>
+
+                        <div class="row">
+                          <div
+                            class="column ${classes.coaching_for_employees_on_returning_to_work}"
+                          >
+                            <button type="button" class="tooltip-toggeler">
+                              <h6 class="text-start text-white text-capitalize text-lg">
+                                Coaching for Employees on Returning to Work
+                              </h6>
+                              <div class="tooltip onTop">
+                                <span class="text-lg font-medium"
+                                  >Coaching helps employees smoothly transition back into work after time off.
+                                  For mothers, this support can boost confidence and make the return to work less overwhelming</span
+                                >
+                              </div>
+                            </button>
+                          </div>
+                          <div class="column ${classes.flexible_working_arrangements}">
+                            <button type="button" class="tooltip-toggeler">
+                              <h6 class="text-start text-white text-capitalize text-lg">
+                                Flexible Working Arrangements
+                              </h6>
+                              <div class="tooltip onTop">
+                                <span class="text-lg font-medium"
+                                  >Flexible working arrangements, including remote work and flexible hours, offer various ways to tailor your work schedule.
+                                  For mothers, this means you can create a routine that fits both your professional and family life</span
+                                >
+                              </div>
+                            </button>
+                          </div>
+                        </div>
+
+                        <div class="row">
+                          <div class="column ${classes.information_packs_for_new_parents}">
+                            <button type="button" class="tooltip-toggeler">
+                              <h6 class="text-start text-white text-capitalize text-lg">
+                                Information Packs for New Parents
+                              </h6>
+                              <div class="tooltip onTop">
+                                <span class="text-lg font-medium"
+                                  >Information packs offer resources to guide new parents through balancing work and family.
+                                  For mothers, this can be an invaluable tool when transitioning back to work after maternity leave</span
+                                >
+                              </div>
+                            </button>
+                          </div>
+                          <div class="column ${classes.support_in_securing_school_holiday_care}">
+                            <button type="button" class="tooltip-toggeler">
+                              <h6 class="text-start text-white text-capitalize text-lg">
+                                Support in Securing School Holiday Care
+                              </h6>
+                              <div class="tooltip onTop">
+                                <span class="text-lg font-medium"
+                                  >Assistance in finding school holiday care ensures your children are looked after during breaks.
+                                  For mothers, this helps alleviate the worry of juggling childcare during vacation periods while working</span
+                                >
+                              </div>
+                            </button>
+                          </div>
+                        </div>
+
+                        <div class="row">
+                          <div class="column ${classes.offer_change_of_office_location}">
+                            <button type="button" class="tooltip-toggeler">
+                              <h6 class="text-start text-white text-capitalize text-lg">
+                                Offer Change of Office Location
+                              </h6>
+                              <div class="tooltip onTop">
+                                <span class="text-lg font-medium"
+                                  >Changing your office location to a more convenient spot is an option.
+                                  For mothers, this can significantly reduce commute times, freeing up more time to spend with your family</span
+                                >
+                              </div>
+                            </button>
+                          </div>
+                          <div class="column ${classes.remuneration}">
+                            <button type="button" class="tooltip-toggeler">
+                              <h6 class="text-start text-white text-capitalize text-lg">
+                                Remuneration
+                              </h6>
+                              <div class="tooltip onTop">
+                                <span class="text-lg font-medium"
+                                  >Competitive pay packages ensure you're fairly compensated for your work.
+                                  For mothers, this financial stability provides essential support for your family's needs</span
+                                >
+                              </div>
+                            </button>
+                          </div>
+                        </div>
+
+                        <div class="row">
+                          <div class="column ${classes.employee_training}">
+                            <button type="button" class="tooltip-toggeler">
+                              <h6 class="text-start text-white text-capitalize text-lg">
+                                Employee Training
+                              </h6>
+                              <div class="tooltip onTop">
+                                <span class="text-lg font-medium"
+                                  >Employee training programs help you develop new skills or enhance existing ones.
+                                  For mothers, this provides the opportunity to stay competitive in your career while balancing family life</span
+                                >
+                              </div>
+                            </button>
+                          </div>
+                          <div class="column ${classes.regardless_of_carer_status}">
+                            <button type="button" class="tooltip-toggeler">
+                              <h6 class="text-start text-white text-capitalize text-lg">
+                                Regardless of Carer Status
+                              </h6>
+                              <div class="tooltip onTop">
+                                <span class="text-lg font-medium"
+                                  >Benefits are available to all employees, regardless of whether or not they are caregivers.
+                                  For mothers, this means equal access to opportunities, ensuring that your caregiving responsibilities don’t limit your career</span
+                                >
+                              </div>
+                            </button>
+                          </div>
+                        </div>
+
+                        <div class="row">
+                          <div
+                            class="column ${classes.primary_carers_within_certain_time_after_birth}"
+                          >
+                            <button type="button" class="tooltip-toggeler">
+                              <h6 class="text-start text-white text-capitalize text-lg">
+                                Primary Carers (Within Certain Time After Birth)
+                              </h6>
+                              <div class="tooltip onTop">
+                                <span class="text-lg font-medium"
+                                  >Primary carers receive support such as leave or flexible work schedules shortly after a child's birth.
+                                  For mothers, this ensures you have time to bond with your newborn without the pressure of immediately returning to work</span
+                                >
+                              </div>
+                            </button>
+                          </div>
+                          <div
+                            class="column ${classes.primary_carers_after_completing_qualifying_work_period}"
+                          >
+                            <button type="button" class="tooltip-toggeler">
+                              <h6 class="text-start text-white text-capitalize text-lg">
+                                Primary Carers (After Completing Qualifying Work Period)
+                              </h6>
+                              <div class="tooltip onTop">
+                                <span class="text-lg font-medium"
+                                  >Primary carers are entitled to benefits like parental leave after completing a certain work period.
+                                  For mothers, this provides security, knowing that support is available once you meet the required timeframe</span
+                                >
+                              </div>
+                            </button>
+                          </div>
+                        </div>
+
+                        <div class="row">
+                          <div class="column ${classes.secondary_carers}">
+                            <button type="button" class="tooltip-toggeler">
+                              <h6 class="text-start text-white text-capitalize text-lg">
+                                Secondary Carers
+                              </h6>
+                              <div class="tooltip onTop">
+                                <span class="text-lg font-medium"
+                                  >Secondary carers, such as partners, are also provided support through leave and flexible work arrangements.
+                                  For mothers, this ensures your partner can take an active role in caregiving, sharing the load at home</span
+                                >
+                              </div>
+                            </button>
+                          </div>
+                          <div
+                            class="column ${classes.secondary_carers_within_certain_time_after_birth}"
+                          >
+                            <button type="button" class="tooltip-toggeler">
+                              <h6 class="text-start text-white text-capitalize text-lg">
+                                Secondary Carers (Within Certain Time After Birth)
+                              </h6>
+                              <div class="tooltip onTop">
+                                <span class="text-lg font-medium"
+                                  >Carers can access leave or flexible schedules after a qualifying period at work.
+                                  For mothers, this benefit provides peace of mind knowing caregiving duties won’t disrupt your career</span
+                                >
+                              </div>
+                            </button>
+                          </div>
+                        </div>
+
+                        <div class="row">
+                          <div
+                            class="column ${classes.secondary_carers_after_completing_qualifying_work_period}"
+                          >
+                            <button type="button" class="tooltip-toggeler">
+                              <h6 class="text-start text-white text-capitalize text-lg">
+                                Secondary Carers (After Completing Qualifying Work Period)
+                              </h6>
+                              <div class="tooltip onTop">
+                                <span class="text-lg font-medium"
+                                  >Secondary carers can access their benefits after a qualifying period at work.
+                                  For mothers, this ensures your partner has the support they need to help care for your family after a certain timeframe</span
+                                >
+                              </div>
+                            </button>
+                          </div>
+                          <div
+                            class="column ${classes.pay_superannuation_contribution_to_carers}"
+                          >
+                            <button type="button" class="tooltip-toggeler">
+                              <h6 class="text-start text-white text-capitalize text-lg">
+                                Pay Superannuation Contribution to Carers
+                              </h6>
+                              <div class="tooltip onTop">
+                                <span class="text-lg font-medium"
+                                  >Superannuation contributions continue for carers during parental leave, ensuring ongoing retirement savings.
+                                  For mothers, this offers financial security even while taking time off to care for your child</span
+                                >
+                              </div>
+                            </button>
+                          </div>
+                        </div>
+
+                        <div class="row">
+                          <div
+                            class="column ${classes.pay_superannuation_contribution_to_secondary_carers}"
+                          >
+                            <button type="button" class="tooltip-toggeler">
+                              <h6 class="text-start text-white text-capitalize text-lg">
+                                Pay Superannuation Contribution to Secondary Carers
+                              </h6>
+                              <div class="tooltip onTop">
+                                <span class="text-lg font-medium"
+                                  >Superannuation contributions continue for secondary carers during parental leave.
+                                  For mothers, this ensures your retirement savings keep growing, even if your partner takes on caregiving responsibilities</span
+                                >
+                              </div>
+                            </button>
+                          </div>
+                          <div class="column ${classes.carers_within_certain_time_after_birth}">
+                            <button type="button" class="tooltip-toggeler">
+                              <h6 class="text-start text-white text-capitalize text-lg">
+                                Carers (Within Certain Time After Birth)
+                              </h6>
+                              <div class="tooltip onTop">
+                                <span class="text-lg font-medium"
+                                  >Carers are provided time off or flexible schedules within a set time after a child’s birth.
+                                  For mothers, this means both you and your partner can share the responsibilities of newborn care without work stress</span
+                                >
+                              </div>
+                            </button>
+                          </div>
+                        </div>
+
+                        <div class="row">
+                          <div
+                            class="column ${classes.carers_after_completing_qualifying_work_period}"
+                          >
+                            <button type="button" class="tooltip-toggeler">
+                              <h6 class="text-start text-white text-capitalize text-lg">
+                                Carers (After Completing Qualifying Work Period)
+                              </h6>
+                              <div class="tooltip onTop">
+                                <span class="text-lg font-medium"
+                                  >Carers are provided time off or flexible schedules within a set time after a child’s birth.
+                                  For mothers, this means both you and your partner can share the responsibilities of newborn care without work stress</span
+                                >
+                              </div>
+                            </button>
+                          </div>
+                        </div>
+                         </div>
+                      </div>
+                    </div>
+                    <div
+                      class="hidden p-4 rounded-lg"
+                      id="styled-Settings"
+                      role="tabpanel"
+                      aria-labelledby="Settings-tab"
+                    >
+                      <div class="contanier">
+                         <div class="row">
+                          <h6 class="text-2xl font-medium score"> The company score is determined based on the total number of maternal benefits offered, which can reach a maximum of 45. Companies offering fewer than 20 benefits fall into the 'Low' category, corresponding to a score between 0 and 0.5 on our company score scale. Those providing between 20 and 30 benefits are classified as 'Medium,' with a score range of 0.5 to 0.7. Companies offering more than 30 benefits are placed in the 'High' category, with a score of 0.7 to 1. This classification system provides a clear indication of a company’s commitment to supporting maternal needs.</h6>
+                        </div>
+                        <div class="row">
+                          <div class="col-sm-4"></div>
+                          <div class="col-sm-4">
+                            <div id="scoreless"></div>
+                            <div id="scoremedium"></div>
+                            <div id="scorehigh"></div>
+                            <div class="text-center">
+                              <button
+                                type="button"
+                                class="btn btn-lg centerblock benefits_view"
+                                onclick="benefits_score()"
+                                id="be_score"
+                              >
+                                View Benefits Score
+                              </button>
+                            </div>
+                          </div>
+                          <div class="col-sm-4"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>`;
+        document.getElementById("thecard").innerHTML = card;
+
+        if (score <= 30 || score <= 50) {
+          document.getElementById(
+            "scoreless"
+          ).innerHTML = `<div class="card-body">
+                        <img src="static/images/Score/l.png" width="250" alt="Score_low">
+                      </div>`;
+        } else if (score >= 50 && score <= 70) {
+          document.getElementById(
+            "scoremedium"
+          ).innerHTML = `<div class="card-body">
+                        <img src="static/images/Score/m.png" width="250" alt="Score_medium">
+                      </div>`;
+        } else {
+          document.getElementById(
+            "scorehigh"
+          ).innerHTML = `<div class="card-body">
+                        <img src="static/images/Score/h.png" width="250" alt="Score_high">
+                      </div>`;
+        }
+        showTab("Settings", name);
+      }
+
+      function showTab(tab, companyName) {
+        const tabs = ["Details", "Benefits", "Settings"];
+
+        tabs.forEach((t) => {
+          const tabContent = document.getElementById(`styled-${t}`);
+          const tabButton = document.getElementById(
+            `${t.toLowerCase()}-styled-tab`
+          );
+
+          if (!tabContent) {
+            console.error(
+              `Tab content with  styled-${t.toLowerCase()} not found`
+            );
+            return;
+          }
+
+          if (!tabButton) {
+            console.error(
+              `Tab button with id ${t.toLowerCase()}-styled-tab not found`
+            );
+            return;
+          }
+
+          // Toggle the visibility and selected state
+          if (t === tab) {
+            tabContent.classList.remove("hidden");
+            tabContent.classList.add("block");
+            tabButton.setAttribute("aria-selected", "true");
+
+            if (t === "Details") {
+              const selectedCompany = companyData.filter(
+                (company) => company.NewProperty === companyName
+              );
+
+              if (selectedCompany.length > 0) {
+                initializeMap(selectedCompany);
+              } else {
+                console.error("No locations found for this company");
+              }
+            }
+          } else {
+            tabContent.classList.add("hidden");
+            tabContent.classList.remove("block");
+            tabButton.setAttribute("aria-selected", "false");
+          }
+        });
+      }
+
+      function initializeMap(selectedCompany) {
+        // If a map already exists, remove it to prevent duplicate maps
+        if (
+          mapboxgl.Map &&
+          document.getElementById("map").children.length > 0
+        ) {
+          const mapContainer = document.getElementById("map");
+          while (mapContainer.firstChild) {
+            mapContainer.removeChild(mapContainer.firstChild); // Clear the map container
+          }
+        }
+
+        mapboxgl.accessToken = mapboxAccessToken;
+
+        const map = new mapboxgl.Map({
+          container: "map", // Use the correct container for the map
+          style: "mapbox://styles/mapbox/streets-v12",
+          center: [144.9631, -37.8136], // Default location
+          zoom: 11.15,
+        });
+
+        selectedCompany.forEach((com) => {
+          // Create a DOM element for the marker
+          const el = document.createElement("div");
+          el.className = "custom-marker";
+
+          // Customize marker styles dynamically (example: using the company's logo)
+          el.style.backgroundImage = `url(${com.logo})`;
+          el.style.width = "40px";
+          el.style.height = "40px";
+          el.style.borderRadius = "25%";
+          el.style.cursor = "pointer";
+
+          var popup = new AnimatedPopup({
+            offset: 25,
+            openingAnimation: {
+              duration: 1000,
+              easing: "easeOutElastic",
+              transform: "scale",
+            },
+            closingAnimation: {
+              duration: 300,
+              easing: "easeInBack",
+              transform: "scale",
+            },
+          }).setHTML(
+            `<h6 class="text-center text-lg">${
+              com.address
+            }</h6><h6 class="text-center text-lg capitalize">${
+              com.Name || "Details unavailable"
+            }</h6>`
+          );
+
+          // Add the marker and popup to the map
+          new mapboxgl.Marker(el)
+            .setLngLat([com.lng, com.lat]) // Use each location's lat/lng
+            .setPopup(popup)
+            .addTo(map);
+        });
+      }
+
+      function filterBenefits() {
+        let input = document.getElementById("searchInput1").value.toLowerCase();
+        let benefitColumns = document.querySelectorAll("#benefitList .column");
+        let counter = 0;
+        let noResultBenefitMessage = document.getElementById(
+          "noResultBenefitMessage"
+        );
+
+        benefitColumns.forEach(function (benefitColumn) {
+          let benefitTitle = benefitColumn.querySelector("h6");
+
+          if (benefitTitle) {
+            let benefitText = benefitTitle.textContent.toLowerCase();
+
+            if (benefitText.includes(input)) {
+              benefitColumn.style.display = ""; // Show the benefit if it matches
+              counter++;
+            } else {
+              benefitColumn.style.display = "none"; // Hide the benefit if it doesn't match
+            }
+          }
+        });
+
+        if (counter === 0) {
+          noResultBenefitMessage.style.display = "block"; // Show "No results found" message
+          document.getElementById("noResultBeneImage").innerHTML = `
+        <img src="static/images/Filters/no-result.png" width="80px" alt="noResult">
+      `;
+        } else {
+          document.getElementById("noResultBeneImage").innerHTML = ``;
+          noResultBenefitMessage.style.display = "none"; // Hide the message if results are found
+        }
+      }
+    </script>
+  </body>
+</html>

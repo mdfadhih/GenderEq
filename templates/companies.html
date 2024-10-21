@@ -1,0 +1,3070 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mum-Friendly Workplaces - Nari</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="/static/images/fav1.png"
+    />
+
+    <!-- fontawesome 6.4.2 -->
+    <link rel="stylesheet" href="/static/css/plugins/fontawesome-6.css" />
+    <!-- swiper Css 10.2.0 -->
+    <link rel="stylesheet" href="/static/css/plugins/swiper.min.css" />
+    <!-- magnific popup css -->
+    <link rel="stylesheet" href="/static/css/vendor/magnific-popup.css" />
+
+    <!-- Bootstrap 5.0.2 -->
+    <link rel="stylesheet" href="/static/css/vendor/bootstrap.min.css" />
+    <!-- jquery ui css -->
+    <link rel="stylesheet" href="/static/css/vendor/jquery-ui.css" />
+    <!-- metismenu scss -->
+    <link rel="stylesheet" href="/static/css/vendor/metismenu.css" />
+
+    <link rel="stylesheet" href="/static/css/style.css" />
+
+    <link rel="stylesheet" href="/static/css/companies.css" />
+
+    <link
+      href="https://unpkg.com/intro.js/minified/introjs.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <style>
+      .introjs-tooltip {
+        position: absolute;
+        padding: 10px;
+        background-color: #fff;
+        max-width: 300px;
+        border-radius: 3px;
+        box-shadow: 0 6px 7px -4px rgba(0, 0, 0, 0.4);
+        -webkit-transition: opacity 0.1s ease-out;
+        -moz-transition: opacity 0.1s ease-out;
+        -ms-transition: opacity 0.1s ease-out;
+        -o-transition: opacity 0.1s ease-out;
+        transition: opacity 0.1s ease-out;
+        top: -81.357px;
+        border-width: 2px 4px 4px 2px;
+        border-style: solid;
+        border-color: black;
+      }
+
+      .introjs-tooltip-header {
+        position: relative;
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-top: 10px;
+        min-height: 1.5em;
+        background: #936ed4;
+        text-transform: capitalize;
+      }
+
+      .introjs-tooltip-title {
+        font-size: 15px;
+        width: 90%;
+        min-height: 1.5em;
+        margin: 0;
+        padding: 0;
+        font-weight: 700;
+        line-height: 1.5;
+        color: white;
+        text-align: center;
+      }
+
+      .introjs-skipbutton {
+        position: absolute;
+        top: 0px;
+        right: 0;
+        display: inline-block;
+        width: 37px;
+        height: 32px;
+        line-height: 33px;
+        font-size: 22px;
+        cursor: pointer;
+        font-weight: 700;
+        text-align: -webkit-center;
+        text-decoration: none;
+        color: white;
+        background: #000;
+      }
+    </style>
+  </head>
+
+  <body>
+    <script>
+      $(window).on("load", function () {
+        $(".loader").fadeOut(4000);
+        $(".content").fadeIn(4000);
+      });
+    </script>
+    <div class="loader">
+      <img
+        src="/static/images/nar.gif"
+        style="
+          width: 500px;
+          height: 500px;
+          margin: auto;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          position: absolute;
+        "
+      />
+    </div>
+    <div class="content">
+      <header class="header-one header--sticky header-default header-two">
+        <div class="header-main">
+          <div class="container">
+            <div class="header-one-wrapper">
+              <div class="left-side-header">
+                <a href="/" class="logo-area">
+                  <img src="/static/images/logo/nar.png" alt="logo" />
+                </a>
+              </div>
+
+              <div class="main-nav-one">
+                <nav>
+                  <ul class="">
+                    <li class="" style="position: static">
+                      <a class="nav-link" href="/">Home</a>
+                    </li>
+                    <li class="active">
+                      <a class="nav-link" href="/companies"
+                        >Mum-Friendly Workplaces</a
+                      >
+                    </li>
+                    <li class="">
+                      <a class="nav-link" href="/childcare">Care for Kids</a>
+                    </li>
+                  </ul>
+                </nav>
+              </div>
+              <div class="header-right-area-one">
+                <div class="buttons-area">
+                  <button id="start-tour">
+                    <a class="rts-btn btn-primary border-radius"
+                      >Start a Tour</a
+                    >
+                  </button>
+                </div>
+                <div class="menu-btn" id="menu-btn">
+                  <svg
+                    width="20"
+                    height="16"
+                    viewBox="0 0 20 16"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <rect y="14" width="20" height="2" fill="#1F1F25"></rect>
+                    <rect y="7" width="20" height="2" fill="#1F1F25"></rect>
+                    <rect width="20" height="2" fill="#1F1F25"></rect>
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div class="main-container">
+        <div class="container1">
+          <form id="filters-form" method="GET" action="/companies">
+            <div class="row CompFilters">
+              <div class="col-sm-4">
+                <h5 class="text-start mt-2 ml-3">Filters</h5>
+              </div>
+              <div class="col-sm-4"></div>
+
+              <div class="col-sm-4">
+                <div class="row mb-3">
+                  <button
+                    type="button"
+                    class="rts-btn3 reset_compare"
+                    onclick="resetFilters()"
+                  >
+                    Reset
+                  </button>
+                </div>
+              </div>
+            </div>
+            <hr />
+            <div class="accordion accordion-flush" id="accordionFlushExample">
+              <div class="accordion-item EmpRating">
+                <h2 class="accordion-header" id="flush-headingOne">
+                  <button
+                    class="accordion-button collapsed fw-semibold text-uppercase"
+                    style="font-size: small"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#flush-collapseOne"
+                    aria-expanded="false"
+                    aria-controls="flush-collapseOne"
+                  >
+                    Employee Rating
+                  </button>
+                </h2>
+                <div
+                  id="flush-collapseOne"
+                  class="accordion-collapse collapse"
+                  aria-labelledby="flush-headingOne"
+                  data-bs-parent="#accordionFlushExample"
+                >
+                  <ul class="item-list" aria-labelledby="dropdownRadioButton">
+                    <li>
+                      <div class="flex items-center -ml-14">
+                        <input
+                          id="default-radio-1"
+                          type="radio"
+                          name="rating"
+                          value="4.5"
+                          onchange="applyFilters(this)"
+                          class="w-6 h-6"
+                        />
+                        <label
+                          for="default-radio-1"
+                          class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                          ><i class="fa fa-star rating_star"></i
+                          ><i class="fa fa-star rating_star"></i
+                          ><i class="fa fa-star rating_star"></i
+                          ><i class="fa fa-star rating_star"></i
+                          ><i class="fa fa-star-half rating_star"></i>& above
+                        </label>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="flex items-center -ml-14">
+                        <input
+                          id="default-radio-2"
+                          type="radio"
+                          name="rating"
+                          value="4"
+                          onchange="applyFilters()"
+                          class="w-6 h-6"
+                        />
+                        <label
+                          for="default-radio-2"
+                          class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                          ><i class="fa fa-star rating_star"></i
+                          ><i class="fa fa-star rating_star"></i
+                          ><i class="fa fa-star rating_star"></i
+                          ><i class="fa fa-star rating_star"></i> & above</label
+                        >
+                      </div>
+                    </li>
+                    <li>
+                      <div class="flex items-center -ml-14">
+                        <input
+                          id="default-radio-3"
+                          type="radio"
+                          name="rating"
+                          value="3"
+                          onchange="applyFilters()"
+                          class="w-6 h-6"
+                        />
+                        <label
+                          for="default-radio-3"
+                          class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                          ><i class="fa fa-star rating_star"></i
+                          ><i class="fa fa-star rating_star"></i
+                          ><i class="fa fa-star rating_star"></i> & above</label
+                        >
+                      </div>
+                    </li>
+                    <li>
+                      <div class="flex items-center -ml-14">
+                        <input
+                          id="default-radio-4"
+                          type="radio"
+                          name="rating"
+                          value="2"
+                          onchange="applyFilters()"
+                          class="w-6 h-6"
+                        />
+                        <label
+                          for="default-radio-4"
+                          class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                          ><i class="fa fa-star rating_star"></i
+                          ><i class="fa fa-star rating_star"></i> & above</label
+                        >
+                      </div>
+                    </li>
+                    <li></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="accordion-item NumOfEmp">
+                <h2 class="accordion-header" id="flush-headingTwo">
+                  <button
+                    class="accordion-button collapsed fw-semibold text-uppercase"
+                    type="button"
+                    style="font-size: small"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#flush-collapseTwo"
+                    aria-expanded="false"
+                    aria-controls="flush-collapseTwo"
+                  >
+                    Number of Employees
+                  </button>
+                </h2>
+                <div
+                  id="flush-collapseTwo"
+                  class="accordion-collapse collapse"
+                  aria-labelledby="flush-headingTwo"
+                  data-bs-parent="#accordionFlushExample"
+                >
+                  <ul
+                    class="item-list"
+                    aria-labelledby="dropdownCheckboxButton"
+                  >
+                    <li>
+                      <div class="flex items-center -ml-14">
+                        <input
+                          id="checkbox-item-1"
+                          type="checkbox"
+                          name="employees"
+                          value="< 250 employees"
+                          onchange="applyFilters()"
+                          class="w-6 h-6"
+                        />
+                        <label
+                          for="checkbox-item-1"
+                          class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                          >Less than 250</label
+                        >
+                      </div>
+                    </li>
+                    <li>
+                      <div class="flex items-center -ml-14">
+                        <input
+                          id="checkbox-item-2"
+                          type="checkbox"
+                          name="employees"
+                          value="250-499 employees"
+                          onchange="applyFilters()"
+                          class="w-6 h-6"
+                        />
+                        <label
+                          for="checkbox-item-2"
+                          class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                          >250 - 499</label
+                        >
+                      </div>
+                    </li>
+                    <li>
+                      <div class="flex items-center -ml-14">
+                        <input
+                          id="checkbox-item-3"
+                          type="checkbox"
+                          name="employees"
+                          value="500-999 employees"
+                          onchange="applyFilters()"
+                          class="w-6 h-6"
+                        />
+                        <label
+                          for="checkbox-item-3"
+                          class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                          >500 - 999</label
+                        >
+                      </div>
+                    </li>
+                    <li>
+                      <div class="flex items-center -ml-14">
+                        <input
+                          id="checkbox-item-4"
+                          type="checkbox"
+                          name="employees"
+                          value="1000-4999 employees"
+                          onchange="applyFilters()"
+                          class="w-6 h-6"
+                        />
+                        <label
+                          for="checkbox-item-4"
+                          class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                          >1000 - 4999</label
+                        >
+                      </div>
+                    </li>
+                    <li>
+                      <div class="flex items-center -ml-14">
+                        <input
+                          id="checkbox-item-5"
+                          type="checkbox"
+                          name="employees"
+                          value="5000+ employees"
+                          onchange="applyFilters()"
+                          class="w-6 h-6"
+                        />
+                        <label
+                          for="checkbox-item-5"
+                          class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                          >5000+</label
+                        >
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="accordion-item IndFilters">
+                <h2 class="accordion-header" id="flush-headingIndustry">
+                  <button
+                    class="accordion-button collapsed fw-semibold text-uppercase"
+                    type="button"
+                    style="font-size: small"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#flush-collapseIndustry"
+                    aria-expanded="false"
+                    aria-controls="flush-collapseIndustry"
+                  >
+                    Industry
+                  </button>
+                </h2>
+                <div
+                  id="flush-collapseIndustry"
+                  class="accordion-collapse collapse"
+                  aria-labelledby="flush-headingIndustry"
+                  data-bs-parent="#accordionFlushExample"
+                >
+                  <ul
+                    class="item-list"
+                    aria-labelledby="dropdownCheckboxButton"
+                  >
+                    <li>
+                      <div class="flex items-center -ml-14">
+                        <input
+                          id="checkbox-mining"
+                          type="checkbox"
+                          name="industry"
+                          value="mining"
+                          onchange="applyFilters(); showSubIndustry(this)"
+                          class="w-6 h-6"
+                        />
+                        <label
+                          for="checkbox-mining"
+                          class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                          >Mining</label
+                        >
+                      </div>
+                    </li>
+                    <li>
+                      <div class="flex items-center -ml-14">
+                        <input
+                          id="checkbox-professional"
+                          type="checkbox"
+                          name="industry"
+                          value="professional_scientific_technical"
+                          onchange="applyFilters(); showSubIndustry(this)"
+                          class="w-6 h-6"
+                        />
+                        <label
+                          for="checkbox-professional"
+                          class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                          >Professional, Scientific and Technical
+                          Services</label
+                        >
+                      </div>
+                    </li>
+                    <li>
+                      <div class="flex items-center -ml-14">
+                        <input
+                          id="checkbox-arts"
+                          type="checkbox"
+                          name="industry"
+                          value="arts_recreation"
+                          onchange="applyFilters(); showSubIndustry(this)"
+                          class="w-6 h-6"
+                        />
+                        <label
+                          for="checkbox-arts"
+                          class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                          >Arts and Recreation Services</label
+                        >
+                      </div>
+                    </li>
+                    <li>
+                      <div class="flex items-center -ml-14">
+                        <input
+                          id="checkbox-wholesale"
+                          type="checkbox"
+                          name="industry"
+                          value="wholesale_trade"
+                          onchange="applyFilters(); showSubIndustry(this)"
+                          class="w-6 h-6"
+                        />
+                        <label
+                          for="checkbox-wholesale"
+                          class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                          >Wholesale Trade</label
+                        >
+                      </div>
+                    </li>
+                    <li>
+                      <div class="flex items-center -ml-14">
+                        <input
+                          id="checkbox-financial"
+                          type="checkbox"
+                          name="industry"
+                          value="financial_insurance"
+                          onchange="applyFilters(); showSubIndustry(this)"
+                          class="w-6 h-6"
+                        />
+                        <label
+                          for="checkbox-financial"
+                          class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                          >Financial and Insurance Services</label
+                        >
+                      </div>
+                    </li>
+                    <li>
+                      <div class="flex items-center -ml-14">
+                        <input
+                          id="checkbox-rental"
+                          type="checkbox"
+                          name="industry"
+                          value="rental_hiring_real_estate"
+                          onchange="applyFilters(); showSubIndustry(this)"
+                          class="w-6 h-6"
+                        />
+                        <label
+                          for="checkbox-rental"
+                          class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                          >Rental, Hiring and Real Estate Services</label
+                        >
+                      </div>
+                    </li>
+                    <li>
+                      <div class="flex items-center -ml-14">
+                        <input
+                          id="checkbox-electricity"
+                          type="checkbox"
+                          name="industry"
+                          value="electricity_gas_water_waste"
+                          onchange="applyFilters(); showSubIndustry(this)"
+                          class="w-6 h-6"
+                        />
+                        <label
+                          for="checkbox-electricity"
+                          class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                          >Electricity, Gas, Water and Waste Services</label
+                        >
+                      </div>
+                    </li>
+                    <li>
+                      <div class="flex items-center -ml-14">
+                        <input
+                          id="checkbox-manufacturing"
+                          type="checkbox"
+                          name="industry"
+                          value="manufacturing"
+                          onchange="applyFilters(); showSubIndustry(this)"
+                          class="w-6 h-6"
+                        />
+                        <label
+                          for="checkbox-manufacturing"
+                          class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                          >Manufacturing</label
+                        >
+                      </div>
+                    </li>
+                    <li>
+                      <div class="flex items-center -ml-14">
+                        <input
+                          id="checkbox-admin"
+                          type="checkbox"
+                          name="industry"
+                          value="administrative_support"
+                          onchange="applyFilters(); showSubIndustry(this)"
+                          class="w-6 h-6"
+                        />
+                        <label
+                          for="checkbox-admin"
+                          class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                          >Administrative and Support Services</label
+                        >
+                      </div>
+                    </li>
+                    <li>
+                      <div class="flex items-center -ml-14">
+                        <input
+                          id="checkbox-accommodation"
+                          type="checkbox"
+                          name="industry"
+                          value="accommodation_food"
+                          onchange="applyFilters(); showSubIndustry(this)"
+                          class="w-6 h-6"
+                        />
+                        <label
+                          for="checkbox-accommodation"
+                          class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                          >Accommodation and Food Services</label
+                        >
+                      </div>
+                    </li>
+                    <li>
+                      <div class="flex items-center -ml-14">
+                        <input
+                          id="checkbox-retail"
+                          type="checkbox"
+                          name="industry"
+                          value="retail_trade"
+                          onchange="applyFilters(); showSubIndustry(this)"
+                          class="w-6 h-6"
+                        />
+                        <label
+                          for="checkbox-retail"
+                          class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                          >Retail Trade</label
+                        >
+                      </div>
+                    </li>
+                    <li>
+                      <div class="flex items-center -ml-14">
+                        <input
+                          id="checkbox-construction"
+                          type="checkbox"
+                          name="industry"
+                          value="construction"
+                          onchange="applyFilters(); showSubIndustry(this)"
+                          class="w-6 h-6"
+                        />
+                        <label
+                          for="checkbox-construction"
+                          class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                          >Construction</label
+                        >
+                      </div>
+                    </li>
+                    <li>
+                      <div class="flex items-center -ml-14">
+                        <input
+                          id="checkbox-education"
+                          type="checkbox"
+                          name="industry"
+                          value="education_training"
+                          onchange="applyFilters(); showSubIndustry(this)"
+                          class="w-6 h-6"
+                        />
+                        <label
+                          for="checkbox-education"
+                          class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                          >Education and Training</label
+                        >
+                      </div>
+                    </li>
+                    <li>
+                      <div class="flex items-center -ml-14">
+                        <input
+                          id="checkbox-info_media"
+                          type="checkbox"
+                          name="industry"
+                          value="information_media_telecommunications"
+                          onchange="applyFilters(); showSubIndustry(this)"
+                          class="w-6 h-6"
+                        />
+                        <label
+                          for="checkbox-info_media"
+                          class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                          >Information Media and Telecommunications</label
+                        >
+                      </div>
+                    </li>
+                    <li>
+                      <div class="flex items-center -ml-14">
+                        <input
+                          id="checkbox-transport"
+                          type="checkbox"
+                          name="industry"
+                          value="transport_postal_warehousing"
+                          onchange="applyFilters(); showSubIndustry(this)"
+                          class="w-6 h-6"
+                        />
+                        <label
+                          for="checkbox-transport"
+                          class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                          >Transport, Postal and Warehousing</label
+                        >
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="accordion-item" id="sub-industry-accordion">
+                <h2 class="accordion-header" id="flush-headingSubIndustry">
+                  <button
+                    class="accordion-button collapsed fw-semibold text-uppercase"
+                    type="button"
+                    style="font-size: small"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#flush-collapseSubIndustry"
+                    aria-expanded="false"
+                    aria-controls="flush-collapseSubIndustry"
+                  >
+                    Sub Industry
+                  </button>
+                </h2>
+                <div
+                  id="flush-collapseSubIndustry"
+                  class="accordion-collapse collapse"
+                  aria-labelledby="flush-headingSubIndustry"
+                  data-bs-parent="#accordionFlushExample"
+                >
+                  <ul class="item-list" id="sub-industry-options">
+                    <li>
+                      <div class="flex items-center -ml-14">
+                        <input
+                          id="checkbox-heavy-civil"
+                          type="checkbox"
+                          name="sub_industry"
+                          value="heavy_civil_construction"
+                          onchange="applyFilters()"
+                          class="w-6 h-6"
+                        />
+                        <label
+                          for="checkbox-heavy-civil"
+                          class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                          >Heavy and Civil Engineering Construction</label
+                        >
+                      </div>
+                    </li>
+                    <li>
+                      <div class="flex items-center -ml-14">
+                        <input
+                          id="checkbox-gambling"
+                          type="checkbox"
+                          name="sub_industry"
+                          value="gambling_activities"
+                          onchange="applyFilters()"
+                          class="w-6 h-6"
+                        />
+                        <label
+                          for="checkbox-gambling"
+                          class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                          >Gambling Activities</label
+                        >
+                      </div>
+                    </li>
+                    <li>
+                      <div class="flex items-center -ml-14">
+                        <input
+                          id="checkbox-non-metallic"
+                          type="checkbox"
+                          name="sub_industry"
+                          value="non_metallic_mineral_product_manufacturing"
+                          onchange="applyFilters()"
+                          class="w-6 h-6"
+                        />
+                        <label
+                          for="checkbox-non-metallic"
+                          class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                          >Non-Metallic Mineral Product Manufacturing</label
+                        >
+                      </div>
+                    </li>
+                    <li>
+                      <div class="flex items-center -ml-14">
+                        <input
+                          id="checkbox-sports-recreation"
+                          type="checkbox"
+                          name="sub_industry"
+                          value="sports_recreation_activities"
+                          onchange="applyFilters()"
+                          class="w-6 h-6"
+                        />
+                        <label
+                          for="checkbox-sports-recreation"
+                          class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                          >Sports and Recreation Activities</label
+                        >
+                      </div>
+                    </li>
+                    <li>
+                      <div class="flex items-center -ml-14">
+                        <input
+                          id="checkbox-fuel-retailing"
+                          type="checkbox"
+                          name="sub_industry"
+                          value="fuel_retailing"
+                          onchange="applyFilters()"
+                          class="w-6 h-6"
+                        />
+                        <label
+                          for="checkbox-fuel-retailing"
+                          class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                          >Fuel Retailing</label
+                        >
+                      </div>
+                    </li>
+                    <li>
+                      <div class="flex items-center -ml-14">
+                        <input
+                          id="checkbox-finance"
+                          type="checkbox"
+                          name="sub_industry"
+                          value="finance"
+                          onchange="applyFilters()"
+                          class="w-6 h-6"
+                        />
+                        <label
+                          for="checkbox-finance"
+                          class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                          >Finance</label
+                        >
+                      </div>
+                    </li>
+                    <li>
+                      <div class="flex items-center -ml-14">
+                        <input
+                          id="checkbox-administrative"
+                          type="checkbox"
+                          name="sub_industry"
+                          value="administrative_services"
+                          onchange="applyFilters()"
+                          class="w-6 h-6"
+                        />
+                        <label
+                          for="checkbox-administrative"
+                          class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                          >Administrative Services</label
+                        >
+                      </div>
+                    </li>
+                    <li>
+                      <div class="flex items-center -ml-14">
+                        <input
+                          id="checkbox-publishing"
+                          type="checkbox"
+                          name="sub_industry"
+                          value="publishing"
+                          onchange="applyFilters()"
+                          class="w-6 h-6"
+                        />
+                        <label
+                          for="checkbox-publishing"
+                          class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                          >Publishing (except Internet and Music
+                          Publishing)</label
+                        >
+                      </div>
+                    </li>
+                    <li>
+                      <div class="flex items-center -ml-14">
+                        <input
+                          id="checkbox-accommodation"
+                          type="checkbox"
+                          name="sub_industry"
+                          value="accommodation"
+                          onchange="applyFilters()"
+                          class="w-6 h-6"
+                        />
+                        <label
+                          for="checkbox-accommodation"
+                          class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                          >Accommodation</label
+                        >
+                      </div>
+                    </li>
+                    <li>
+                      <div class="flex items-center -ml-14">
+                        <input
+                          id="checkbox-electricity-supply"
+                          type="checkbox"
+                          name="sub_industry"
+                          value="electricity_supply"
+                          onchange="applyFilters()"
+                          class="w-6 h-6"
+                        />
+                        <label
+                          for="checkbox-electricity-supply"
+                          class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                          >Electricity Supply</label
+                        >
+                      </div>
+                    </li>
+                    <li>
+                      <div class="flex items-center -ml-14">
+                        <input
+                          id="checkbox-mining-support"
+                          type="checkbox"
+                          name="sub_industry"
+                          value="exploration_mining_support"
+                          onchange="applyFilters()"
+                          class="w-6 h-6"
+                        />
+                        <label
+                          for="checkbox-mining-support"
+                          class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                          >Exploration and Other Mining Support Services</label
+                        >
+                      </div>
+                    </li>
+                    <li>
+                      <div class="flex items-center -ml-14">
+                        <input
+                          id="checkbox-oil-gas-extraction"
+                          type="checkbox"
+                          name="sub_industry"
+                          value="oil_gas_extraction"
+                          onchange="applyFilters()"
+                          class="w-6 h-6"
+                        />
+                        <label
+                          for="checkbox-oil-gas-extraction"
+                          class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                          >Oil and Gas Extraction</label
+                        >
+                      </div>
+                    </li>
+                    <li>
+                      <div class="flex items-center -ml-14">
+                        <input
+                          id="checkbox-petroleum-coal"
+                          type="checkbox"
+                          name="sub_industry"
+                          value="petroleum_coal_product_manufacturing"
+                          onchange="applyFilters()"
+                          class="w-6 h-6"
+                        />
+                        <label
+                          for="checkbox-petroleum-coal"
+                          class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                          >Petroleum and Coal Product Manufacturing</label
+                        >
+                      </div>
+                    </li>
+                    <li>
+                      <div class="flex items-center -ml-14">
+                        <input
+                          id="checkbox-adult-community-education"
+                          type="checkbox"
+                          name="sub_industry"
+                          value="adult_community_education"
+                          onchange="applyFilters()"
+                          class="w-6 h-6"
+                        />
+                        <label
+                          for="checkbox-adult-community-education"
+                          class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                          >Adult, Community and Other Education</label
+                        >
+                      </div>
+                    </li>
+                    <li>
+                      <div class="flex items-center -ml-14">
+                        <input
+                          id="checkbox-tertiary-education"
+                          type="checkbox"
+                          name="sub_industry"
+                          value="tertiary_education"
+                          onchange="applyFilters()"
+                          class="w-6 h-6"
+                        />
+                        <label
+                          for="checkbox-tertiary-education"
+                          class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                          >Tertiary Education</label
+                        >
+                      </div>
+                    </li>
+                    <li>
+                      <div class="flex items-center -ml-14">
+                        <input
+                          id="checkbox-computer-system-design"
+                          type="checkbox"
+                          name="sub_industry"
+                          value="computer_system_design"
+                          onchange="applyFilters()"
+                          class="w-6 h-6"
+                        />
+                        <label
+                          for="checkbox-computer-system-design"
+                          class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                          >Computer System Design and Related Services</label
+                        >
+                      </div>
+                    </li>
+                    <li>
+                      <div class="flex items-center -ml-14">
+                        <input
+                          id="checkbox-internet-publishing"
+                          type="checkbox"
+                          name="sub_industry"
+                          value="internet_publishing_broadcasting"
+                          onchange="applyFilters()"
+                          class="w-6 h-6"
+                        />
+                        <label
+                          for="checkbox-internet-publishing"
+                          class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                          >Internet Publishing and Broadcasting</label
+                        >
+                      </div>
+                    </li>
+                    <li>
+                      <div class="flex items-center -ml-14">
+                        <input
+                          id="checkbox-polymer-rubber"
+                          type="checkbox"
+                          name="sub_industry"
+                          value="polymer_rubber_product_manufacturing"
+                          onchange="applyFilters()"
+                          class="w-6 h-6"
+                        />
+                        <label
+                          for="checkbox-polymer-rubber"
+                          class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                          >Polymer Product and Rubber Product
+                          Manufacturing</label
+                        >
+                      </div>
+                    </li>
+                    <li>
+                      <div class="flex items-center -ml-14">
+                        <input
+                          id="checkbox-other-goods-wholesaling"
+                          type="checkbox"
+                          name="sub_industry"
+                          value="other_goods_wholesaling"
+                          onchange="applyFilters()"
+                          class="w-6 h-6"
+                        />
+                        <label
+                          for="checkbox-other-goods-wholesaling"
+                          class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                          >Other Goods Wholesaling</label
+                        >
+                      </div>
+                    </li>
+                    <li>
+                      <div class="flex items-center -ml-14">
+                        <input
+                          id="checkbox-machinery-equipment-wholesaling"
+                          type="checkbox"
+                          name="sub_industry"
+                          value="machinery_equipment_wholesaling"
+                          onchange="applyFilters()"
+                          class="w-6 h-6"
+                        />
+                        <label
+                          for="checkbox-machinery-equipment-wholesaling"
+                          class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                          >Machinery and Equipment Wholesaling</label
+                        >
+                      </div>
+                    </li>
+                    <li>
+                      <div class="flex items-center -ml-14">
+                        <input
+                          id="checkbox-professional-scientific"
+                          type="checkbox"
+                          name="sub_industry"
+                          value="professional_scientific_technical_services"
+                          onchange="applyFilters()"
+                          class="w-6 h-6"
+                        />
+                        <label
+                          for="checkbox-professional-scientific"
+                          class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                          >Professional, Scientific and Technical Services
+                          (Except Computer System Design and Related)</label
+                        >
+                      </div>
+                    </li>
+                    <li>
+                      <div class="flex items-center -ml-14">
+                        <input
+                          id="checkbox-rental-hiring"
+                          type="checkbox"
+                          name="sub_industry"
+                          value="rental_hiring_services"
+                          onchange="applyFilters()"
+                          class="w-6 h-6"
+                        />
+                        <label
+                          for="checkbox-rental-hiring"
+                          class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                          >Rental and Hiring Services (except Real
+                          Estate)</label
+                        >
+                      </div>
+                    </li>
+                    <li>
+                      <div class="flex items-center -ml-14">
+                        <input
+                          id="checkbox-motor-vehicle-parts"
+                          type="checkbox"
+                          name="sub_industry"
+                          value="motor_vehicle_parts_retailing"
+                          onchange="applyFilters()"
+                          class="w-6 h-6"
+                        />
+                        <label
+                          for="checkbox-motor-vehicle-parts"
+                          class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                          >Motor Vehicle and Motor Vehicle Parts
+                          Retailing</label
+                        >
+                      </div>
+                    </li>
+                    <li>
+                      <div class="flex items-center -ml-14">
+                        <input
+                          id="checkbox-air-space-transport"
+                          type="checkbox"
+                          name="sub_industry"
+                          value="air_space_transport"
+                          onchange="applyFilters()"
+                          class="w-6 h-6"
+                        />
+                        <label
+                          for="checkbox-air-space-transport"
+                          class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                          >Air and Space Transport</label
+                        >
+                      </div>
+                    </li>
+                    <li>
+                      <div class="flex items-center -ml-14">
+                        <input
+                          id="checkbox-transport-support"
+                          type="checkbox"
+                          name="sub_industry"
+                          value="transport_support_services"
+                          onchange="applyFilters()"
+                          class="w-6 h-6"
+                        />
+                        <label
+                          for="checkbox-transport-support"
+                          class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                          >Transport Support Services</label
+                        >
+                      </div>
+                    </li>
+                    <li>
+                      <div class="flex items-center -ml-14">
+                        <input
+                          id="checkbox-motion-picture-sound-recording"
+                          type="checkbox"
+                          name="sub_industry"
+                          value="motion_picture_sound_recording"
+                          onchange="applyFilters()"
+                          class="w-6 h-6"
+                        />
+                        <label
+                          for="checkbox-motion-picture-sound-recording"
+                          class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                          >Motion Picture and Sound Recording Activities</label
+                        >
+                      </div>
+                    </li>
+                    <li>
+                      <div class="flex items-center -ml-14">
+                        <input
+                          id="checkbox-grocery-liquor-tobacco-wholesaling"
+                          type="checkbox"
+                          name="sub_industry"
+                          value="grocery_liquor_tobacco_wholesaling"
+                          onchange="applyFilters()"
+                          class="w-6 h-6"
+                        />
+                        <label
+                          for="checkbox-grocery-liquor-tobacco-wholesaling"
+                          class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                          >Grocery, Liquor and Tobacco Product
+                          Wholesaling</label
+                        >
+                      </div>
+                    </li>
+                    <li>
+                      <div class="flex items-center -ml-14">
+                        <input
+                          id="checkbox-other-store-based-retailing"
+                          type="checkbox"
+                          name="sub_industry"
+                          value="other_store_based_retailing"
+                          onchange="applyFilters()"
+                          class="w-6 h-6"
+                        />
+                        <label
+                          for="checkbox-other-store-based-retailing"
+                          class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                          >Other Store-Based Retailing</label
+                        >
+                      </div>
+                    </li>
+                    <li>
+                      <div class="flex items-center -ml-14">
+                        <input
+                          id="checkbox-beverage-tobacco-manufacturing"
+                          type="checkbox"
+                          name="sub_industry"
+                          value="beverage_tobacco_product_manufacturing"
+                          onchange="applyFilters()"
+                          class="w-6 h-6"
+                        />
+                        <label
+                          for="checkbox-beverage-tobacco-manufacturing"
+                          class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                          >Beverage and Tobacco Product Manufacturing</label
+                        >
+                      </div>
+                    </li>
+                    <li>
+                      <div class="flex items-center -ml-14">
+                        <input
+                          id="checkbox-internet-service-providers"
+                          type="checkbox"
+                          name="sub_industry"
+                          value="internet_service_providers"
+                          onchange="applyFilters()"
+                          class="w-6 h-6"
+                        />
+                        <label
+                          for="checkbox-internet-service-providers"
+                          class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                          >Internet Service Providers, Web Search Portals and
+                          Data Processing Services</label
+                        >
+                      </div>
+                    </li>
+                    <li>
+                      <div class="flex items-center -ml-14">
+                        <input
+                          id="checkbox-food-product-manufacturing"
+                          type="checkbox"
+                          name="sub_industry"
+                          value="food_product_manufacturing"
+                          onchange="applyFilters()"
+                          class="w-6 h-6"
+                        />
+                        <label
+                          for="checkbox-food-product-manufacturing"
+                          class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                          >Food Product Manufacturing</label
+                        >
+                      </div>
+                    </li>
+                    <li>
+                      <div class="flex items-center -ml-14">
+                        <input
+                          id="checkbox-food-retailing"
+                          type="checkbox"
+                          name="sub_industry"
+                          value="food_retailing"
+                          onchange="applyFilters()"
+                          class="w-6 h-6"
+                        />
+                        <label
+                          for="checkbox-food-retailing"
+                          class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                          >Food Retailing</label
+                        >
+                      </div>
+                    </li>
+                    <li>
+                      <div class="flex items-center -ml-14">
+                        <input
+                          id="checkbox-auxiliary-finance-insurance"
+                          type="checkbox"
+                          name="sub_industry"
+                          value="auxiliary_finance_insurance"
+                          onchange="applyFilters()"
+                          class="w-6 h-6"
+                        />
+                        <label
+                          for="checkbox-auxiliary-finance-insurance"
+                          class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                          >Auxiliary Finance and Insurance Services</label
+                        >
+                      </div>
+                    </li>
+                    <li>
+                      <div class="flex items-center -ml-14">
+                        <input
+                          id="checkbox-transport-equipment-manufacturing"
+                          type="checkbox"
+                          name="sub_industry"
+                          value="transport_equipment_manufacturing"
+                          onchange="applyFilters()"
+                          class="w-6 h-6"
+                        />
+                        <label
+                          for="checkbox-transport-equipment-manufacturing"
+                          class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                          >Transport Equipment Manufacturing</label
+                        >
+                      </div>
+                    </li>
+                    <li>
+                      <div class="flex items-center -ml-14">
+                        <input
+                          id="checkbox-basic-chemical-manufacturing"
+                          type="checkbox"
+                          name="sub_industry"
+                          value="basic_chemical_manufacturing"
+                          onchange="applyFilters()"
+                          class="w-6 h-6"
+                        />
+                        <label
+                          for="checkbox-basic-chemical-manufacturing"
+                          class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                          >Basic Chemical and Chemical Product
+                          Manufacturing</label
+                        >
+                      </div>
+                    </li>
+                    <li>
+                      <div class="flex items-center -ml-14">
+                        <input
+                          id="checkbox-property-operators"
+                          type="checkbox"
+                          name="sub_industry"
+                          value="property_operators_real_estate_services"
+                          onchange="applyFilters()"
+                          class="w-6 h-6"
+                        />
+                        <label
+                          for="checkbox-property-operators"
+                          class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                          >Property Operators and Real Estate Services</label
+                        >
+                      </div>
+                    </li>
+                    <li>
+                      <div class="flex items-center -ml-14">
+                        <input
+                          id="checkbox-insurance-superannuation-funds"
+                          type="checkbox"
+                          name="sub_industry"
+                          value="insurance_superannuation_funds"
+                          onchange="applyFilters()"
+                          class="w-6 h-6"
+                        />
+                        <label
+                          for="checkbox-insurance-superannuation-funds"
+                          class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                          >Insurance and Superannuation Funds</label
+                        >
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="accordion-item BeneFilters">
+                <h2 class="accordion-header" id="flush-headingThree">
+                  <button
+                    class="accordion-button collapsed fw-semibold text-uppercase"
+                    type="button"
+                    style="font-size: small"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#flush-collapseThree"
+                    aria-expanded="false"
+                    aria-controls="flush-collapseThree"
+                  >
+                    Maternal Benefits
+                  </button>
+                </h2>
+                <div
+                  id="flush-collapseThree"
+                  class="accordion-collapse collapse"
+                  aria-labelledby="flush-headingThree"
+                  data-bs-parent="#accordionFlushExample"
+                >
+                  <ul
+                    class="item-list"
+                    aria-labelledby="dropdownCheckboxButton"
+                  >
+                    <li>
+                      <div class="flex items-center -ml-14">
+                        <input
+                          id="checkbox-item-1"
+                          type="checkbox"
+                          name="benefits"
+                          value="flexible_hours_of_work"
+                          onchange="applyFilters()"
+                          class="w-6 h-6"
+                        />
+                        <label
+                          for="checkbox-item-1"
+                          class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                          >Flexible Hours of Work</label
+                        >
+                      </div>
+                    </li>
+                    <li>
+                      <div class="flex items-center -ml-14">
+                        <input
+                          id="checkbox-item-2"
+                          type="checkbox"
+                          name="benefits"
+                          value="internal_support_networks_for_parents"
+                          onchange="applyFilters()"
+                          class="w-6 h-6"
+                        />
+                        <label
+                          for="checkbox-item-2"
+                          class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                          >Internal Support Networks for Parents</label
+                        >
+                      </div>
+                    </li>
+                    <li>
+                      <div class="flex items-center -ml-14">
+                        <input
+                          id="checkbox-item-3"
+                          type="checkbox"
+                          name="benefits"
+                          value="part_time_work"
+                          onchange="applyFilters()"
+                          class="w-6 h-6"
+                        />
+                        <label
+                          for="checkbox-item-3"
+                          class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                          >Part-Time Work</label
+                        >
+                      </div>
+                    </li>
+                    <li>
+                      <div class="flex items-center -ml-14">
+                        <input
+                          id="checkbox-item-4"
+                          type="checkbox"
+                          name="benefits"
+                          value="parenting_workshops_targeting_mothers"
+                          onchange="applyFilters()"
+                          class="w-6 h-6"
+                        />
+                        <label
+                          for="checkbox-item-4"
+                          class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                          >Parenting Workshops Targeting Mothers</label
+                        >
+                      </div>
+                    </li>
+                    <li>
+                      <div class="flex items-center -ml-14">
+                        <input
+                          id="checkbox-item-5"
+                          type="checkbox"
+                          name="benefits"
+                          value="superannuation_contribution_to_secondary_carers"
+                          onchange="applyFilters()"
+                          class="w-6 h-6"
+                        />
+                        <label
+                          for="checkbox-item-5"
+                          class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                          >Superannuation Contribution to Secondary
+                          Carers</label
+                        >
+                      </div>
+                    </li>
+                    <li>
+                      <div class="flex items-center -ml-14">
+                        <input
+                          id="checkbox-item-6"
+                          type="checkbox"
+                          name="benefits"
+                          value="telecommuting"
+                          onchange="applyFilters()"
+                          class="w-6 h-6"
+                        />
+                        <label
+                          for="checkbox-item-6"
+                          class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                          >Telecommuting (e.g., Working from Home)</label
+                        >
+                      </div>
+                    </li>
+                    <li>
+                      <div class="flex items-center -ml-14">
+                        <input
+                          id="checkbox-item-7"
+                          type="checkbox"
+                          name="benefits"
+                          value="part_time_work_non_managers"
+                          onchange="applyFilters()"
+                          class="w-6 h-6"
+                        />
+                        <label
+                          for="checkbox-item-7"
+                          class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                          >Part-Time Work for Non-Managers</label
+                        >
+                      </div>
+                    </li>
+                    <li>
+                      <div class="flex items-center -ml-14">
+                        <input
+                          id="checkbox-item-8"
+                          type="checkbox"
+                          name="benefits"
+                          value="workplace_safety_planning"
+                          onchange="applyFilters()"
+                          class="w-6 h-6"
+                        />
+                        <label
+                          for="checkbox-item-8"
+                          class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                          >Workplace Safety Planning</label
+                        >
+                      </div>
+                    </li>
+                    <li>
+                      <div class="flex items-center -ml-14">
+                        <input
+                          id="checkbox-item-9"
+                          type="checkbox"
+                          name="benefits"
+                          value="compressed_working_weeks"
+                          onchange="applyFilters()"
+                          class="w-6 h-6"
+                        />
+                        <label
+                          for="checkbox-item-9"
+                          class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                          >Compressed Working Weeks</label
+                        >
+                      </div>
+                    </li>
+                    <li>
+                      <div class="flex items-center -ml-14">
+                        <input
+                          id="checkbox-item-10"
+                          type="checkbox"
+                          name="benefits"
+                          value="job_sharing_non_managers"
+                          onchange="applyFilters()"
+                          class="w-6 h-6"
+                        />
+                        <label
+                          for="checkbox-item-10"
+                          class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                          >Job Sharing for Non-Managers</label
+                        >
+                      </div>
+                    </li>
+                    <li>
+                      <div class="flex items-center -ml-14">
+                        <input
+                          id="checkbox-item-11"
+                          type="checkbox"
+                          name="benefits"
+                          value="purchased_leave_non_managers"
+                          onchange="applyFilters()"
+                          class="w-6 h-6"
+                        />
+                        <label
+                          for="checkbox-item-11"
+                          class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                          >Purchased Leave for Non-Managers</label
+                        >
+                      </div>
+                    </li>
+                    <li>
+                      <div class="flex items-center -ml-14">
+                        <input
+                          id="checkbox-item-12"
+                          type="checkbox"
+                          name="benefits"
+                          value="access_to_medical_services"
+                          onchange="applyFilters()"
+                          class="w-6 h-6"
+                        />
+                        <label
+                          for="checkbox-item-12"
+                          class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                          >Access to Medical Services (e.g., Doctor or
+                          Nurse)</label
+                        >
+                      </div>
+                    </li>
+                    <li>
+                      <div class="flex items-center -ml-14">
+                        <input
+                          id="checkbox-item-13"
+                          type="checkbox"
+                          name="benefits"
+                          value="on_site_childcare"
+                          onchange="applyFilters()"
+                          class="w-6 h-6"
+                        />
+                        <label
+                          for="checkbox-item-13"
+                          class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                          >On-Site Childcare</label
+                        >
+                      </div>
+                    </li>
+                    <li>
+                      <div class="flex items-center -ml-14">
+                        <input
+                          id="checkbox-item-14"
+                          type="checkbox"
+                          name="benefits"
+                          value="information_packs_for_new_parents"
+                          onchange="applyFilters()"
+                          class="w-6 h-6"
+                        />
+                        <label
+                          for="checkbox-item-14"
+                          class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                          >Information Packs for New Parents</label
+                        >
+                      </div>
+                    </li>
+                    <li>
+                      <div class="flex items-center -ml-14">
+                        <input
+                          id="checkbox-item-15"
+                          type="checkbox"
+                          name="benefits"
+                          value="coaching_for_employees_on_returning_to_work"
+                          onchange="applyFilters()"
+                          class="w-6 h-6"
+                        />
+                        <label
+                          for="checkbox-item-15"
+                          class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                          >Coaching for Employees on Returning to Work</label
+                        >
+                      </div>
+                    </li>
+                    <li>
+                      <div class="flex items-center -ml-14">
+                        <input
+                          id="checkbox-item-16"
+                          type="checkbox"
+                          name="benefits"
+                          value="compressed_working_weeks_non_managers"
+                          onchange="applyFilters()"
+                          class="w-6 h-6"
+                        />
+                        <label
+                          for="checkbox-item-16"
+                          class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                          >Compressed Working Weeks for Non-Managers</label
+                        >
+                      </div>
+                    </li>
+                    <li>
+                      <div class="flex items-center -ml-14">
+                        <input
+                          id="checkbox-item-17"
+                          type="checkbox"
+                          name="benefits"
+                          value="support_in_securing_school_holiday_care"
+                          onchange="applyFilters()"
+                          class="w-6 h-6"
+                        />
+                        <label
+                          for="checkbox-item-17"
+                          class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                          >Support in Securing School Holiday Care</label
+                        >
+                      </div>
+                    </li>
+                    <li>
+                      <div class="flex items-center -ml-14">
+                        <input
+                          id="checkbox-item-18"
+                          type="checkbox"
+                          name="benefits"
+                          value="purchased_leave"
+                          onchange="applyFilters()"
+                          class="w-6 h-6"
+                        />
+                        <label
+                          for="checkbox-item-18"
+                          class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                          >Purchased Leave</label
+                        >
+                      </div>
+                    </li>
+                    <li>
+                      <div class="flex items-center -ml-14">
+                        <input
+                          id="checkbox-item-19"
+                          type="checkbox"
+                          name="benefits"
+                          value="carer_leave"
+                          onchange="applyFilters()"
+                          class="w-6 h-6"
+                        />
+                        <label
+                          for="checkbox-item-19"
+                          class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                          >Carer Leave</label
+                        >
+                      </div>
+                    </li>
+                    <li>
+                      <div class="flex items-center -ml-14">
+                        <input
+                          id="checkbox-item-20"
+                          type="checkbox"
+                          name="benefits"
+                          value="emergency_accommodation_assistance"
+                          onchange="applyFilters()"
+                          class="w-6 h-6"
+                        />
+                        <label
+                          for="checkbox-item-20"
+                          class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                          >Emergency Accommodation Assistance</label
+                        >
+                      </div>
+                    </li>
+                    <li>
+                      <div class="flex items-center -ml-14">
+                        <input
+                          id="checkbox-item-21"
+                          type="checkbox"
+                          name="benefits"
+                          value="offer_change_of_office_location"
+                          onchange="applyFilters()"
+                          class="w-6 h-6"
+                        />
+                        <label
+                          for="checkbox-item-21"
+                          class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                          >Offer Change of Office Location</label
+                        >
+                      </div>
+                    </li>
+                    <li>
+                      <div class="flex items-center -ml-14">
+                        <input
+                          id="checkbox-item-22"
+                          type="checkbox"
+                          name="benefits"
+                          value="carer_leave_non_managers"
+                          onchange="applyFilters()"
+                          class="w-6 h-6"
+                        />
+                        <label
+                          for="checkbox-item-22"
+                          class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                          >Carer Leave for Non-Managers</label
+                        >
+                      </div>
+                    </li>
+                    <li>
+                      <div class="flex items-center -ml-14">
+                        <input
+                          id="checkbox-item-23"
+                          type="checkbox"
+                          name="benefits"
+                          value="time_in_lieu_non_managers"
+                          onchange="applyFilters()"
+                          class="w-6 h-6"
+                        />
+                        <label
+                          for="checkbox-item-23"
+                          class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                          >Time in Lieu for Non-Managers</label
+                        >
+                      </div>
+                    </li>
+                    <li>
+                      <div class="flex items-center -ml-14">
+                        <input
+                          id="checkbox-item-24"
+                          type="checkbox"
+                          name="benefits"
+                          value="parenting_workshops_targeting_fathers"
+                          onchange="applyFilters()"
+                          class="w-6 h-6"
+                        />
+                        <label
+                          for="checkbox-item-24"
+                          class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                          >Parenting Workshops Targeting Fathers</label
+                        >
+                      </div>
+                    </li>
+                    <li>
+                      <div class="flex items-center -ml-14">
+                        <input
+                          id="checkbox-item-25"
+                          type="checkbox"
+                          name="benefits"
+                          value="flexible_hours_of_work_non_managers"
+                          onchange="applyFilters()"
+                          class="w-6 h-6"
+                        />
+                        <label
+                          for="checkbox-item-25"
+                          class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                          >Flexible Hours of Work for Non-Managers</label
+                        >
+                      </div>
+                    </li>
+                    <li>
+                      <div class="flex items-center -ml-14">
+                        <input
+                          id="checkbox-item-26"
+                          type="checkbox"
+                          name="benefits"
+                          value="remuneration"
+                          onchange="applyFilters()"
+                          class="w-6 h-6"
+                        />
+                        <label
+                          for="checkbox-item-26"
+                          class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                          >Remuneration</label
+                        >
+                      </div>
+                    </li>
+                    <li>
+                      <div class="flex items-center -ml-14">
+                        <input
+                          id="checkbox-item-27"
+                          type="checkbox"
+                          name="benefits"
+                          value="flexible_working_arrangements"
+                          onchange="applyFilters()"
+                          class="w-6 h-6"
+                        />
+                        <label
+                          for="checkbox-item-27"
+                          class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                          >Flexible Working Arrangements</label
+                        >
+                      </div>
+                    </li>
+                    <li>
+                      <div class="flex items-center -ml-14">
+                        <input
+                          id="checkbox-item-28"
+                          type="checkbox"
+                          name="benefits"
+                          value="support_gender_equality"
+                          onchange="applyFilters()"
+                          class="w-6 h-6"
+                        />
+                        <label
+                          for="checkbox-item-28"
+                          class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                          >Support Gender Equality</label
+                        >
+                      </div>
+                    </li>
+                    <li>
+                      <div class="flex items-center -ml-14">
+                        <input
+                          id="checkbox-item-29"
+                          type="checkbox"
+                          name="benefits"
+                          value="support_employees_with_family"
+                          onchange="applyFilters()"
+                          class="w-6 h-6"
+                        />
+                        <label
+                          for="checkbox-item-29"
+                          class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                          >Support Employees with Family</label
+                        >
+                      </div>
+                    </li>
+                    <li>
+                      <div class="flex items-center -ml-14">
+                        <input
+                          id="checkbox-item-30"
+                          type="checkbox"
+                          name="benefits"
+                          value="primary_carers_within_certain_time_after_birth"
+                          onchange="applyFilters()"
+                          class="w-6 h-6"
+                        />
+                        <label
+                          for="checkbox-item-30"
+                          class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                          >Primary Carers within Certain Time After Birth</label
+                        >
+                      </div>
+                    </li>
+                    <li>
+                      <div class="flex items-center -ml-14">
+                        <input
+                          id="checkbox-item-31"
+                          type="checkbox"
+                          name="benefits"
+                          value="primary_carers_after_completing_qualifying_work_period"
+                          onchange="applyFilters()"
+                          class="w-6 h-6"
+                        />
+                        <label
+                          for="checkbox-item-31"
+                          class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                          >Primary Carers after Completing Qualifying Work
+                          Period</label
+                        >
+                      </div>
+                    </li>
+                    <li>
+                      <div class="flex items-center -ml-14">
+                        <input
+                          id="checkbox-item-32"
+                          type="checkbox"
+                          name="benefits"
+                          value="regardless_of_carer_status"
+                          onchange="applyFilters()"
+                          class="w-6 h-6"
+                        />
+                        <label
+                          for="checkbox-item-32"
+                          class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                          >Regardless of Carer Status</label
+                        >
+                      </div>
+                    </li>
+                    <li>
+                      <div class="flex items-center -ml-14">
+                        <input
+                          id="checkbox-item-33"
+                          type="checkbox"
+                          name="benefits"
+                          value="secondary_carers"
+                          onchange="applyFilters()"
+                          class="w-6 h-6"
+                        />
+                        <label
+                          for="checkbox-item-33"
+                          class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                          >Secondary Carers</label
+                        >
+                      </div>
+                    </li>
+                    <li>
+                      <div class="flex items-center -ml-14">
+                        <input
+                          id="checkbox-item-34"
+                          type="checkbox"
+                          name="benefits"
+                          value="secondary_carers_within_certain_time_after_birth"
+                          onchange="applyFilters()"
+                          class="w-6 h-6"
+                        />
+                        <label
+                          for="checkbox-item-34"
+                          class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                          >Secondary Carers within Certain Time After
+                          Birth</label
+                        >
+                      </div>
+                    </li>
+                    <li>
+                      <div class="flex items-center -ml-14">
+                        <input
+                          id="checkbox-item-35"
+                          type="checkbox"
+                          name="benefits"
+                          value="carers_after_completing_qualifying_work_period"
+                          onchange="applyFilters()"
+                          class="w-6 h-6"
+                        />
+                        <label
+                          for="checkbox-item-35"
+                          class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                          >Carers after Completing Qualifying Work Period</label
+                        >
+                      </div>
+                    </li>
+                    <li>
+                      <div class="flex items-center -ml-14">
+                        <input
+                          id="checkbox-item-36"
+                          type="checkbox"
+                          name="benefits"
+                          value="carers_within_certain_time_after_birth"
+                          onchange="applyFilters()"
+                          class="w-6 h-6"
+                        />
+                        <label
+                          for="checkbox-item-36 -ml-14"
+                          class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                          >Carers within Certain Time After Birth</label
+                        >
+                      </div>
+                    </li>
+                    <li>
+                      <div class="flex items-center -ml-14">
+                        <input
+                          id="checkbox-item-37"
+                          type="checkbox"
+                          name="benefits"
+                          value="secondary_carers_after_completing_qualifying_work_period"
+                          onchange="applyFilters()"
+                          class="w-6 h-6"
+                        />
+                        <label
+                          for="checkbox-item-37"
+                          class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                          >Secondary Carers after Completing Qualifying Work
+                          Period</label
+                        >
+                      </div>
+                    </li>
+                    <li>
+                      <div class="flex items-center -ml-14">
+                        <input
+                          id="checkbox-item-38"
+                          type="checkbox"
+                          name="benefits"
+                          value="employee_training"
+                          onchange="applyFilters()"
+                          class="w-6 h-6"
+                        />
+                        <label
+                          for="checkbox-item-38"
+                          class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                          >Employee Training</label
+                        >
+                      </div>
+                    </li>
+                    <li>
+                      <div class="flex items-center -ml-14">
+                        <input
+                          id="checkbox-item-39"
+                          type="checkbox"
+                          name="benefits"
+                          value="breastfeeding_facilities"
+                          onchange="applyFilters()"
+                          class="w-6 h-6"
+                        />
+                        <label
+                          for="checkbox-item-39"
+                          class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                          >Breastfeeding Facilities</label
+                        >
+                      </div>
+                    </li>
+                    <li>
+                      <div class="flex items-center -ml-14">
+                        <input
+                          id="checkbox-item-40"
+                          type="checkbox"
+                          name="benefits"
+                          value="do_you_pay_superannuation_contribution_to_your_carers_while_they_are_on_parental_leave"
+                          onchange="applyFilters()"
+                          class="w-6 h-6"
+                        />
+                        <label
+                          for="checkbox-item-40"
+                          class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                          >Superannuation Contribution to Carers on Parental
+                          Leave</label
+                        >
+                      </div>
+                    </li>
+                    <li>
+                      <div class="flex items-center -ml-14">
+                        <input
+                          id="checkbox-item-41"
+                          type="checkbox"
+                          name="benefits"
+                          value="job_sharing"
+                          onchange="applyFilters()"
+                          class="w-6 h-6"
+                        />
+                        <label
+                          for="checkbox-item-41"
+                          class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                          >Job Sharing</label
+                        >
+                      </div>
+                    </li>
+                    <li>
+                      <div class="flex items-center -ml-14">
+                        <input
+                          id="checkbox-item-42"
+                          type="checkbox"
+                          name="benefits"
+                          value="time_in_lieu"
+                          onchange="applyFilters()"
+                          class="w-6 h-6"
+                        />
+                        <label
+                          for="checkbox-item-42"
+                          class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                          >Time in Lieu</label
+                        >
+                      </div>
+                    </li>
+                    <li>
+                      <div class="flex items-center -ml-14">
+                        <input
+                          id="checkbox-item-43"
+                          type="checkbox"
+                          name="benefits"
+                          value="employee_assistance_program_including_access_to_psychologist_chaplain_or_counsellor"
+                          onchange="applyFilters()"
+                          class="w-6 h-6"
+                        />
+                        <label
+                          for="checkbox-item-43"
+                          class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                          >Employee Assistance Program (Including Access to
+                          Psychologist, Chaplain, or Counsellor)</label
+                        >
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <div class="container2">
+          <div class="half-container">
+            <div class="row">
+              <div class="col-sm-5">
+                <h5 class="text-start mt-2 ml-3">Companies</h5>
+              </div>
+              <div class="col-sm-3"></div>
+
+              <div class="col-sm-4">
+                <div class="CompareComp">
+                  <div class="header-right-area-one">
+                    <div class="buttons-area">
+                      <button
+                        data-bs-toggle="modal"
+                        data-bs-target="#comparisonModal"
+                      >
+                        <a class="rts-btn btn-primary border-radius mb-3"
+                          >Compare Companies</a
+                        >
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Modal -->
+                <div
+                  class="modal fade"
+                  id="comparisonModal"
+                  tabindex="-1"
+                  aria-labelledby="comparisonModalLabel"
+                  aria-hidden="true"
+                >
+                  <div class="modal-dialog modal-xl modal-dialog-centered">
+                    <!-- Extra large modal and centered -->
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5
+                          class="modal-title text-center"
+                          id="comparisonModalLabel"
+                          style="margin-left: 320px"
+                        >
+                          Compare Companies by Benefits and Rating
+                        </h5>
+                        <button
+                          type="button"
+                          class="btn-close"
+                          data-bs-dismiss="modal"
+                          aria-label="Close"
+                          style="background-color: #936ed4; color: white"
+                        ></button>
+                      </div>
+                      <div class="modal-body">
+                        <div class="row">
+                          <!-- Left: Company List -->
+                          <div class="col-md-6">
+                            <h6 class="text-center mb-3">Companies</h6>
+                            <input
+                              type="text"
+                              id="searchBar"
+                              class="form-control mb-3"
+                              placeholder="Search Companies"
+                              style="
+                                background-color: #f9f8ff;
+                                border: 5px solid #936ed4;
+                                border-radius: 5px;
+                              "
+                            />
+                            <div
+                              class="scroll-container"
+                              id="companyListModal"
+                              style="max-height: 400px; overflow-y: auto"
+                            ></div>
+                            <div class="text-center">
+                              <div class="header-right-area-one flex-col">
+                                <div class="buttons-area">
+                                  <button
+                                    id="resetButton"
+                                    class="rts-btn btn-primary border-radius mt-4"
+                                  >
+                                    Reset
+                                  </button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <!-- Right: Comparison Buttons -->
+                          <div class="col-md-6">
+                            <div class="text-center">
+                              <button
+                                id="compareByBenefitsButton"
+                                class="rts-btn1 benefits_compare mb-3"
+                              >
+                                Compare by Benefits
+                              </button>
+                              <button
+                                id="compareByRatingButton"
+                                class="rts-btn2 rating_compare mb-3"
+                              >
+                                Compare by Rating
+                              </button>
+                            </div>
+
+                            <div id="comparisonResult" class="mb-3"></div>
+                            <div class="chart-cursor">
+                              <canvas id="barChart" width="400" height="320">
+                              </canvas>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Offcanvas Component -->
+                  <div
+                    class="offcanvas offcanvas-end"
+                    tabindex="-1"
+                    id="benefitsOffcanvas"
+                    aria-labelledby="offcanvasBenefitsLabel"
+                  >
+                    <div class="offcanvas-header">
+                      <h5 class="offcanvas-title" id="offcanvasBenefitsLabel">
+                        Company Benefits
+                      </h5>
+                      <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="offcanvas"
+                        aria-label="Close"
+                      ></button>
+                    </div>
+                    <div class="offcanvas-body">
+                      <p id="benefitsContent"></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <hr />
+            <!-- Modal Trigger Button -->
+
+            <div class="row">
+              <div class="col-md-4">
+                <div class="rts-single-wized search">
+                  <div class="wized-body mt--0">
+                    <div class="rts-search-wrapper">
+                      <input
+                        class="Search"
+                        type="text"
+                        id="searchInput"
+                        onkeyup="filtercompanies()"
+                        placeholder="Search Companies..."
+                      />
+                      <button><i class="fal fa-search"></i></button>
+                    </div>
+                    <div class="scroll-indicator">
+                      <div
+                        class="scroll-indicator-progress"
+                        id="scrollIndicator"
+                      ></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                id="noResultImage"
+                class="flex justify-center items-center"
+              ></div>
+              <div
+                class="text-3xl font-medium"
+                id="noResultMessage"
+                style="display: none; text-align: center; color: #936ed4"
+              >
+                No Companies found
+              </div>
+
+              <div class="scrol CompCard">
+                {% include 'company_cards.html' %}
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-8 CardView">
+            <div id="thecard"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="rts-footer-area section-bg">
+        <div class="container">
+          <div class="footer-top">
+            <h3 class="form-title" style="color: white; text-align: center">
+              "Nari" translates to "Woman" in Hindi. Nari aims to offer
+              assistance and better employment options to empower
+              working mothers.
+            </h3>
+          </div>
+        </div>
+        <div class="copyright-area-one-border" style="background-color: white">
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="copyright-area-one"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- header style two -->
+      <div id="side-bar" class="side-bar header-two">
+        <button class="close-icon-menu"><i class="far fa-times"></i></button>
+        <div class="mobile-menu-main">
+          <nav class="nav-main mainmenu-nav mt--30">
+            <ul class="mainmenu metismenu" id="mobile-menu-active">
+              <li class="">
+                <a href="/" class="main">Home</a>
+              </li>
+              <li class="">
+                <a href="/companies" class="main">Mum-Friendly Workplaces</a>
+              </li>
+              <li class="">
+                <a href="/childcare" class="main">Care for Kids</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+
+      <div class="progress-wrap">
+        <svg
+          class="progress-circle svg-content"
+          width="100%"
+          height="100%"
+          viewBox="-1 -1 102 102"
+        >
+          <path
+            d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"
+            style="
+              transition: stroke-dashoffset 10ms linear 0s;
+              stroke-dasharray: 307.919, 307.919;
+              stroke-dashoffset: 307.919;
+            "
+          ></path>
+        </svg>
+      </div>
+
+      <div id="anywhere-home" class=""></div>
+
+      <script>
+        let selectedIndustries = [];
+
+        function showSubIndustry(checkbox) {
+          const industry = checkbox.value;
+          const subIndustryAccordion = document.getElementById(
+            "flush-collapseSubIndustry"
+          );
+          const subIndustryOptions =
+            subIndustryAccordion.querySelectorAll("li");
+
+          // Hide all sub-industry options
+          subIndustryOptions.forEach((option) => {
+            option.style.display = "none";
+          });
+
+          // Define the industry-sub-industry mappings
+          const industrySubIndustries = {
+            mining: ["exploration_mining_support", "oil_gas_extraction"],
+            professional_scientific_technical: [
+              "computer_system_design",
+              "professional_scientific_technical_services",
+            ],
+            construction: ["heavy_civil_construction"],
+            transport_postal_warehousing: [
+              "transport_support_services",
+              "air_space_transport",
+            ],
+            accommodation_food: ["accommodation"],
+            information_media_telecommunications: [
+              "publishing",
+              "internet_service_providers",
+              "motion_picture_sound_recording",
+              "internet_publishing_broadcasting",
+            ],
+            education_training: [
+              "tertiary_education",
+              "adult_community_education",
+            ],
+            retail_trade: [
+              "fuel_retailing",
+              "food_retailing",
+              "other_store_based_retailing",
+              "motor_vehicle_parts_retailing",
+            ],
+            administrative_support: ["administrative_services"],
+            manufacturing: [
+              "polymer_rubber_product_manufacturing",
+              "transport_equipment_manufacturing",
+              "non_metallic_mineral_product_manufacturing",
+              "beverage_tobacco_product_manufacturing",
+              "basic_chemical_manufacturing",
+              "food_product_manufacturing",
+              "petroleum_coal_product_manufacturing",
+            ],
+            electricity_gas_water_waste: ["electricity_supply"],
+            rental_hiring_real_estate: [
+              "property_operators_real_estate_services",
+              "rental_hiring_services",
+            ],
+            financial_insurance: [
+              "auxiliary_finance_insurance",
+              "finance",
+              "insurance_superannuation_funds",
+            ],
+            wholesale_trade: [
+              "other_goods_wholesaling",
+              "machinery_equipment_wholesaling",
+              "grocery_liquor_tobacco_wholesaling",
+            ],
+            arts_recreation: [
+              "gambling_activities",
+              "sports_recreation_activities",
+            ],
+          };
+
+          // Update the selected industries array
+          if (checkbox.checked) {
+            selectedIndustries.push(industry);
+          } else {
+            selectedIndustries = selectedIndustries.filter(
+              (i) => i !== industry
+            );
+          }
+
+          // Show only the sub-industry options that belong to the selected industries
+          selectedIndustries.forEach((industry) => {
+            if (industrySubIndustries[industry]) {
+              subIndustryOptions.forEach((option) => {
+                const input = option.querySelector("input");
+                if (industrySubIndustries[industry].includes(input.value)) {
+                  option.style.display = "block";
+                }
+              });
+            }
+          });
+
+          // Show/hide the sub-industry accordion
+          if (selectedIndustries.length > 0) {
+            document.getElementById("sub-industry-accordion").style.display =
+              "block";
+          } else {
+            document.getElementById("sub-industry-accordion").style.display =
+              "none";
+          }
+        }
+
+        // Call showSubIndustry() when a sub-industry checkbox is selected
+        document
+          .querySelectorAll("input[name='sub_industry']")
+          .forEach((checkbox) => {
+            checkbox.addEventListener("change", () => {
+              showSubIndustry(checkbox);
+            });
+          });
+        // initially hide the sub-industry accordion
+        document.getElementById("sub-industry-accordion").style.display =
+          "none";
+
+        //Function for reset filters
+        function resetFilters() {
+          // Remove query parameters from the URL
+          const url = new URL(window.location);
+          url.search = ""; // Clear all query parameters
+          window.history.replaceState({}, document.title, url);
+
+          // Clear all checkboxes
+          document
+            .querySelectorAll('input[type="checkbox"]')
+            .forEach((checkbox) => {
+              checkbox.checked = false;
+            });
+
+          // Reset all radio buttons to their default state
+          document.querySelectorAll('input[type="radio"]').forEach((radio) => {
+            radio.checked = false;
+          });
+
+          const defaultRating = document.querySelector(
+            'input[name="rating"][value="default"]'
+          );
+          if (defaultRating) {
+            defaultRating.checked = true;
+          }
+
+          document.getElementById("sub-industry-accordion").style.display =
+            "none";
+
+          // Clear selected card
+          this.selectedCard = null;
+
+          initializeBenefitsScore();
+
+          // Fetch and update the companies list
+          fetch("/companies?", {
+            method: "GET",
+            headers: {
+              "X-Requested-With": "XMLHttpRequest",
+            },
+          })
+            .then((response) => response.text())
+            .then((html) => {
+              const scrolContainer = (document.querySelector(
+                ".scrol"
+              ).innerHTML = html);
+
+              initializeCardClickHandlers();
+            })
+            .catch((error) => console.error("Error:", error));
+        }
+
+        function applyFilters() {
+          const form = document.getElementById("filters-form");
+          const formData = new FormData(form);
+          let params = new URLSearchParams(formData).toString();
+
+          // Check if industry filter is selected
+          const industryFilter = document.querySelector(
+            "input[name='industry']:checked"
+          );
+          if (industryFilter) {
+            const industryValue = industryFilter.value;
+            params += `&industry=${industryValue}`;
+
+            // Check if sub-industry filter is selected
+            const subIndustryFilter = document.querySelector(
+              `input[name='sub_industry'][data-industry='${industryValue}']:checked`
+            );
+            if (subIndustryFilter) {
+              const subIndustryValue = subIndustryFilter.value;
+              params += `&sub_industry=${subIndustryValue}`;
+            }
+          }
+
+          fetch("/companies?" + params, {
+            method: "GET",
+            headers: {
+              "X-Requested-With": "XMLHttpRequest",
+            },
+          })
+            .then((response) => response.text())
+            .then((html) => {
+              const companyListContainer = document.querySelector(".scrol");
+              companyListContainer.innerHTML = html;
+              const companyList =
+                companyListContainer.querySelectorAll(".card");
+              if (companyList.length === 0) {
+                document.getElementById(
+                  "noResultImage"
+                ).innerHTML = `<img src="static/images/Filters/no-result.png" width="80px" alt="noResult">`;
+                document.getElementById("noResultMessage").style.display =
+                  "block";
+              } else {
+                document.getElementById("noResultImage").innerHTML = "";
+                document.getElementById("noResultMessage").style.display =
+                  "none";
+              }
+              initializeCardClickHandlers();
+            })
+            .catch((error) => console.error("Error:", error));
+        }
+
+        function initializeCardClickHandlers() {
+          let activeCard = null;
+
+          function handleCardClick(card) {
+            if (activeCard) {
+              const previousH6 = activeCard.querySelector("h6");
+              const previousP = activeCard.querySelector("p");
+              if (previousH6) {
+                previousH6.style.color = "black";
+              }
+              if (previousP) {
+                previousP.style.fontWeight = "normal";
+                previousP.style.color = "black";
+              }
+            }
+
+            const h6Element = card.querySelector("h6");
+            const pElement = card.querySelector("p");
+            if (h6Element) {
+              h6Element.style.color = "white";
+            }
+            if (pElement) {
+              pElement.style.fontWeight = "400";
+              pElement.style.color = "white";
+            }
+
+            activeCard = card;
+          }
+
+          const firstCard = document.getElementById("firstCard");
+          if (firstCard) {
+            firstCard.click();
+            handleCardClick(firstCard);
+          }
+
+          const allCards = document.querySelectorAll(".card");
+          allCards.forEach((card) => {
+            card.addEventListener("click", function () {
+              handleCardClick(card);
+            });
+          });
+        }
+
+        function initializeBenefitsScore() {
+          document.getElementById("be_score").innerHTML = (score / 100).toFixed(
+            4
+          );
+        }
+
+        //Function to view the benefits in the card and list view
+        var elements = document.getElementsByClassName("column");
+
+        // Declare a loop variable
+        var i;
+
+        // List View
+        function listView() {
+          for (i = 0; i < elements.length; i++) {
+            elements[i].style.width = "100%";
+          }
+        }
+
+        // Grid View
+        function gridView() {
+          for (i = 0; i < elements.length; i++) {
+            elements[i].style.width = "50%";
+          }
+        }
+      </script>
+
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+      <script>
+
+        document.addEventListener('DOMContentLoaded', function () {
+          // Get company data from Flask/Jinja
+          const companies = {};
+
+          // Dynamically populate the companies object using Jinja templating
+          {% for company_name, com in companies.items() %}
+
+            companies["{{ company_name }}"] = {
+              company_logo: "{{com.company_logo}}",
+              company_rating: "{{ com.company_rating }}",
+              benefits: [
+                '{{ com.Flexible_hours_of_work | lower}}'=== 'yes',
+                '{{ com.Internal_support_networks_for_parents | lower }}'=== 'yes',
+                '{{ com.Part_time_work | lower}}'=== 'yes',
+                '{{ com.Parenting_workshops_targeting_mothers | lower}}'=== 'yes',
+                '{{ com.Do_you_pay_superannuation_contribution_to_your_secondary_carers_while_they_are_on_parental_leave | lower }}'=== 'yes',
+                '{{ com.Telecommuting__e_g__working_from_home_ | lower}}'=== 'yes',
+                '{{ com.Part_time_work__non_managers_ | lower}}'=== 'yes',
+                '{{ com.Workplace_safety_planning | lower}}'=== 'yes',
+                '{{ com.Compressed_working_weeks | lower}}'=== 'yes',
+                '{{ com.Job_sharing__non_managers_ | lower}}'=== 'yes',
+                '{{ com.Purchased_leave__non_managers_ | lower}}'=== 'yes',
+                '{{ com.Access_to_medical_services__e_g__doctor_or_nurse_ | lower}}'=== 'yes',
+                '{{ com.On_site_childcare | lower}}'=== 'yes',
+                '{{ com.Information_packs_for_new_parents | lower}}'=== 'yes',
+                '{{ com.Coaching_for_employees_on_returning_to_work | lower}}'=== 'yes',
+                '{{ com.Compressed_working_weeks__non_managers_| lower }}'=== 'yes',
+                '{{ com.Support_in_securing_school_holiday_care| lower }}'=== 'yes',
+                '{{ com.Purchased_leave | lower}}'=== 'yes',
+                '{{ com.Carer_leave | lower}}'=== 'yes',
+                '{{ com.Emergency_accommodation_assistance | lower }}'=== 'yes',
+                '{{ com.Offer_change_of_office_location | lower}}'=== 'yes',
+                '{{ com.Carer_leave__non_managers_ | lower}}'=== 'yes',
+                '{{ com.Time_in_lieu__non_managers_ | lower}}'=== 'yes',
+                '{{ com.Parenting_workshops_targeting_fathers | lower}}'=== 'yes',
+                '{{ com.Flexible_hours_of_work__non_managers | lower}}'=== 'yes',
+                '{{ com.Remuneration | lower }}'=== 'yes',
+                '{{ com.Flexible_working_arrangements | lower}}'=== 'yes',
+                '{{ com.Support_gender_equality | lower}}'=== 'yes',
+                '{{ com.Support_employees_with_family | lower}}'=== 'yes',
+                '{{ com.Primary_carers_within_certain_time_after_birth | lower}}'=== 'yes',
+                '{{ com.Primary_carers_after_completing_qualifying_work_period | lower}}'=== 'yes',
+                '{{ com.regardless_of_carer_status | lower}}'=== 'yes',
+                '{{ com.Secondary_carers | lower}}'=== 'yes',
+                '{{ com.Secondary_carers_within_certain_time_after_birth | lower}}'=== 'yes',
+                '{{ com.Carers_after_completing_qualifying_work_period | lower}}'=== 'yes',
+                '{{ com.Carers_within_certain_time_after_birth | lower}}'=== 'yes',
+                '{{ com.Secondary_carers_after_completing_qualifying_work_period | lower}}'=== 'yes',
+                '{{ com.Employee_training | lower}}'=== 'yes',
+                '{{ com.Breastfeeding_facilities | lower}}'=== 'yes',
+                '{{ com.Do_you_pay_superannuation_contribution_to_your_carers_while_they_are_on_parental_leave | lower}}'=== 'yes',
+                '{{ com.Job_sharing | lower}}'=== 'yes',
+                '{{ com.Time_in_lieu | lower}}'=== 'yes',
+                '{{ com.Employee_assistance_program__including_access_to_psychologist__chaplain_or_counsellor_ | lower }}'=== 'yes'
+              ]
+            };
+          {% endfor %}
+
+          const companyListModal = document.getElementById('companyListModal');
+          const comparisonResult = document.getElementById('comparisonResult');
+          const searchBar = document.getElementById('searchBar');
+          const resetButton = document.getElementById('resetButton');
+          const barChartCanvas = document.getElementById('barChart').getContext('2d');
+          let barChart;
+
+
+          // Render company cards in modal
+         // Render company cards in modal
+          function renderCompanyCards() {
+            companyListModal.innerHTML = '';
+            for (let companyName in companies) {
+              const card = document.createElement('div');
+              card.classList.add('card', 'company-card', 'mb-2', 'p-2', 'shadow-sm');
+              card.innerHTML = `
+                <img src="${companies[companyName].company_logo}" alt="${companyName}">
+                <div class="card-content">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="${companyName}" id="selectCompany_${companyName}">
+                    <label class="form-check-label" for="selectCompany_${companyName}">${companyName}</label>
+                  </div>
+                  <div class="card-rating">Rating: ${companies[companyName].company_rating}</div>
+                </div>
+              `;
+              companyListModal.appendChild(card);
+            }
+          }
+          renderCompanyCards();
+
+          // Filter companies based on search input
+          searchBar.addEventListener('input', function() {
+            const searchTerm = searchBar.value.toLowerCase();
+            document.querySelectorAll('#companyListModal .card').forEach(card => {
+              const companyName = card.querySelector('.form-check-label').textContent.toLowerCase();
+              card.style.display = companyName.includes(searchTerm) ? '' : 'none';
+            });
+          });
+
+          // Helper function to get selected companies
+          function getSelectedCompanies() {
+            const selectedCompanies = [];
+            document.querySelectorAll('#companyListModal .form-check-input:checked').forEach(checkbox => {
+              const companyName = checkbox.value;
+              selectedCompanies.push({ name: companyName, ...companies[companyName] });
+            });
+            return selectedCompanies;
+          }
+
+          // Compare by benefits
+          document.getElementById('compareByBenefitsButton').addEventListener('click', function () {
+            const selectedCompanies = getSelectedCompanies();
+            if (selectedCompanies.length === 0) {
+              comparisonResult.innerHTML = '<p>Please select at least one company.</p>';
+              return;
+            }
+
+            // Sort by the number of true benefits
+            selectedCompanies.sort((a, b) => b.benefits.filter(Boolean).length - a.benefits.filter(Boolean).length);
+            const topCompany = selectedCompanies[0];
+            const benefitCount = topCompany.benefits.filter(Boolean).length;
+
+            // Update the bar chart
+            updateBarChart(selectedCompanies, 'benefits');
+          });
+
+          // Compare by rating
+          document.getElementById('compareByRatingButton').addEventListener('click', function () {
+            const selectedCompanies = getSelectedCompanies();
+            if (selectedCompanies.length === 0) {
+              comparisonResult.innerHTML = '<p>Please select at least one company.</p>';
+              return;
+            }
+
+            // Sort by rating
+            selectedCompanies.sort((a, b) => b.company_rating - a.company_rating);
+            const topCompany = selectedCompanies[0];
+            // Update the bar chart
+            updateBarChart(selectedCompanies, 'rating');
+          });
+
+          // Function to update the bar chart
+          function updateBarChart(companies, type) {
+            if (barChart) {
+              barChart.destroy();
+            }
+
+            const labels = companies.map(c => c.name);
+            const data = companies.map(c => {
+              if (type === 'benefits') {
+                return c.benefits.filter(Boolean).length;
+              } else if (type === 'rating') {
+                return c.company_rating;
+              }
+            });
+
+            barChart = new Chart(barChartCanvas, {
+              type: 'bar',
+              data: {
+                labels: labels,
+                datasets: [{
+                  label: type === 'benefits' ? 'Number of Benefits' : 'Rating',
+                  data: data,
+                  backgroundColor: '#ffd9ef',
+                  borderColor: '#936ed4',
+                  borderWidth: 3
+                }]
+              },
+              options: {
+                responsive: true,
+                plugins: {
+                      title: {
+                          display: true,
+                          text: 'Click on bar to view maternal benefits',
+                          color: '#9363d4',
+                          font:{
+                            size: 20
+                          }
+                      }
+                  },
+                scales: {
+                  y: {
+                    beginAtZero: true
+                  }
+                },
+                onClick: (event, elements) => {
+                  if (elements.length > 0) {
+                    const clickedElementIndex = elements[0].index;
+                    const companyName = labels[clickedElementIndex];
+                    const company = companies[clickedElementIndex];
+
+                    // List of benefit names corresponding to the boolean array
+                    const benefitNames = [
+                      'Flexible hours of work',
+                      'Internal support networks for parents',
+                      'Part-time work',
+                      'Parenting workshops targeting mothers',
+                      'Superannuation contribution for secondary carers on parental leave',
+                      'Telecommuting',
+                      'Part-time work (non-managers)',
+                      'Workplace safety planning',
+                      'Compressed working weeks',
+                      'Job sharing (non-managers)',
+                      'Purchased leave (non-managers)',
+                      'Access to medical services',
+                      'On-site childcare',
+                      'Information packs for new parents',
+                      'Coaching for employees on returning to work',
+                      'Compressed working weeks non managers',
+                      'Support in securing school holiday care',
+                      'Purchased leave',
+                      'Carer leave',
+                      'Emergency accommodation assistance',
+                      'Offer change of office location',
+                      'Carer leave non managers',
+                      'Time in lieu (non-managers)',
+                      'Parenting workshops targeting fathers',
+                      'Flexible hours of work (non-managers)',
+                      'Remuneration',
+                      'Flexible working arrangements',
+                      'Support gender equality',
+                      'Support employees with family',
+                      'Primary carers within a certain time after birth',
+                      'Primary carers after completing qualifying work period',
+                      'Regardless of carer status',
+                      'Secondary carers',
+                      'Secondary carers within a certain time after birth',
+                      'Carers after completing qualifying work period',
+                      'Carers within a certain time after birth',
+                      'Secondary carers after completing qualifying work period',
+                      'Employee training',
+                      'Breastfeeding facilities',
+                      'Superannuation contribution to carers on parental leave',
+                      'Job sharing',
+                      'Time in lieu',
+                      'Employee assistance program'
+                    ];
+
+                    // Find the benefits for the clicked company
+                    const companyBenefits = company.benefits
+                      .map((benefit, i) => benefit ? benefitNames[i] : null)
+                      .filter(Boolean);
+
+                    // Display the benefits in the result section
+                    if (companyBenefits.length > 0) {
+                      document.getElementById('benefitsContent').innerHTML = `
+                      <p><strong style="color:#936ed4;">${companyName}</strong> provides the following benefits:</p>
+                      <ul class="list-group list-group-flush">
+                        ${companyBenefits.map(benefit => `<li class="list-group-item text-xl font-medium">${benefit}</li>`).join('')}
+                      </ul>`;
+                      const offcanvasElement = new bootstrap.Offcanvas(document.getElementById('benefitsOffcanvas'));
+                      offcanvasElement.show();
+                    } else {
+                      document.getElementById('benefitsContent').innerHTML = `<p><strong>${companyName}</strong> does not provide any benefits.</p>`;
+                    }
+                  }
+                }
+              }
+            });
+          }
+
+          // Reset button functionality
+          resetButton.addEventListener('click', function () {
+            document.querySelectorAll('#companyListModal .form-check-input').forEach(checkbox => {
+              checkbox.checked = false;
+            });
+            document.querySelectorAll('#companyListModal .card').forEach(card => {
+              card.style.display = '';
+            });
+            comparisonResult.innerHTML = '';
+            searchBar.value = '';
+            if (barChart) {
+              barChart.destroy();
+            }
+          });
+        });
+      </script>
+
+      <!-- all scripts -->
+      <!-- jquery min js -->
+      <script src="/static/js/vendor/jquery.min.js"></script>
+      <!-- jquery ui js -->
+      <script src="/static/js/vendor/jquery-ui.js"></script>
+      <!-- metismenu js -->
+      <script src="/static/js/vendor/metismenu.js"></script>
+      <!-- magnific popup js-->
+      <script src="/static/js/vendor/magnifying-popup.js"></script>
+      <!-- swiper JS 10.2.0 -->
+      <script src="/static/js/plugins/swiper.js"></script>
+      <!-- counterup Mjs -->
+      <script src="/static/js/plugins/counterup.js"></script>
+      <!-- waypoint js -->
+      <script src="/static/js/vendor/waypoint.js"></script>
+      <!-- wow js -->
+      <script src="/static/js/vendor/waw.js"></script>
+      <!-- isotop mesonary -->
+      <script src="/static/js/plugins/isotop.js"></script>
+      <!-- jquery imageloaded -->
+      <script src="/static/js/plugins/imagesloaded.pkgd.min.js"></script>
+      <!-- resize sensor js -->
+      <script src="/static/js/plugins/resizer-sensor.js"></script>
+      <!-- sticky sidebar -->
+      <script src="/static/js/plugins/sticky-sidebar.js"></script>
+      <!-- gsap twinmax js -->
+      <script src="/static/js/plugins/twinmax.js"></script>
+      <!-- chroma js -->
+      <script src="/static/js/vendor/chroma.min.js"></script>
+      <!-- bootstrap 5.0.2 -->
+      <script src="/static/js/plugins/bootstrap.min.js"></script>
+      <!-- dymanic Contact Form -->
+      <script src="/static/js/plugins/contact.form.js"></script>
+      <!-- calender js -->
+      <script src="/static/js/plugins/calender.js"></script>
+      <!-- main Js -->
+      <script src="/static/js/main.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/intro.js/7.2.0/intro.min.js"></script>
+      <script>
+        const intro = introJs();
+
+        // Set the intro options
+        intro.setOptions({
+          steps: [
+            {
+              title: "Welcome",
+              intro:
+                "<p>Welcome Mums, to our Top Companies Page. Discover the ideal workplace fulfilling a mother's needs across Industry, Sub-Industry, and Employee Count. Evaluate companies based on our company score, maternal perks provided, and employee ratings.</p>",
+            },
+            {
+              element: document.querySelector(".CompFilters"),
+              intro: "Filter container",
+            },
+            {
+              title:
+                "Glassdoor ratings on employee satisfaction and workplace culture",
+              element: document.querySelector(".EmpRating"),
+              intro:
+                "<h6>4-Point Scale: Our Employee ratings are based on a 4-point scale</h6><p>4.5 and above - Employees are Very Satisfied <br/>4.0 and above - Employees are Satisfied <br/>3.0 and above - Employees say it's OK<br/>2.0 and above - Employees are Dissatisfied</p>",
+              position: "right",
+            },
+            {
+              title:
+                "Select the number of employees ranging from less than 250 to 5000+",
+              element: document.querySelector(".NumOfEmp"),
+              intro:
+                "What if you are interested in working for a large corporation with thousands of employees or a small, forthcoming startup with a smaller workforce? Choose the companies based on the number of employees",
+              position: "right",
+            },
+            {
+              title: "Select Industry & Sub-Industry",
+              element: document.querySelector(".IndFilters"),
+              intro:
+                "This filter allows you to specify the industry in which your company operates, as well as the relevant sub-industry",
+              position: "right",
+            },
+            {
+              title: "Select the benefits that a company provides for mothers",
+              element: document.querySelector(".BeneFilters"),
+              intro:
+                "We offer a large range of benefits curated just for you to choose from, including paid parental leave, breastfeeding facilities, on-site childcare, etc",
+              position: "right",
+            },
+            {
+              title: "A list of companies with offices in Melbourne",
+              element: document.querySelector(".CompCard"),
+              intro:
+                "Take a look at the company, its industry, and employee ratings",
+              position: "right",
+            },
+            {
+              title: "company Details",
+              element: document.querySelector(".CardView"),
+              intro:
+                "<p>The map displays the office locations for each company. You can click on the location to get the office address. Get a list of the maternal benefits it provides. You can look for a specific benefit in the search bar. Use our list/grid view to improve visibility. Finally, calculate our company score, which ranges from low to medium to high on a scale of 0 to 1</p>",
+              position: "left",
+            },
+            {
+              title: "Company comparison",
+              element: document.querySelector(".CompareComp"),
+              intro:
+                "Use our comparison tool to compare companies on maternal benefits and employee ratings. You can select multiple companies by either clicking on the checkbox or manually entering the company name in the search bar. Then, click on Compare by Benefits/Ratings button. After you see a bar chart displaying a comparison, click on a specific bar to have a look at the benefits",
+            },
+          ],
+        });
+
+        const startTourButton = document.getElementById("start-tour");
+
+        startTourButton.addEventListener("click", function () {
+          intro.start();
+        });
+
+        // Add an event listener to the intro
+        intro.onbeforechange(function (targetElement) {
+          // Check if the intro has just started
+          if (intro._currentStep === 0) {
+            // Go to the next step
+            intro.nextStep();
+          }
+        });
+      </script>
+    </div>
+  </body>
+</html>

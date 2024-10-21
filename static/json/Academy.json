@@ -1,0 +1,1193 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Academy For Kids Coburg",
+        "address": "562 Sydney Road, COBURG, 3058",
+        "services": {
+          "longDayCare": false,
+          "preschoolStandalone": false,
+          "preschoolSchool": false,
+          "vacationCare": false,
+          "beforeSchool": true,
+          "afterSchool": true
+        },
+        "opening_hours": {
+          "monday": {
+            "start": "15:30:00",
+            "end": "18:00:00"
+          },
+          "tuesday": {
+            "start": "15:30:00",
+            "end": "18:00:00"
+          },
+          "wednesday": {
+            "start": "15:30:00",
+            "end": "18:00:00"
+          },
+          "thursday": {
+            "start": "15:30:00",
+            "end": "18:00:00"
+          },
+          "friday": {
+            "start": "15:30:00",
+            "end": "18:00:00"
+          }
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          144.9677821,
+          -37.7386195
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Academy of Early Education",
+        "address": "2 Salisbury Court, SYDENHAM, 3037",
+        "services": {
+          "longDayCare": true,
+          "preschoolStandalone": false,
+          "preschoolSchool": false,
+          "vacationCare": true,
+          "beforeSchool": true,
+          "afterSchool": true
+        },
+        "opening_hours": {
+          "monday": {
+            "start": "6:30:00",
+            "end": "18:30:00"
+          },
+          "tuesday": {
+            "start": "6:30:00",
+            "end": "18:30:00"
+          },
+          "wednesday": {
+            "start": "6:30:00",
+            "end": "18:30:00"
+          },
+          "thursday": {
+            "start": "6:30:00",
+            "end": "18:30:00"
+          },
+          "friday": {
+            "start": "6:30:00",
+            "end": "18:30:00"
+          }
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          144.760165,
+          -37.6930407
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Altona Meadows Montessori Academy",
+        "address": "32-36 Balaclava Ave, ALTONA MEADOWS, 3028",
+        "services": {
+          "longDayCare": true,
+          "preschoolStandalone": false,
+          "preschoolSchool": false,
+          "vacationCare": false,
+          "beforeSchool": false,
+          "afterSchool": false
+        },
+        "opening_hours": {
+          "monday": {
+            "start": "7:30:00",
+            "end": "18:00:00"
+          },
+          "tuesday": {
+            "start": "7:30:00",
+            "end": "18:00:00"
+          },
+          "wednesday": {
+            "start": "7:30:00",
+            "end": "18:00:00"
+          },
+          "thursday": {
+            "start": "7:30:00",
+            "end": "18:00:00"
+          },
+          "friday": {
+            "start": "7:30:00",
+            "end": "18:00:00"
+          }
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          144.78311,
+          -37.874919
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Box Hill North Montessori Academy",
+        "address": "582-584 Elgar Rd, BOX HILL NORTH, 3129",
+        "services": {
+          "longDayCare": true,
+          "preschoolStandalone": false,
+          "preschoolSchool": false,
+          "vacationCare": false,
+          "beforeSchool": false,
+          "afterSchool": false
+        },
+        "opening_hours": {
+          "monday": {
+            "start": "7:30:00",
+            "end": "18:00:00"
+          },
+          "tuesday": {
+            "start": "7:30:00",
+            "end": "18:00:00"
+          },
+          "wednesday": {
+            "start": "7:30:00",
+            "end": "18:00:00"
+          },
+          "thursday": {
+            "start": "7:30:00",
+            "end": "18:00:00"
+          },
+          "friday": {
+            "start": "7:30:00",
+            "end": "18:00:00"
+          }
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          145.1175966,
+          -37.8047889
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Clayton Montessori Academy",
+        "address": "19 Donald Street, CLAYTON, 3168",
+        "services": {
+          "longDayCare": true,
+          "preschoolStandalone": false,
+          "preschoolSchool": false,
+          "vacationCare": false,
+          "beforeSchool": false,
+          "afterSchool": false
+        },
+        "opening_hours": {
+          "monday": {
+            "start": "7:30:00",
+            "end": "18:00:00"
+          },
+          "tuesday": {
+            "start": "7:30:00",
+            "end": "18:00:00"
+          },
+          "wednesday": {
+            "start": "7:30:00",
+            "end": "18:00:00"
+          },
+          "thursday": {
+            "start": "7:30:00",
+            "end": "18:00:00"
+          },
+          "friday": {
+            "start": "7:30:00",
+            "end": "18:00:00"
+          }
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          145.1242631,
+          -37.9235587
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Eden Academy Delahey",
+        "address": "37 Goldsmith Ave, DELAHEY, 3037",
+        "services": {
+          "longDayCare": true,
+          "preschoolStandalone": false,
+          "preschoolSchool": false,
+          "vacationCare": false,
+          "beforeSchool": false,
+          "afterSchool": false
+        },
+        "opening_hours": {
+          "monday": {
+            "start": "7:00:00",
+            "end": "18:00:00"
+          },
+          "tuesday": {
+            "start": "7:00:00",
+            "end": "18:00:00"
+          },
+          "wednesday": {
+            "start": "7:00:00",
+            "end": "18:00:00"
+          },
+          "thursday": {
+            "start": "7:00:00",
+            "end": "18:00:00"
+          },
+          "friday": {
+            "start": "7:00:00",
+            "end": "18:00:00"
+          }
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          144.7760308,
+          -37.7179719
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Eden Academy Elwood",
+        "address": "147-149 Brighton Rd, ELWOOD, 3184",
+        "services": {
+          "longDayCare": true,
+          "preschoolStandalone": false,
+          "preschoolSchool": false,
+          "vacationCare": false,
+          "beforeSchool": false,
+          "afterSchool": false
+        },
+        "opening_hours": {
+          "monday": {
+            "start": "7:00:00",
+            "end": "18:30:00"
+          },
+          "tuesday": {
+            "start": "7:00:00",
+            "end": "18:30:00"
+          },
+          "wednesday": {
+            "start": "7:00:00",
+            "end": "18:30:00"
+          },
+          "thursday": {
+            "start": "7:00:00",
+            "end": "18:30:00"
+          },
+          "friday": {
+            "start": "7:00:00",
+            "end": "18:30:00"
+          }
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          144.9919397,
+          -37.8767149
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Eden Academy Footscray",
+        "address": "282-288 Geelong Road, WEST FOOTSCRAY, 3012",
+        "services": {
+          "longDayCare": true,
+          "preschoolStandalone": false,
+          "preschoolSchool": false,
+          "vacationCare": false,
+          "beforeSchool": false,
+          "afterSchool": false
+        },
+        "opening_hours": {
+          "monday": {
+            "start": "7:00:00",
+            "end": "18:30:00"
+          },
+          "tuesday": {
+            "start": "7:00:00",
+            "end": "18:30:00"
+          },
+          "wednesday": {
+            "start": "7:00:00",
+            "end": "18:30:00"
+          },
+          "thursday": {
+            "start": "7:00:00",
+            "end": "18:30:00"
+          },
+          "friday": {
+            "start": "7:00:00",
+            "end": "18:30:00"
+          }
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          144.8795471,
+          -37.8053113
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Eden Academy Newport",
+        "address": "519 Melbourne Rd, NEWPORT, 3015",
+        "services": {
+          "longDayCare": true,
+          "preschoolStandalone": false,
+          "preschoolSchool": false,
+          "vacationCare": false,
+          "beforeSchool": false,
+          "afterSchool": false
+        },
+        "opening_hours": {
+          "monday": {
+            "start": "7:00:00",
+            "end": "18:30:00"
+          },
+          "tuesday": {
+            "start": "7:00:00",
+            "end": "18:30:00"
+          },
+          "wednesday": {
+            "start": "7:00:00",
+            "end": "18:30:00"
+          },
+          "thursday": {
+            "start": "7:00:00",
+            "end": "18:30:00"
+          },
+          "friday": {
+            "start": "7:00:00",
+            "end": "18:30:00"
+          }
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          144.8820634,
+          -37.8368037
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Eden Academy Pascoe Vale",
+        "address": "22 Burgundy St, PASCOE VALE, 3044",
+        "services": {
+          "longDayCare": true,
+          "preschoolStandalone": false,
+          "preschoolSchool": false,
+          "vacationCare": false,
+          "beforeSchool": false,
+          "afterSchool": false
+        },
+        "opening_hours": {
+          "monday": {
+            "start": "7:00:00",
+            "end": "18:30:00"
+          },
+          "tuesday": {
+            "start": "7:00:00",
+            "end": "18:30:00"
+          },
+          "wednesday": {
+            "start": "7:00:00",
+            "end": "18:30:00"
+          },
+          "thursday": {
+            "start": "7:00:00",
+            "end": "18:30:00"
+          },
+          "friday": {
+            "start": "7:00:00",
+            "end": "18:30:00"
+          }
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          144.9288768,
+          -37.7318719
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Elsternwick Montessori Academy",
+        "address": "21 Sandham Street, ELSTERNWICK, 3185",
+        "services": {
+          "longDayCare": true,
+          "preschoolStandalone": false,
+          "preschoolSchool": false,
+          "vacationCare": false,
+          "beforeSchool": false,
+          "afterSchool": false
+        },
+        "opening_hours": {
+          "monday": {
+            "start": "7:30:00",
+            "end": "18:00:00"
+          },
+          "tuesday": {
+            "start": "7:30:00",
+            "end": "18:00:00"
+          },
+          "wednesday": {
+            "start": "7:30:00",
+            "end": "18:00:00"
+          },
+          "thursday": {
+            "start": "7:30:00",
+            "end": "18:00:00"
+          },
+          "friday": {
+            "start": "7:30:00",
+            "end": "18:00:00"
+          }
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          145.00456,
+          -37.8821
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Forest Hill Montessori Academy",
+        "address": "310-312 Springvale Rd, FOREST HILL, 3131",
+        "services": {
+          "longDayCare": true,
+          "preschoolStandalone": false,
+          "preschoolSchool": false,
+          "vacationCare": false,
+          "beforeSchool": false,
+          "afterSchool": false
+        },
+        "opening_hours": {
+          "monday": {
+            "start": "7:30:00",
+            "end": "18:00:00"
+          },
+          "tuesday": {
+            "start": "7:30:00",
+            "end": "18:00:00"
+          },
+          "wednesday": {
+            "start": "7:30:00",
+            "end": "18:00:00"
+          },
+          "thursday": {
+            "start": "7:30:00",
+            "end": "18:00:00"
+          },
+          "friday": {
+            "start": "7:30:00",
+            "end": "18:00:00"
+          }
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          145.1729173,
+          -37.8323276
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Kids Academy Bulleen",
+        "address": "54-58 Thompsons Road, BULLEEN, 3105",
+        "services": {
+          "longDayCare": true,
+          "preschoolStandalone": false,
+          "preschoolSchool": false,
+          "vacationCare": true,
+          "beforeSchool": true,
+          "afterSchool": true
+        },
+        "opening_hours": {
+          "monday": {
+            "start": "7:00:00",
+            "end": "18:30:00"
+          },
+          "tuesday": {
+            "start": "7:00:00",
+            "end": "18:30:00"
+          },
+          "wednesday": {
+            "start": "7:00:00",
+            "end": "18:30:00"
+          },
+          "thursday": {
+            "start": "7:00:00",
+            "end": "18:30:00"
+          },
+          "friday": {
+            "start": "7:00:00",
+            "end": "18:30:00"
+          }
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          145.08636,
+          -37.7772352
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Kids Academy Clayton",
+        "address": "M-City, 2125 Dandenong Rd, CLAYTON, 3168",
+        "services": {
+          "longDayCare": true,
+          "preschoolStandalone": true,
+          "preschoolSchool": false,
+          "vacationCare": true,
+          "beforeSchool": true,
+          "afterSchool": true
+        },
+        "opening_hours": {
+          "monday": {
+            "start": "6:30:00",
+            "end": "18:30:00"
+          },
+          "tuesday": {
+            "start": "6:30:00",
+            "end": "18:30:00"
+          },
+          "wednesday": {
+            "start": "6:30:00",
+            "end": "18:30:00"
+          },
+          "thursday": {
+            "start": "6:30:00",
+            "end": "18:30:00"
+          },
+          "friday": {
+            "start": "6:30:00",
+            "end": "18:30:00"
+          }
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          145.1403919,
+          -37.920929
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Kids Academy Doncaster East",
+        "address": "952-954 Doncaster Rd, DONCASTER EAST, 3109",
+        "services": {
+          "longDayCare": true,
+          "preschoolStandalone": false,
+          "preschoolSchool": false,
+          "vacationCare": false,
+          "beforeSchool": false,
+          "afterSchool": false
+        },
+        "opening_hours": {
+          "monday": {
+            "start": "7:30:00",
+            "end": "18:30:00"
+          },
+          "tuesday": {
+            "start": "7:30:00",
+            "end": "18:30:00"
+          },
+          "wednesday": {
+            "start": "7:30:00",
+            "end": "18:30:00"
+          },
+          "thursday": {
+            "start": "7:30:00",
+            "end": "18:30:00"
+          },
+          "friday": {
+            "start": "7:30:00",
+            "end": "18:30:00"
+          }
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          145.1565319,
+          -37.7888601
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Kids Academy Kensington",
+        "address": "64 Stubbs St, KENSINGTON, 3031",
+        "services": {
+          "longDayCare": true,
+          "preschoolStandalone": false,
+          "preschoolSchool": false,
+          "vacationCare": false,
+          "beforeSchool": false,
+          "afterSchool": false
+        },
+        "opening_hours": {
+          "monday": {
+            "start": "7:00:00",
+            "end": "18:00:00"
+          },
+          "tuesday": {
+            "start": "7:00:00",
+            "end": "18:00:00"
+          },
+          "wednesday": {
+            "start": "7:00:00",
+            "end": "18:00:00"
+          },
+          "thursday": {
+            "start": "7:00:00",
+            "end": "18:00:00"
+          },
+          "friday": {
+            "start": "7:00:00",
+            "end": "18:00:00"
+          }
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          144.9353997,
+          -37.791201
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Kids Academy Mickleham",
+        "address": "459 Brookfield Bvd, MICKLEHAM, 3064",
+        "services": {
+          "longDayCare": true,
+          "preschoolStandalone": false,
+          "preschoolSchool": false,
+          "vacationCare": false,
+          "beforeSchool": false,
+          "afterSchool": false
+        },
+        "opening_hours": {
+          "monday": {
+            "start": "6:30:00",
+            "end": "18:30:00"
+          },
+          "tuesday": {
+            "start": "6:30:00",
+            "end": "18:30:00"
+          },
+          "wednesday": {
+            "start": "6:30:00",
+            "end": "18:30:00"
+          },
+          "thursday": {
+            "start": "6:30:00",
+            "end": "18:30:00"
+          },
+          "friday": {
+            "start": "6:30:00",
+            "end": "18:30:00"
+          }
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          144.8922802,
+          -37.5733918
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Kids Academy Moorabbin",
+        "address": "254 Chesterville Rd, MOORABBIN, 3189",
+        "services": {
+          "longDayCare": true,
+          "preschoolStandalone": false,
+          "preschoolSchool": false,
+          "vacationCare": true,
+          "beforeSchool": true,
+          "afterSchool": true
+        },
+        "opening_hours": {
+          "monday": {
+            "start": "7:00:00",
+            "end": "18:30:00"
+          },
+          "tuesday": {
+            "start": "7:00:00",
+            "end": "18:30:00"
+          },
+          "wednesday": {
+            "start": "7:00:00",
+            "end": "18:30:00"
+          },
+          "thursday": {
+            "start": "7:00:00",
+            "end": "18:30:00"
+          },
+          "friday": {
+            "start": "7:00:00",
+            "end": "18:30:00"
+          }
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          145.060478,
+          -37.94144
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Kids Academy Murrumbeena",
+        "address": "137 Murrumbeena Rd, MURRUMBEENA, 3163",
+        "services": {
+          "longDayCare": true,
+          "preschoolStandalone": false,
+          "preschoolSchool": false,
+          "vacationCare": true,
+          "beforeSchool": true,
+          "afterSchool": true
+        },
+        "opening_hours": {
+          "monday": {
+            "start": "7:00:00",
+            "end": "18:30:00"
+          },
+          "tuesday": {
+            "start": "7:00:00",
+            "end": "18:30:00"
+          },
+          "wednesday": {
+            "start": "7:00:00",
+            "end": "18:30:00"
+          },
+          "thursday": {
+            "start": "7:00:00",
+            "end": "18:30:00"
+          },
+          "friday": {
+            "start": "7:00:00",
+            "end": "18:30:00"
+          }
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          145.0654098,
+          -37.8935849
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Kids Academy Ringwood East",
+        "address": "30 Grey St, RINGWOOD EAST, 3135",
+        "services": {
+          "longDayCare": true,
+          "preschoolStandalone": false,
+          "preschoolSchool": false,
+          "vacationCare": true,
+          "beforeSchool": true,
+          "afterSchool": true
+        },
+        "opening_hours": {
+          "monday": {
+            "start": "6:30:00",
+            "end": "18:30:00"
+          },
+          "tuesday": {
+            "start": "6:30:00",
+            "end": "18:30:00"
+          },
+          "wednesday": {
+            "start": "6:30:00",
+            "end": "18:30:00"
+          },
+          "thursday": {
+            "start": "6:30:00",
+            "end": "18:30:00"
+          },
+          "friday": {
+            "start": "6:30:00",
+            "end": "18:30:00"
+          }
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          145.2562274,
+          -37.8080739
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Kids Academy Waratah Estate",
+        "address": "2-4 Whiteleaf Dr, MICKLEHAM, 3064",
+        "services": {
+          "longDayCare": true,
+          "preschoolStandalone": false,
+          "preschoolSchool": false,
+          "vacationCare": false,
+          "beforeSchool": false,
+          "afterSchool": false
+        },
+        "opening_hours": {
+          "monday": {
+            "start": "6:30:00",
+            "end": "18:30:00"
+          },
+          "tuesday": {
+            "start": "6:30:00",
+            "end": "18:30:00"
+          },
+          "wednesday": {
+            "start": "6:30:00",
+            "end": "18:30:00"
+          },
+          "thursday": {
+            "start": "6:30:00",
+            "end": "18:30:00"
+          },
+          "friday": {
+            "start": "6:30:00",
+            "end": "18:30:00"
+          }
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          144.9056446,
+          -37.5366827
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Little World Academy",
+        "address": "142 Werribee St N, WERRIBEE, 3030",
+        "services": {
+          "longDayCare": true,
+          "preschoolStandalone": false,
+          "preschoolSchool": false,
+          "vacationCare": false,
+          "beforeSchool": false,
+          "afterSchool": false
+        },
+        "opening_hours": {
+          "monday": {
+            "start": "7:00:00",
+            "end": "18:30:00"
+          },
+          "tuesday": {
+            "start": "7:00:00",
+            "end": "18:30:00"
+          },
+          "wednesday": {
+            "start": "7:00:00",
+            "end": "18:30:00"
+          },
+          "thursday": {
+            "start": "7:00:00",
+            "end": "18:30:00"
+          },
+          "friday": {
+            "start": "7:00:00",
+            "end": "18:30:00"
+          }
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          144.6507993,
+          -37.8982428
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Moonstar Kids Academy",
+        "address": "8 Cobram Street, BROADMEADOWS, 3047",
+        "services": {
+          "longDayCare": true,
+          "preschoolStandalone": false,
+          "preschoolSchool": false,
+          "vacationCare": false,
+          "beforeSchool": false,
+          "afterSchool": false
+        },
+        "opening_hours": {
+          "monday": {
+            "start": "7:00:00",
+            "end": "18:00:00"
+          },
+          "tuesday": {
+            "start": "7:00:00",
+            "end": "18:00:00"
+          },
+          "wednesday": {
+            "start": "7:00:00",
+            "end": "18:00:00"
+          },
+          "thursday": {
+            "start": "7:00:00",
+            "end": "18:00:00"
+          },
+          "friday": {
+            "start": "7:00:00",
+            "end": "18:00:00"
+          }
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          144.7909223,
+          -37.7852555
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Moonstar Kids Academy",
+        "address": "8 Cobram Street, BROADMEADOWS, 3047",
+        "services": {
+          "longDayCare": true,
+          "preschoolStandalone": false,
+          "preschoolSchool": false,
+          "vacationCare": false,
+          "beforeSchool": false,
+          "afterSchool": false
+        },
+        "opening_hours": {
+          "monday": {
+            "start": "7:00:00",
+            "end": "18:00:00"
+          },
+          "tuesday": {
+            "start": "7:00:00",
+            "end": "18:00:00"
+          },
+          "wednesday": {
+            "start": "7:00:00",
+            "end": "18:00:00"
+          },
+          "thursday": {
+            "start": "7:00:00",
+            "end": "18:00:00"
+          },
+          "friday": {
+            "start": "7:00:00",
+            "end": "18:00:00"
+          }
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          144.9219357,
+          -37.6719936
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Moonstar Kids Academy",
+        "address": "Sirius College, 515 Fitzgerald Rd, SUNSHINE WEST, 3020",
+        "services": {
+          "longDayCare": false,
+          "preschoolStandalone": false,
+          "preschoolSchool": false,
+          "vacationCare": false,
+          "beforeSchool": true,
+          "afterSchool": true
+        },
+        "opening_hours": {
+          "monday": {
+            "start": "6:30:00",
+            "end": "9:00:00"
+          },
+          "tuesday": {
+            "start": "6:30:00",
+            "end": "9:00:00"
+          },
+          "wednesday": {
+            "start": "6:30:00",
+            "end": "9:00:00"
+          },
+          "thursday": {
+            "start": "6:30:00",
+            "end": "9:00:00"
+          },
+          "friday": {
+            "start": "6:30:00",
+            "end": "9:00:00"
+          }
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          144.7909223,
+          -37.7852555
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Moonstar Kids Academy",
+        "address": "Sirius College, 515 Fitzgerald Rd, SUNSHINE WEST, 3020",
+        "services": {
+          "longDayCare": false,
+          "preschoolStandalone": false,
+          "preschoolSchool": false,
+          "vacationCare": false,
+          "beforeSchool": true,
+          "afterSchool": true
+        },
+        "opening_hours": {
+          "monday": {
+            "start": "6:30:00",
+            "end": "9:00:00"
+          },
+          "tuesday": {
+            "start": "6:30:00",
+            "end": "9:00:00"
+          },
+          "wednesday": {
+            "start": "6:30:00",
+            "end": "9:00:00"
+          },
+          "thursday": {
+            "start": "6:30:00",
+            "end": "9:00:00"
+          },
+          "friday": {
+            "start": "6:30:00",
+            "end": "9:00:00"
+          }
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          144.9219357,
+          -37.6719936
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Templestowe Montessori Academy",
+        "address": "36-38 Parker St, TEMPLESTOWE LOWER, 3107",
+        "services": {
+          "longDayCare": true,
+          "preschoolStandalone": false,
+          "preschoolSchool": false,
+          "vacationCare": false,
+          "beforeSchool": false,
+          "afterSchool": false
+        },
+        "opening_hours": {
+          "monday": {
+            "start": "7:30:00",
+            "end": "18:00:00"
+          },
+          "tuesday": {
+            "start": "7:30:00",
+            "end": "18:00:00"
+          },
+          "wednesday": {
+            "start": "7:30:00",
+            "end": "18:00:00"
+          },
+          "thursday": {
+            "start": "7:30:00",
+            "end": "18:00:00"
+          },
+          "friday": {
+            "start": "7:30:00",
+            "end": "18:00:00"
+          }
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          145.1181911,
+          -37.7569068
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,115 @@
+[
+  {
+    "Count_of_KindergartenName": 238,
+    "OverallNQSRating": "Exceeding NQS"
+  },
+  {
+    "Count_of_KindergartenName": 123,
+    "OverallNQSRating": "Meeting NQS"
+  },
+  {
+    "Count_of_KindergartenName": 51,
+    "OverallNQSRating": "No NQS"
+  },
+  {
+    "Count_of_KindergartenName": 3,
+    "OverallNQSRating": "Working Towards NQS"
+  },
+
+  {
+    "Count_of_AcademyName": 2,
+    "OverallNQSRating": "Exceeding NQS"
+  },
+  {
+    "Count_of_AcademyName": 16,
+    "OverallNQSRating": "Meeting NQS"
+  },
+  {
+    "Count_of_AcademyName": 6,
+    "OverallNQSRating": "No NQS"
+  },
+  {
+    "Count_of_AcademyName": 3,
+    "OverallNQSRating": "Working Towards NQS"
+  },
+
+  {
+    "Count_of_ChildcareName": 142,
+    "OverallNQSRating": "Exceeding NQS"
+  },
+  {
+    "Count_of_ChildcareName": 3,
+    "OverallNQSRating": "Excellent"
+  },
+  {
+    "Count_of_ChildcareName": 243,
+    "OverallNQSRating": "Meeting NQS"
+  },
+  {
+    "Count_of_ChildcareName": 25,
+    "OverallNQSRating": "No NQS"
+  },
+  {
+    "Count_of_ChildcareName": 18,
+    "OverallNQSRating": "Working Towards NQS"
+  },
+
+  {
+    "Count_of_EarlyLearningCentersName": 150,
+    "OverallNQSRating": "Exceeding NQS"
+  },
+  {
+    "Count_of_EarlyLearningCentersName": 1,
+    "OverallNQSRating": "Excellent"
+  },
+  {
+    "Count_of_EarlyLearningCentersName": 397,
+    "OverallNQSRating": "Meeting NQS"
+  },
+  {
+    "Count_of_EarlyLearningCentersName": 97,
+    "OverallNQSRating": "No NQS"
+  },
+  {
+    "Count_of_EarlyLearningCentersName": 1,
+    "OverallNQSRating": "Significant Improvement Required"
+  },
+  {
+    "Count_of_EarlyLearningCentersName": 23,
+    "OverallNQSRating": "Working Towards NQS"
+  },
+
+  {
+    "Count_of_OshcName": 24,
+    "OverallNQSRating": "Exceeding NQS"
+  },
+  {
+    "Count_of_OshcName": 303,
+    "OverallNQSRating": "Meeting NQS"
+  },
+  {
+    "Count_of_OshcName": 35,
+    "OverallNQSRating": "No NQS"
+  },
+  {
+    "Count_of_OshcName": 14,
+    "OverallNQSRating": "Working Towards NQS"
+  },
+
+  {
+    "Count_of_PreschoolName": 121,
+    "OverallNQSRating": "Exceeding NQS"
+  },
+  {
+    "Count_of_PreschoolName": 76,
+    "OverallNQSRating": "Meeting NQS"
+  },
+  {
+    "Count_of_PreschoolName": 4,
+    "OverallNQSRating": "No NQS"
+  },
+  {
+    "Count_of_PreschoolName": 4,
+    "OverallNQSRating": "Working Towards NQS"
+  }
+]
