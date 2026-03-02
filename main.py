@@ -347,10 +347,9 @@ def get_mapbox_access_token():
 #     else:
 #         return render_template('companies.html', companies=filtered_companies)
 
-
 @app.route('/companies', methods=['GET'])
 def get_companies():
-  filters = {
+    filters = {
         'rating': request.args.getlist('rating'),
         'employees': request.args.getlist('employees'),
         'benefits': request.args.getlist('benefits'),
@@ -367,7 +366,7 @@ def get_companies():
         return render_template('company_cards.html', companies=filtered_companies)
     else:
         return render_template('companies.html', companies=filtered_companies)
-
+    
 # load JSON data
 def load_json_data():
     data = {}
