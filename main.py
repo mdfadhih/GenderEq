@@ -3,7 +3,7 @@ from flask import Flask, render_template, request, jsonify
 from dotenv import load_dotenv
 import os
 
-import pymysql
+# import pymysql
 import re
 import requests
 
@@ -13,15 +13,39 @@ app = Flask(__name__)
 
 
 # #mysql connection
-conn = pymysql.connect(host=os.getenv('DB_HOST'),
-                             user=os.getenv('DB_USER'),
-                             password=os.getenv('DB_PASSWORD'),
-                             database=os.getenv('DB_NAME'),
-                             cursorclass=pymysql.cursors.DictCursor, connect_timeout=3600)
+# conn = pymysql.connect(host=os.getenv('DB_HOST'),
+#                              user=os.getenv('DB_USER'),
+#                              password=os.getenv('DB_PASSWORD'),
+#                              database=os.getenv('DB_NAME'),
+#                              cursorclass=pymysql.cursors.DictCursor, connect_timeout=3600)
+
+def load_companies():
+    path = os.path.join(app.root_path, "static", "json", "companies.json")
+    try:
+        with open(path, "r", encoding="utf-8") as f:
+            data = json.load(f)
+        # Ensure rating is float
+        for row in data:
+            if "company_rating" in row:
+                try:
+                    row["company_rating"] = float(row["company_rating"])
+                except Exception:
+                    row["company_rating"] = 0.0
+        return data
+    except FileNotFoundError:
+        print("WARNING: companies.json not found at", path)
+        return []
+
+COMPANIES_RAW = load_companies()
+COMPANIES_EXTRACTED = extract_data_v2(COMPANIES_RAW)  # your existing function
 
 @app.route('/',)
 def index():
     return render_template('home.html')
+
+@app.get("/health")
+def health():
+    return {"status": "ok"}
 
 
 @app.route('/childcare')
@@ -280,31 +304,53 @@ def get_mapbox_access_token():
     return jsonify({"mapbox_access_token": mapbox_access_token, "mapbox_access_token_Care": mapbox_access_token_Care})
 
 
+# @app.route('/companies', methods=['GET'])
+# def get_companies():
+#     with app.app_context():
+#         try:
+#             cur = conn.cursor()
+#             cur.execute("SELECT *  FROM flaskdb.company_information")
+#             details = cur.fetchall()
+#         except pymysql.err.OperationalError as e:
+#             if e.args[0] == 2013:
+#                 # Reconnect to the database
+#                 conn.ping(reconnect=True)
+#                 cur = conn.cursor()
+#                 cur.execute("SELECT *  FROM flaskdb.company_information")
+#                 details = cur.fetchall()
+#             else:
+#                 raise
+#         cur.close()
+#         final_data = []
+#         for i in details:
+#             i["company_rating"] = float(i["company_rating"])
+#             final_data.append(i)
+    
+    
+#     details_extracted = extract_data_v2(final_data)
+#     filters = {
+#         'rating': request.args.getlist('rating'),
+#         'employees': request.args.getlist('employees'),
+#         'benefits': request.args.getlist('benefits'),
+#         'industry': request.args.getlist('industry'),
+#         'sub_industry': request.args.getlist('sub_industry')
+#     }
+
+#     if not any(filters.values()):
+#         filtered_companies = details_extracted
+#     else:
+#         filtered_companies = filter_companies(details_extracted, filters)
+  
+#     if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
+#         # Return the HTML for the company cards only
+#         return render_template('company_cards.html', companies=filtered_companies)
+#     else:
+#         return render_template('companies.html', companies=filtered_companies)
+
+
 @app.route('/companies', methods=['GET'])
 def get_companies():
-    with app.app_context():
-        try:
-            cur = conn.cursor()
-            cur.execute("SELECT *  FROM flaskdb.company_information")
-            details = cur.fetchall()
-        except pymysql.err.OperationalError as e:
-            if e.args[0] == 2013:
-                # Reconnect to the database
-                conn.ping(reconnect=True)
-                cur = conn.cursor()
-                cur.execute("SELECT *  FROM flaskdb.company_information")
-                details = cur.fetchall()
-            else:
-                raise
-        cur.close()
-        final_data = []
-        for i in details:
-            i["company_rating"] = float(i["company_rating"])
-            final_data.append(i)
-    
-    
-    details_extracted = extract_data_v2(final_data)
-    filters = {
+  filters = {
         'rating': request.args.getlist('rating'),
         'employees': request.args.getlist('employees'),
         'benefits': request.args.getlist('benefits'),
@@ -313,16 +359,14 @@ def get_companies():
     }
 
     if not any(filters.values()):
-        filtered_companies = details_extracted
+        filtered_companies = COMPANIES_EXTRACTED
     else:
-        filtered_companies = filter_companies(details_extracted, filters)
-  
+        filtered_companies = filter_companies(COMPANIES_EXTRACTED, filters)
+
     if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
-        # Return the HTML for the company cards only
         return render_template('company_cards.html', companies=filtered_companies)
     else:
         return render_template('companies.html', companies=filtered_companies)
-    
 
 # load JSON data
 def load_json_data():
@@ -380,5 +424,8 @@ def get_place_details():
     return jsonify(result)
 
 
+# if __name__ == '__main__':
+#     app.run(host='0.0.0.0', port=5000, debug=True)
+
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    app.run(host='0.0.0.0', port=int(os.getenv("PORT", "5000")), debug=False)
