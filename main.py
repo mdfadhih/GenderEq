@@ -36,9 +36,6 @@ def load_companies():
         print("WARNING: companies.json not found at", path)
         return []
 
-COMPANIES_RAW = load_companies()
-COMPANIES_EXTRACTED = extract_data_v2(COMPANIES_RAW)  # your existing function
-
 @app.route('/',)
 def index():
     return render_template('home.html')
@@ -91,7 +88,7 @@ def flatten_json(data, parent_key=''):
             items.append((formatted_key, v))  # Use only the last key
     return dict(items)
 
-def extract_data_v2(json_data):
+def extract_data_v2(json_data):    
     """Extract and flatten JSON data."""
     extracted_data = {}
     for company_info in json_data:
@@ -349,6 +346,8 @@ def get_mapbox_access_token():
 
 @app.route('/companies', methods=['GET'])
 def get_companies():
+    companies_raw = load_companies()
+    COMPANIES_EXTRACTED = extract_data_v2(companies_raw) 
     filters = {
         'rating': request.args.getlist('rating'),
         'employees': request.args.getlist('employees'),
