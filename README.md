@@ -194,8 +194,9 @@ Environment variables configured via Render dashboard
 
 📸 Screenshots
 
+<img width="2880" height="1250" alt="comlist" src="https://github.com/user-attachments/assets/ffa1a455-3f1f-48ef-9e00-404bdbf6f4c1" />
 🔹Company Listing Page
-<img width="500" height="250" alt="comlist" src="https://github.com/user-attachments/assets/ffa1a455-3f1f-48ef-9e00-404bdbf6f4c1" />
+
 
 
 🔹Comparison Modal
