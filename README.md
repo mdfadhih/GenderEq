@@ -14,7 +14,8 @@ Nari is a full-stack web application designed to support working mothers by help
 This project demonstrates full-stack engineering, API integration, server-side rendering, and cloud deployment using modern web technologies.
 
 🏗 Architecture Overview
-<img width="2880" height="1620" alt="archi" src="https://github.com/user-attachments/assets/ee31e892-2b93-43b5-a795-d6aa77602265" />
+<img width="1005" height="328" alt="archi" src="https://github.com/user-attachments/assets/08725558-8ab5-4062-ba2b-c28eb8e2d9e6" />
+
 
 
 Deployment:
@@ -156,7 +157,7 @@ Deployment
 🔹Gunicorn WSGI server
 
 📂 Project Structure
-<img width="2880" height="1620" alt="prostr" src="https://github.com/user-attachments/assets/260ab62e-343e-4217-9051-3c0bf32b02de" />
+<img width="1008" height="516" alt="prostr" src="https://github.com/user-attachments/assets/c44fd6b8-7925-45f6-ae94-da1a781c07ab" />
 
 
 🔐 Security Implementation
