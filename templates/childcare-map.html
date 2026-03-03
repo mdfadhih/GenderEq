@@ -128,7 +128,7 @@
       const { mapbox_access_token } = await res.json();
       mapboxgl.accessToken = mapbox_access_token;
 
-      if (!mapboxAccessTokenCare) {
+      if (!mapbox_access_token) {
         throw new Error("mapbox_access_token is missing (null/empty). Set it in Render Environment.");
       }
 
@@ -333,7 +333,7 @@
               ","
             )}.json?proximity=${firstCoordinate[0]},${
               firstCoordinate[1]
-            }&limit=50&access_token=${mapboxAccessTokenCare}`;
+            }&limit=50&access_token=${mapbox_access_token}`;
 
             fetch(placesUrl)
               .then((response) => {
