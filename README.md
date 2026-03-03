@@ -14,9 +14,8 @@ Nari is a full-stack web application designed to support working mothers by help
 This project demonstrates full-stack engineering, API integration, server-side rendering, and cloud deployment using modern web technologies.
 
 🏗 Architecture Overview
+
 <img width="1005" height="328" alt="archi" src="https://github.com/user-attachments/assets/08725558-8ab5-4062-ba2b-c28eb8e2d9e6" />
-
-
 
 Deployment:
 
@@ -157,6 +156,7 @@ Deployment
 🔹Gunicorn WSGI server
 
 📂 Project Structure
+
 <img width="1008" height="516" alt="prostr" src="https://github.com/user-attachments/assets/c44fd6b8-7925-45f6-ae94-da1a781c07ab" />
 
 
@@ -193,19 +193,24 @@ Environment variables configured via Render dashboard
 🔗 GitHub Repository: https://github.com/mdfadhih/GenderEq
 
 📸 Screenshots
+
 🔹Company Listing Page
 
  <img width="2879" height="1303" alt="comlist" src="https://github.com/user-attachments/assets/bdc05570-127a-458b-8daf-3efebdc98f28" />
 
+
 🔹Comparison Modal
+
 <img width="2880" height="1327" alt="comcare" src="https://github.com/user-attachments/assets/0f463ce4-796a-4722-bbe1-e4f35a105313" />
 
 
 🔹Childcare Map
+
 <img width="2845" height="1319" alt="care" src="https://github.com/user-attachments/assets/21e31b40-05b6-47f5-a30f-48612b692482" />
 
 
 🔹Route Planning Interface
+
 <img width="2851" height="1328" alt="route" src="https://github.com/user-attachments/assets/824ff653-d819-49d5-8fc1-aed98e90e6fa" />
 
 
