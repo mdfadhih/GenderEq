@@ -118,18 +118,56 @@
     </header>
 
     <script>
-      let mapboxAccessTokenCare = "";
-      fetch("/get_mapbox_access_token")
-        .then((response) => response.json())
-        .then((data) => {
-          mapboxAccessTokenCare = data.mapbox_access_token_Care;
-          mapboxgl.accessToken = mapboxAccessTokenCare;
-          const map = new mapboxgl.Map({
-            container: "map",
-            style: "mapbox://styles/rastemainhoon/cm11waww2034q01pq467pcb1a",
-            center: [144.9631, -37.8136],
-            zoom: 14,
-          });
+  (async function () {
+    try {
+      const res = await fetch("/get_mapbox_access_token", { cache: "no-store" });
+      if (!res.ok) throw new Error("Token endpoint failed: " + res.status);
+
+      const data = await res.json();
+      const mapboxAccessTokenCare = data.mapbox_access_token_Care;
+
+      if (!mapboxAccessTokenCare) {
+        throw new Error("MAPBOX_ACCESS_TOKEN_Care is missing (null/empty). Set it in Render Environment.");
+      }
+
+      mapboxgl.accessToken = mapboxAccessTokenCare;
+
+      const map = new mapboxgl.Map({
+        container: "map",
+        style: "mapbox://styles/rastemainhoon/cm11waww2034q01pq467pcb1a",
+        center: [144.9631, -37.8136],
+        zoom: 14,
+      });
+
+      // ---- KEEP YOUR EXISTING CODE BELOW, INSIDE THIS TRY BLOCK ----
+      // (Everything that uses `map` or `mapboxAccessTokenCare` stays here)
+
+    } catch (err) {
+      console.error(err);
+      const mapEl = document.getElementById("map");
+      if (mapEl) {
+        mapEl.innerHTML =
+          '<div style="padding:16px;background:#fff;border:1px solid #ddd;border-radius:8px;">' +
+          "<strong>Map failed to load.</strong><br/>" +
+          "Reason: " + err.message +
+          "</div>";
+      }
+    }
+  })();
+
+      
+      // let mapboxAccessTokenCare = "";
+      // fetch("/get_mapbox_access_token")
+      //   .then((response) => response.json())
+      //   .then((data) => {
+      //     mapboxAccessTokenCare = data.mapbox_access_token_Care;
+      //     mapboxgl.accessToken = mapboxAccessTokenCare;
+      //     const map = new mapboxgl.Map({
+      //       container: "map",
+      //       style: "mapbox://styles/rastemainhoon/cm11waww2034q01pq467pcb1a",
+      //       center: [144.9631, -37.8136],
+      //       zoom: 14,
+      //     });
 
           // Initialize variables
           let startCoordinates = null;
