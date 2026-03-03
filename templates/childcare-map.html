@@ -156,21 +156,53 @@
   //     }
   //   }
   // })();
+      mapboxgl.accessToken = mapbox_access_token;
 
+      const map = new mapboxgl.Map({
+    container: 'map', // Ensure this matches your <div id="map">
+    style: 'mapbox://styles/mapbox/streets-v12',
+    center: [144.9631, -37.8136], // Melbourne default
+    zoom: 10
+  });
+
+  // Add controls
+  map.addControl(new mapboxgl.NavigationControl());
+
+  const directions = new MapboxDirections({
+    accessToken: mapboxgl.accessToken,
+    unit: 'metric',
+    profile: 'mapbox/driving',
+    interactive: true,
+    controls: {
+      inputs: true,
+      instructions: true,
+    }
+  });
+
+  map.addControl(directions, 'top-left');
+
+  // Example START and END points
+  const startCoordinates = [144.9631, -37.8136]; // Melbourne CBD
+  const endCoordinates = [145.03, -37.75]; // Sample destination
+
+  map.on('load', () => {
+    directions.setOrigin(startCoordinates);
+    directions.setDestination(endCoordinates);
+  });
       
-      let mapbox_access_token = "";
-      fetch("/get_mapbox_access_token")
-        .then((response) => response.json())
-        .then((data) => {
-          mapbox_access_token = data.mapbox_access_token;
-          mapboxgl.accessToken = mapbox_access_token;
-          const map = new mapboxgl.Map({
-            container: "map",
-            style: "mapbox://styles/mapbox/streets-v12",
-            center: [144.9631, -37.8136],
-            zoom: 14,
-          })
-          .catch((err) => console.error("Token fetch failed:", err));
+      // let mapbox_access_token = "";
+      // fetch("/get_mapbox_access_token")
+      //   .then((response) => response.json())
+      //   .then((data) => {
+      //     mapbox_access_token = data.mapbox_access_token;
+      //     mapboxgl.accessToken = mapbox_access_token;
+      //     const map = new mapboxgl.Map({
+      //       container: "map",
+      //       style: "mapbox://styles/mapbox/streets-v12",
+      //       center: [144.9631, -37.8136],
+      //       zoom: 14,
+      //     });
+        
 
           // Initialize variables
           let startCoordinates = null;
