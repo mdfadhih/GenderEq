@@ -153,7 +153,7 @@
 
           // Geocoder for start location
           const geocoderStart = new MapboxGeocoder({
-            accessToken: mapboxAccessTokenCare,
+            accessToken: mapbox_access_token,
             placeholder: "Enter Start Address",
             mapboxgl: mapboxgl,
             countries: "au",
@@ -167,7 +167,7 @@
 
           // Geocoder for destination location
           const geocoderEnd = new MapboxGeocoder({
-            accessToken: mapboxAccessTokenCare,
+            accessToken: mapbox_access_token,
             placeholder: "Enter Destination Address",
             mapboxgl: mapboxgl,
             countries: "au",
@@ -217,7 +217,7 @@
           let route_stored = null;
           // Function to get and display the route
           function getRoute() {
-            const url = `https://api.mapbox.com/directions/v5/mapbox/${currentProfile}/${startCoordinates[0]},${startCoordinates[1]};${endCoordinates[0]},${endCoordinates[1]}?steps=true&geometries=geojson&access_token=${mapboxAccessTokenCare}`;
+            const url = `https://api.mapbox.com/directions/v5/mapbox/${currentProfile}/${startCoordinates[0]},${startCoordinates[1]};${endCoordinates[0]},${endCoordinates[1]}?steps=true&geometries=geojson&access_token=${mapbox_access_token}`;
 
             fetch(url)
               .then((response) => response.json())
@@ -272,7 +272,7 @@
           }
 
           function fetchCategories() {
-            const url = `https://api.mapbox.com/search/searchbox/v1/list/category?access_token=${mapboxAccessTokenCare}`;
+            const url = `https://api.mapbox.com/search/searchbox/v1/list/category?access_token=${mapbox_access_token}`;
 
             fetch(url)
               .then((response) => {
@@ -308,7 +308,7 @@
               ",",
             )}.json?proximity=${firstCoordinate[0]},${
               firstCoordinate[1]
-            }&limit=50&access_token=${mapboxAccessTokenCare}`;
+            }&limit=50&access_token=${mapbox_access_token}`;
 
             fetch(placesUrl)
               .then((response) => {
