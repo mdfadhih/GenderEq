@@ -296,9 +296,12 @@ def filter_companies(companies, filters):
 
 @app.route("/get_mapbox_access_token")
 def get_mapbox_access_token():
-    mapbox_access_token = os.getenv('MAPBOX_ACCESS_TOKEN')
-    mapbox_access_token_Care = os.getenv("MAPBOX_ACCESS_TOKEN_Care")
-    return jsonify({"mapbox_access_token": mapbox_access_token, "mapbox_access_token_Care": mapbox_access_token_Care})
+    # mapbox_access_token = os.getenv('MAPBOX_ACCESS_TOKEN')
+    # mapbox_access_token_Care = os.getenv("MAPBOX_ACCESS_TOKEN_Care")
+    return jsonify({
+    "mapbox_access_token": os.getenv("MAPBOX_ACCESS_TOKEN")
+})
+    # return jsonify({"mapbox_access_token": mapbox_access_token, "mapbox_access_token_Care": mapbox_access_token_Care})
 
 
 # @app.route('/companies', methods=['GET'])
