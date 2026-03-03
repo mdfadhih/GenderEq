@@ -14,15 +14,8 @@ Nari is a full-stack web application designed to support working mothers by help
 This project demonstrates full-stack engineering, API integration, server-side rendering, and cloud deployment using modern web technologies.
 
 🏗 Architecture Overview
-User (Browser)
-        ↓
-Flask Backend (Gunicorn)
-        ↓
-SQLite Database
-        ↓
-Jinja2 Template Rendering
-        ↓
-Mapbox APIs (Geocoding + Directions)
+<img width="2880" height="1620" alt="archi" src="https://github.com/user-attachments/assets/ee31e892-2b93-43b5-a795-d6aa77602265" />
+
 
 Deployment:
 
@@ -163,22 +156,8 @@ Deployment
 🔹Gunicorn WSGI server
 
 📂 Project Structure
-Nari/
-│
-├── main.py
-├── requirements.txt
-├── templates/
-│   ├── index.html
-│   ├── companies.html
-│   ├── childcare.html
-│
-├── static/
-│   ├── css/
-│   ├── js/
-│   ├── images/
-│
-├── .env (local only)
-└── README.md
+<img width="2880" height="1620" alt="prostr" src="https://github.com/user-attachments/assets/260ab62e-343e-4217-9051-3c0bf32b02de" />
+
 
 🔐 Security Implementation
 
@@ -214,17 +193,21 @@ Environment variables configured via Render dashboard
 
 📸 Screenshots
 
-(Add screenshots here of:)
-
 🔹Company Listing Page
 <img width="2880" height="1620" alt="comlist" src="https://github.com/user-attachments/assets/ffa1a455-3f1f-48ef-9e00-404bdbf6f4c1" />
 
 
 🔹Comparison Modal
+<img width="2880" height="1327" alt="comcare" src="https://github.com/user-attachments/assets/0f463ce4-796a-4722-bbe1-e4f35a105313" />
+
 
 🔹Childcare Map
+<img width="2845" height="1319" alt="care" src="https://github.com/user-attachments/assets/21e31b40-05b6-47f5-a30f-48612b692482" />
+
 
 🔹Route Planning Interface
+<img width="2851" height="1328" alt="route" src="https://github.com/user-attachments/assets/824ff653-d819-49d5-8fc1-aed98e90e6fa" />
+
 
 🎯 What This Project Demonstrates
 
