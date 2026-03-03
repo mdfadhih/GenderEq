@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -118,112 +118,42 @@
     </header>
 
     <script>
-  // (async function () {
-  //   try {
-  //     const res = await fetch("/get_mapbox_access_token", { cache: "no-store" });
-  //     if (!res.ok) throw new Error("Token endpoint failed: " + res.status);
+      let mapbox_access_token = "";
+      fetch("/get_mapbox_access_token")
+        .then((response) => response.json())
+        .then((data) => {
+          mapbox_access_token = data.mapbox_access_token;
+          mapboxgl.accessToken = mapbox_access_token;
+          const map = new mapboxgl.Map({
+            container: "map",
+            style: "mapbox://styles/mapbox/streets-v12",
+            center: [144.9631, -37.8136],
+            zoom: 14,
+          });
 
-  //     // const data = await res.json();
-  //     // const mapboxAccessTokenCare = data.mapbox_access_token_Care;
-  //     const { mapbox_access_token } = await res.json();
-  //     mapboxgl.accessToken = mapbox_access_token;
+          map.addControl(new mapboxgl.NavigationControl());
 
-  //     if (!mapbox_access_token) {
-  //       throw new Error("mapbox_access_token is missing (null/empty). Set it in Render Environment.");
-  //     }
+          const directions = new MapboxDirections({
+            accessToken: mapboxgl.accessToken,
+            unit: "metric",
+            profile: "mapbox/driving",
+            interactive: true,
+            controls: {
+              inputs: true,
+              instructions: true,
+            },
+          });
 
-  //     // mapboxgl.accessToken = mapboxAccessTokenCare;
-
-  //     const map = new mapboxgl.Map({
-  //       container: "map",
-  //       style: "mapbox://styles/rastemainhoon/cm11waww2034q01pq467pcb1a",
-  //       center: [144.9631, -37.8136],
-  //       zoom: 14,
-  //     });
-
-  //     // ---- KEEP YOUR EXISTING CODE BELOW, INSIDE THIS TRY BLOCK ----
-  //     // (Everything that uses `map` or `mapboxAccessTokenCare` stays here)
-
-  //   } catch (err) {
-  //     console.error(err);
-  //     const mapEl = document.getElementById("map");
-  //     if (mapEl) {
-  //       mapEl.innerHTML =
-  //         '<div style="padding:16px;background:#fff;border:1px solid #ddd;border-radius:8px;">' +
-  //         "<strong>Map failed to load.</strong><br/>" +
-  //         "Reason: " + err.message +
-  //         "</div>";
-  //     }
-  //   }
-  // })();
-     let mapbox_access_token = "";
-
-fetch("/get_mapbox_access_token", { cache: "no-store" })
-  .then(res => res.json())
-  .then(data => {
-
-    mapbox_access_token = data.mapbox_access_token;
-
-    if (!mapbox_access_token) {
-      throw new Error("Mapbox token missing. Check Render Environment.");
-    }
-      
-      mapboxgl.accessToken = mapbox_access_token;
-
-      const map = new mapboxgl.Map({
-    container: 'map', // Ensure this matches your <div id="map">
-    style: 'mapbox://styles/mapbox/streets-v12',
-    center: [144.9631, -37.8136], // Melbourne default
-    zoom: 10
-  });
-
-  // Add controls
-  map.addControl(new mapboxgl.NavigationControl());
-
-  const directions = new MapboxDirections({
-    accessToken: mapboxgl.accessToken,
-    unit: 'metric',
-    profile: 'mapbox/driving',
-    interactive: true,
-    controls: {
-      inputs: true,
-      instructions: true,
-    }
-  });
-
-  map.addControl(directions, 'top-left');
-
-  // Example START and END points
-  const startCoordinates = [144.9631, -37.8136]; // Melbourne CBD
-  const endCoordinates = [145.03, -37.75]; // Sample destination
-
-  map.on('load', () => {
-    directions.setOrigin(startCoordinates);
-    directions.setDestination(endCoordinates);
-  });
-      
-      // let mapbox_access_token = "";
-      // fetch("/get_mapbox_access_token")
-      //   .then((response) => response.json())
-      //   .then((data) => {
-      //     mapbox_access_token = data.mapbox_access_token;
-      //     mapboxgl.accessToken = mapbox_access_token;
-      //     const map = new mapboxgl.Map({
-      //       container: "map",
-      //       style: "mapbox://styles/mapbox/streets-v12",
-      //       center: [144.9631, -37.8136],
-      //       zoom: 14,
-      //     });
-        
+          map.addControl(directions, "top-left");
 
           // Initialize variables
-          // let startCoordinates = null;
-          // let endCoordinates = null;
+          let startCoordinates = null;
+          let endCoordinates = null;
           let currentProfile = "driving"; // Default transport mode
 
           // Geocoder for start location
           const geocoderStart = new MapboxGeocoder({
-            accessToken: mapbox_access_token,
+            accessToken: mapboxAccessTokenCare,
             placeholder: "Enter Start Address",
             mapboxgl: mapboxgl,
             countries: "au",
@@ -237,7 +167,7 @@ fetch("/get_mapbox_access_token", { cache: "no-store" })
 
           // Geocoder for destination location
           const geocoderEnd = new MapboxGeocoder({
-            accessToken: mapbox_access_token,
+            accessToken: mapboxAccessTokenCare,
             placeholder: "Enter Destination Address",
             mapboxgl: mapboxgl,
             countries: "au",
@@ -287,7 +217,7 @@ fetch("/get_mapbox_access_token", { cache: "no-store" })
           let route_stored = null;
           // Function to get and display the route
           function getRoute() {
-            const url = `https://api.mapbox.com/directions/v5/mapbox/${currentProfile}/${startCoordinates[0]},${startCoordinates[1]};${endCoordinates[0]},${endCoordinates[1]}?steps=true&geometries=geojson&access_token=${mapbox_access_token}`;
+            const url = `https://api.mapbox.com/directions/v5/mapbox/${currentProfile}/${startCoordinates[0]},${startCoordinates[1]};${endCoordinates[0]},${endCoordinates[1]}?steps=true&geometries=geojson&access_token=${mapboxAccessTokenCare}`;
 
             fetch(url)
               .then((response) => response.json())
@@ -342,13 +272,13 @@ fetch("/get_mapbox_access_token", { cache: "no-store" })
           }
 
           function fetchCategories() {
-            const url = `https://api.mapbox.com/search/searchbox/v1/list/category?access_token=${mapbox_access_token}`;
+            const url = `https://api.mapbox.com/search/searchbox/v1/list/category?access_token=${mapboxAccessTokenCare}`;
 
             fetch(url)
               .then((response) => {
                 if (!response.ok) {
                   throw new Error(
-                    "Network response was not ok " + response.statusText
+                    "Network response was not ok " + response.statusText,
                   );
                 }
                 return response.json();
@@ -375,10 +305,10 @@ fetch("/get_mapbox_access_token", { cache: "no-store" })
             const firstCoordinate = route.geometry.coordinates[0]; // [longitude, latitude]
 
             const placesUrl = `https://api.mapbox.com/geocoding/v5/mapbox.places/${categories.join(
-              ","
+              ",",
             )}.json?proximity=${firstCoordinate[0]},${
               firstCoordinate[1]
-            }&limit=50&access_token=${mapbox_access_token}`;
+            }&limit=50&access_token=${mapboxAccessTokenCare}`;
 
             fetch(placesUrl)
               .then((response) => {
@@ -409,8 +339,8 @@ fetch("/get_mapbox_access_token", { cache: "no-store" })
                     .setLngLat(poi.geometry.coordinates)
                     .setPopup(
                       new mapboxgl.Popup().setHTML(
-                        `<h3>${poi.text}</h3><p>${poi.place_name}</p>`
-                      )
+                        `<h3>${poi.text}</h3><p>${poi.place_name}</p>`,
+                      ),
                     ) // Add popup for POI details
                     .addTo(map);
                 });
@@ -429,7 +359,7 @@ fetch("/get_mapbox_access_token", { cache: "no-store" })
               route.distance / 1000
             ).toFixed(2)} km</strong><br>`;
             directionsHTML += `<strong>Duration: ${Math.round(
-              route.duration / 60
+              route.duration / 60,
             )} min</strong><br><br>`;
 
             directionsHTML += `<ol class="pr-0 pb-0 pt-0 pl-0 -mt-10">`;
@@ -514,7 +444,7 @@ fetch("/get_mapbox_access_token", { cache: "no-store" })
               trackUserLocation: true,
               // Draw an arrow next to the location dot to indicate which direction the device is heading.
               showUserHeading: true,
-            })
+            }),
           );
 
           map.on("load", () => {
@@ -649,7 +579,7 @@ fetch("/get_mapbox_access_token", { cache: "no-store" })
           function updateLayers() {
             // resetPlaceCard();
             const selectedType = document.getElementById(
-              "childcareTypeSelect"
+              "childcareTypeSelect",
             ).value;
             const selectedRating =
               document.getElementById("nqsRatingSelect").value;
@@ -720,7 +650,7 @@ fetch("/get_mapbox_access_token", { cache: "no-store" })
               const feature = features[0];
 
               fetch(
-                `/api/place-details?lat=${feature.geometry.coordinates[1]}&lng=${feature.geometry.coordinates[0]}&layer=${layer}`
+                `/api/place-details?lat=${feature.geometry.coordinates[1]}&lng=${feature.geometry.coordinates[0]}&layer=${layer}`,
               )
                 .then((response) => {
                   if (!response.ok) {
@@ -780,7 +710,7 @@ fetch("/get_mapbox_access_token", { cache: "no-store" })
                   } else {
                     return `<p>${dayName}: ${hours.start.slice(
                       0,
-                      5
+                      5,
                     )} - ${hours.end.slice(0, 5)}</p>`;
                   }
                 })
@@ -825,12 +755,12 @@ fetch("/get_mapbox_access_token", { cache: "no-store" })
                       if (this.open) {
                         summary.textContent = summary.textContent.replace(
                           "▼",
-                          "▲"
+                          "▲",
                         );
                       } else {
                         summary.textContent = summary.textContent.replace(
                           "▲",
-                          "▼"
+                          "▼",
                         );
                       }
                     });
@@ -854,10 +784,10 @@ fetch("/get_mapbox_access_token", { cache: "no-store" })
             const defaultCard = document.getElementById("default-card");
             details.innerHTML = `
                       <p><strong>Distance:</strong> ${route.distance.toFixed(
-                        2
+                        2,
                       )} km</p>
                       <p><strong>Duration:</strong> ${Math.round(
-                        route.duration / 60
+                        route.duration / 60,
                       )} min</p>
                       ${route.steps
                         .map((step) => `<p>${step.maneuver.instruction}</p>`)
@@ -876,7 +806,7 @@ fetch("/get_mapbox_access_token", { cache: "no-store" })
               route.distance / 1000
             ).toFixed(2)} km</strong><br>`;
             directionsHTML += `<strong>Duration: ${Math.round(
-              route.duration / 60
+              route.duration / 60,
             )} minutes</strong><br><br>`;
 
             directionsHTML += `<ol class="pr-0 pb-0 pt-0 pl-0 -mt-10">`;
@@ -884,11 +814,11 @@ fetch("/get_mapbox_access_token", { cache: "no-store" })
               directionsHTML += `
                         <li class="text-xl font-medium">
                           <span class="direction-icon">${getDirectionIcon(
-                            step.maneuver
+                            step.maneuver,
                           )}</span>
                           ${step.maneuver.instruction} (${(
-                step.distance / 1000
-              ).toFixed(2)} km)
+                            step.distance / 1000
+                          ).toFixed(2)} km)
                         </li>`;
             });
             directionsHTML += "</ol>";
@@ -937,6 +867,7 @@ fetch("/get_mapbox_access_token", { cache: "no-store" })
               return iconMap[maneuver.type] || "•";
             }
           }
+        });
     </script>
 
     <div class="container1">
