@@ -162,14 +162,15 @@
       fetch("/get_mapbox_access_token")
         .then((response) => response.json())
         .then((data) => {
-          mapboxAccessToken = data.mapbox_access_token;
+          mapbox_access_token = data.mapbox_access_token;
           mapboxgl.accessToken = mapbox_access_token;
           const map = new mapboxgl.Map({
             container: "map",
             style: "mapbox://styles/rastemainhoon/cm11waww2034q01pq467pcb1a",
             center: [144.9631, -37.8136],
             zoom: 14,
-          });
+          })
+          .catch((err) => console.error("Token fetch failed:", err));
 
           // Initialize variables
           let startCoordinates = null;
