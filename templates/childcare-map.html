@@ -123,14 +123,16 @@
       const res = await fetch("/get_mapbox_access_token", { cache: "no-store" });
       if (!res.ok) throw new Error("Token endpoint failed: " + res.status);
 
-      const data = await res.json();
-      const mapboxAccessTokenCare = data.mapbox_access_token_Care;
+      // const data = await res.json();
+      // const mapboxAccessTokenCare = data.mapbox_access_token_Care;
+      const { mapbox_access_token } = await res.json();
+      mapboxgl.accessToken = mapbox_access_token;
 
       if (!mapboxAccessTokenCare) {
-        throw new Error("MAPBOX_ACCESS_TOKEN_Care is missing (null/empty). Set it in Render Environment.");
+        throw new Error("mapbox_access_token is missing (null/empty). Set it in Render Environment.");
       }
 
-      mapboxgl.accessToken = mapboxAccessTokenCare;
+      // mapboxgl.accessToken = mapboxAccessTokenCare;
 
       const map = new mapboxgl.Map({
         container: "map",
@@ -176,7 +178,7 @@
 
           // Geocoder for start location
           const geocoderStart = new MapboxGeocoder({
-            accessToken: mapboxAccessTokenCare,
+            accessToken: mapbox_access_token,
             placeholder: "Enter Start Address",
             mapboxgl: mapboxgl,
             countries: "au",
@@ -190,7 +192,7 @@
 
           // Geocoder for destination location
           const geocoderEnd = new MapboxGeocoder({
-            accessToken: mapboxAccessTokenCare,
+            accessToken: mapbox_access_token,
             placeholder: "Enter Destination Address",
             mapboxgl: mapboxgl,
             countries: "au",
@@ -240,7 +242,7 @@
           let route_stored = null;
           // Function to get and display the route
           function getRoute() {
-            const url = `https://api.mapbox.com/directions/v5/mapbox/${currentProfile}/${startCoordinates[0]},${startCoordinates[1]};${endCoordinates[0]},${endCoordinates[1]}?steps=true&geometries=geojson&access_token=${mapboxAccessTokenCare}`;
+            const url = `https://api.mapbox.com/directions/v5/mapbox/${currentProfile}/${startCoordinates[0]},${startCoordinates[1]};${endCoordinates[0]},${endCoordinates[1]}?steps=true&geometries=geojson&access_token=${mapbox_access_token}`;
 
             fetch(url)
               .then((response) => response.json())
@@ -295,7 +297,7 @@
           }
 
           function fetchCategories() {
-            const url = `https://api.mapbox.com/search/searchbox/v1/list/category?access_token=${mapboxAccessTokenCare}`;
+            const url = `https://api.mapbox.com/search/searchbox/v1/list/category?access_token=${mapbox_access_token}`;
 
             fetch(url)
               .then((response) => {
