@@ -193,11 +193,9 @@ Environment variables configured via Render dashboard
 🔗 GitHub Repository: https://github.com/mdfadhih/GenderEq
 
 📸 Screenshots
-
-<img width="2880" height="1250" alt="comlist" src="https://github.com/user-attachments/assets/ffa1a455-3f1f-48ef-9e00-404bdbf6f4c1" />
 🔹Company Listing Page
 
-
+ <img width="2879" height="1303" alt="comlist" src="https://github.com/user-attachments/assets/bdc05570-127a-458b-8daf-3efebdc98f28" />
 
 🔹Comparison Modal
 <img width="2880" height="1327" alt="comcare" src="https://github.com/user-attachments/assets/0f463ce4-796a-4722-bbe1-e4f35a105313" />
