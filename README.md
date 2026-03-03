@@ -209,14 +209,16 @@ Environment variables configured via Render dashboard
 
 🌍 Live Demo
 
-🔗 Live Application: (Add your Render URL here)
-🔗 GitHub Repository: (Add your repo link here)
+🔗 Live Application: https://gendereq.onrender.com
+🔗 GitHub Repository: https://github.com/mdfadhih/GenderEq
 
 📸 Screenshots
 
 (Add screenshots here of:)
 
 🔹Company Listing Page
+<img width="2880" height="1620" alt="comlist" src="https://github.com/user-attachments/assets/ffa1a455-3f1f-48ef-9e00-404bdbf6f4c1" />
+
 
 🔹Comparison Modal
 
@@ -260,7 +262,7 @@ Mohamed Fadhih
 Frontend & Cloud Engineer
 Melbourne, VIC
 
-[![Linkedin](https://i.sstatic.net/gVE0j.png) LinkedIn](https://www.linkedin.com/) LinkedIn: https://www.linkedin.com/in/fadhih/
+LinkedIn: https://www.linkedin.com/in/fadhih/
 GitHub: https://github.com/mdfadhih/GenderEq
 Portfolio: (Add link)
 
