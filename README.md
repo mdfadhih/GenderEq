@@ -1,262 +1,259 @@
-🚀 Nari – Mum-Friendly Job & Childcare Discovery Platform
-📌 Project Overview
+# 🚀 Nari – Mum-Friendly Job & Childcare Discovery Platform
 
-Nari is a full-stack web application designed to support working mothers by helping them:
+## 📌 Project Overview
 
-🔹Discover family-friendly workplaces
+**Nari** is a full-stack web application designed to help working mothers discover family-friendly workplaces and nearby childcare services.
 
-🔹Compare company benefits and ratings
+The platform centralizes information about workplace benefits and childcare options, allowing users to **search, compare, and plan commute routes using interactive maps**.
 
-🔹Locate nearby childcare centers
+The project demonstrates **full-stack development, API integration, geospatial services, and cloud deployment** using modern web technologies.
 
-🔹Plan commute routes using interactive maps
+Users can:
 
-🌍 Live Demo
+🔹 Discover family-friendly companies
+🔹 Compare workplace benefits and ratings
+🔹 Locate nearby childcare centers
+🔹 Plan routes using interactive maps
 
-🔗 Live Application: https://gendereq.onrender.com
-🔗 GitHub Repository: https://github.com/mdfadhih/GenderEq
+---
 
+# 🏗 Architecture Overview
 
-This project demonstrates full-stack engineering, API integration, server-side rendering, and cloud deployment using modern web technologies.
+<img width="1000" src="https://github.com/user-attachments/assets/08725558-8ab5-4062-ba2b-c28eb8e2d9e6" />
 
-🏗 Architecture Overview
+### Deployment
 
-<img width="700" alt="archi" src="https://github.com/user-attachments/assets/08725558-8ab5-4062-ba2b-c28eb8e2d9e6" />
+🔹 GitHub – Version control
+🔹 Render – Cloud hosting
+🔹 Environment variables – Secure token management
 
-Deployment:
+---
 
-🔹GitHub (Version Control)
+# 🧩 Core Features
 
-🔹Render (Cloud Hosting)
+## 1️⃣ Dynamic Company Directory
 
-🔹Environment Variables (Secure token management)
+Companies are dynamically rendered using **Flask + Jinja2 server-side templating**.
 
-🧩 Core Features
-1️⃣ Dynamic Company Listing (Server-Side Rendering)
+Example template:
 
-Companies are dynamically rendered using Flask + Jinja2 templating.
-
-Example:
-
+```
 {% for company_name, com in companies.items() %}
+```
 
-The system injects:
+Each company card dynamically displays:
 
-🔹Company name
+🔹 Company name
+🔹 Employee count
+🔹 Company logo
+🔹 Website link
+🔹 Benefits offered
+🔹 Workplace rating
 
-🔹Employee count
+Clicking a company card loads detailed company information dynamically using JavaScript.
 
-🔹Logo
+---
 
-🔹Website
+## 2️⃣ Company Filtering & Comparison
 
-🔹Benefits
+Users can:
 
-🔹Ratings
+🔹 Filter companies by rating, benefits, and size
+🔹 Compare multiple companies using an interactive comparison modal
+🔹 Update results dynamically with JavaScript
 
-Clicking a company card triggers JavaScript to display detailed company information dynamically.
+This improves usability when evaluating potential employers.
 
-2️⃣ Company Filtering & Comparison
+---
 
-🔹Filter companies by rating, benefits, and size
+## 3️⃣ Interactive Childcare Discovery
 
-🔹Compare companies via interactive modal
+The platform integrates **Mapbox APIs** to help users locate nearby childcare services.
 
-🔹Dynamic UI updates using JavaScript
+Technologies used:
 
-3️⃣ Interactive Childcare Discovery (Mapbox Integration)
+🔹 Mapbox GL JS
+🔹 Mapbox Geocoding API
+🔹 Mapbox Directions API
 
-🔹Implemented using:
+Key features include:
 
-🔹Mapbox GL JS
+🔹 Address search for start and destination
+🔹 Driving, walking, and cycling routes
+🔹 Real-time route visualization
+🔹 Distance and travel duration calculation
+🔹 Turn-by-turn directions
+🔹 Automatic map zoom and route display
 
-🔹Mapbox Geocoding API
+---
 
-🔹Mapbox Directions API
+## 4️⃣ Childcare Center Layer Filtering
 
-Features:
+Custom vector layers allow users to filter different childcare providers.
 
-🔹Start & destination address search
+Supported center types:
 
-🔹Driving / Walking / Cycling route options
+🔹 Academies
+🔹 Childcare Centers
+🔹 Early Learning Centers
+🔹 Kindergartens
+🔹 OSHC (Outside School Hours Care)
+🔹 Preschools
 
-🔹Automatic route visualization
+Additional features:
 
-🔹Distance and duration display
+🔹 Filter by **NQS Rating**
+🔹 Interactive map popups displaying:
 
-🔹Turn-by-turn instructions
+• Opening hours
+• Services offered
+• Address information
 
-🔹Dynamic map zoom
+---
 
-4️⃣ Childcare Center Layer Filtering
+# 🛠 Technology Stack
 
-🔹Integrated custom vector layers:
+## Backend
 
-🔹Academy
+Python 3.11
+Flask 3.0
+Gunicorn
+SQLite
+Jinja2 Template Engine
+python-dotenv
 
-🔹Childcare Centers
+## Frontend
 
-🔹Early Learning Centers
-
-🔹Kindergartens
-
-🔹OSHC
-
-🔹Preschools
-
-Features:
-
-🔹Toggle center types
-
-🔹Filter by NQS Rating
-
-Interactive popups showing:
-
-🔹Opening hours
-
-🔹Services offered
-
-🔹Address details
-
-🛠 Technology Stack
-🔹Backend
-
-🔹Python 3.11
-
-🔹Flask 3.0
-
-🔹Gunicorn
-
-🔹SQLite
-
-🔹Jinja2 Template Engine
-
-🔹python-dotenv
-
-Frontend
-
-🔹HTML5
-
-🔹CSS3
-
-🔹Bootstrap 5
-
-🔹Tailwind CSS
-
+HTML5
+CSS3
+Bootstrap 5
+Tailwind CSS
 JavaScript (ES6)
 
-🔹APIs
+## APIs
 
-🔹Mapbox GL JS
+Mapbox GL JS
+Mapbox Geocoding API
+Mapbox Directions API
 
-🔹Mapbox Geocoding API
+## Deployment
 
-🔹Mapbox Directions API
+GitHub
+Render Web Service
+Gunicorn WSGI server
 
-Deployment
+---
 
-🔹GitHub
+# 📂 Project Structure
 
-🔹Render Web Service
+<img width="1000" src="https://github.com/user-attachments/assets/c44fd6b8-7925-45f6-ae94-da1a781c07ab" />
 
-🔹Gunicorn WSGI server
+---
 
-📂 Project Structure
+# 🔐 Security Implementation
 
-<img width="700" alt="prostr" src="https://github.com/user-attachments/assets/c44fd6b8-7925-45f6-ae94-da1a781c07ab" />
+🔹 Mapbox API tokens stored securely using environment variables
+🔹 No sensitive credentials hardcoded in the repository
+🔹 `.env` file excluded using `.gitignore`
+🔹 Public Mapbox tokens (`pk.`) used only for client-side rendering
 
+Example usage:
 
-🔐 Security Implementation
-
-🔹Mapbox API token stored securely using environment variables
-
-🔹No sensitive credentials hardcoded
-
-🔹.env file excluded via .gitignore
-
-🔹Public Mapbox token (pk.) used for client-side rendering only
-
-Example usage in Flask:
-
+```
 os.getenv("MAPBOX_ACCESS_TOKEN")
-☁ Deployment
+```
 
-The application is deployed on Render.
+---
 
-Production setup:
+# ☁ Deployment
 
-🔹Web Service
+The application is deployed on **Render**.
 
-🔹Gunicorn start command:
+### Production Setup
 
+🔹 Render Web Service
+🔹 Gunicorn WSGI server
+
+Start command:
+
+```
 gunicorn main:app
+```
 
-Environment variables configured via Render dashboard
+Environment variables are configured through the Render dashboard.
 
+---
 
+# 🌍 Live Demo
 
-📸 Screenshots
+🔗 Live Application
+https://gendereq.onrender.com
 
-🔹Company Listing Page
+🔗 GitHub Repository
+https://github.com/mdfadhih/GenderEq
 
- <img width="700" alt="comlist" src="https://github.com/user-attachments/assets/bdc05570-127a-458b-8daf-3efebdc98f28" />
+---
 
+# 📸 Screenshots
 
-🔹Comparison Modal
+## Company Listing Page
 
-<img width="700"  alt="comcare" src="https://github.com/user-attachments/assets/0f463ce4-796a-4722-bbe1-e4f35a105313" />
+<img src="https://github.com/user-attachments/assets/bdc05570-127a-458b-8daf-3efebdc98f28" width="1000"/>
 
+## Company Comparison Modal
 
-🔹Childcare Map
+<img src="https://github.com/user-attachments/assets/0f463ce4-796a-4722-bbe1-e4f35a105313" width="1000"/>
 
-<img width="700" alt="care" src="https://github.com/user-attachments/assets/21e31b40-05b6-47f5-a30f-48612b692482" />
+## Childcare Map
 
+<img src="https://github.com/user-attachments/assets/21e31b40-05b6-47f5-a30f-48612b692482" width="1000"/>
 
-🔹Route Planning Interface
+## Route Planning Interface
 
-<img width="700" alt="route" src="https://github.com/user-attachments/assets/824ff653-d819-49d5-8fc1-aed98e90e6fa" />
+<img src="https://github.com/user-attachments/assets/824ff653-d819-49d5-8fc1-aed98e90e6fa" width="1000"/>
 
+---
 
-🎯 What This Project Demonstrates
+# 🎯 What This Project Demonstrates
 
-🔹Full-stack web development
+🔹 Full-stack web development
+🔹 Server-side rendering using Jinja2
+🔹 API integration and geospatial services
+🔹 Cloud deployment and infrastructure
+🔹 Secure environment configuration
+🔹 Real-world problem solving
+🔹 Interactive UI/UX design
 
-🔹Server-side rendering with Jinja2
+---
 
-🔹API integration and geospatial functionality
+# 🚀 Future Improvements
 
-🔹Cloud deployment
+🔹 PostgreSQL production database
+🔹 User authentication system
+🔹 Save favourite companies
+🔹 Advanced AJAX filtering
+🔹 Performance optimisation
+🔹 Custom Mapbox map styles
 
-🔹Secure environment configuration
+---
 
-🔹Real-world problem solving
+# 👨‍💻 Author
 
-🔹Interactive UI/UX design
-
-🚀 Future Improvements
-
-🔹PostgreSQL production database
-
-🔹User authentication system
-
-🔹Save favourite companies
-
-🔹Advanced AJAX filtering
-
-🔹Performance optimisation
-
-🔹Custom Mapbox styles
-
-👨‍💻 Author
-
-Mohamed Fadhih
+**Mohamed Fadhih**
 Frontend & Cloud Engineer
 Melbourne, VIC
 
-LinkedIn: https://www.linkedin.com/in/fadhih/
-GitHub: https://github.com/mdfadhih/GenderEq
-Portfolio: (Add link)
+LinkedIn
+https://www.linkedin.com/in/fadhih/
 
-📄 License
+GitHub
+https://github.com/mdfadhih
 
-This project is developed for portfolio and demonstration purposes.
+Portfolio
+(Add portfolio link)
+
+---
+
+# 📄 License
+
+This project is developed for **portfolio and demonstration purposes**.
