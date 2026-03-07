@@ -146,7 +146,7 @@ Gunicorn WSGI server
 
 # 📂 Project Structure
 
-<img width="1000" src="https://github.com/user-attachments/assets/c44fd6b8-7925-45f6-ae94-da1a781c07ab" />
+<img width="700" src="https://github.com/user-attachments/assets/c44fd6b8-7925-45f6-ae94-da1a781c07ab" />
 
 ---
 
@@ -198,19 +198,19 @@ https://github.com/mdfadhih/GenderEq
 
 ## Company Listing Page
 
-<img src="https://github.com/user-attachments/assets/bdc05570-127a-458b-8daf-3efebdc98f28" width="1000"/>
+<img src="https://github.com/user-attachments/assets/bdc05570-127a-458b-8daf-3efebdc98f28" width="700"/>
 
 ## Company Comparison Modal
 
-<img src="https://github.com/user-attachments/assets/0f463ce4-796a-4722-bbe1-e4f35a105313" width="1000"/>
+<img src="https://github.com/user-attachments/assets/0f463ce4-796a-4722-bbe1-e4f35a105313" width="700"/>
 
 ## Childcare Map
 
-<img src="https://github.com/user-attachments/assets/21e31b40-05b6-47f5-a30f-48612b692482" width="1000"/>
+<img src="https://github.com/user-attachments/assets/21e31b40-05b6-47f5-a30f-48612b692482" width="700"/>
 
 ## Route Planning Interface
 
-<img src="https://github.com/user-attachments/assets/824ff653-d819-49d5-8fc1-aed98e90e6fa" width="1000"/>
+<img src="https://github.com/user-attachments/assets/824ff653-d819-49d5-8fc1-aed98e90e6fa" width="700"/>
 
 ---
 
@@ -250,7 +250,7 @@ GitHub
 https://github.com/mdfadhih
 
 Portfolio
-(Add portfolio link)
+https://my-portfolio-seven-tawny-79.vercel.app
 
 ---
 
